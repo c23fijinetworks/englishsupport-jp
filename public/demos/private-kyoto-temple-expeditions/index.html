@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYOETHEREAL | Private Kyoto Temple Expeditions</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kyotoCharcoal: '#121212',
+                        kyotoSand: '#E8E4DF',
+                        kyotoClay: '#A24936',
+                        kyotoMoss: '#4A5D4E'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #E8E4DF; color: #121212; }
+        
+        /* Navigation Transition */
+        #mobile-menu {
+            transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+            clip-path: circle(0% at 100% 0%);
+        }
+        #mobile-menu.active {
+            clip-path: circle(150% at 100% 0%);
+        }
+
+        /* Review Marquee */
+        .marquee-wrapper { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
+        .marquee-content { display: inline-flex; animation: scroll 50s linear infinite; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-content:hover { animation-play-state: paused; }
+
+        /* Review Card Styling */
+        .review-card {
+            white-space: normal;
+            word-wrap: break-word;
+            width: 450px;
+            background: #FFFFFF;
+            padding: 3rem;
+            margin-right: 2rem;
+            border: 1px solid rgba(18, 18, 18, 0.05);
+            box-shadow: 10px 10px 0px #121212;
+        }
+
+        /* Custom Input Styling */
+        .kyo-input {
+            background: transparent;
+            border: 1px solid #121212;
+            width: 100%;
+            padding: 1.25rem;
+            outline: none;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+        .kyo-input:focus { background: #FFFFFF; border-color: #A24936; }
+
+        /* Floating Frame Aesthetic */
+        .frame-overlap { margin-top: -150px; }
+        
+        .bento-img:hover img { transform: scale(1.08); }
+        .bento-img img { transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+
+    <!-- NAVIGATION -->
+    <header class="fixed w-full top-0 z-[100] bg-kyotoSand/80 backdrop-blur-md border-b border-kyotoCharcoal/10">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-bold tracking-tight text-kyotoCharcoal uppercase">KyoEthereal</a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-12 text-[10px] uppercase tracking-[0.4em] font-bold text-kyotoCharcoal">
+                <a href="#expeditions" class="hover:text-kyotoClay transition-colors">Expeditions</a>
+                <a href="#visuals" class="hover:text-kyotoClay transition-colors">Visuals</a>
+                <a href="#guestbook" class="hover:text-kyotoClay transition-colors">Guestbook</a>
+            </nav>
+
+            <a href="#request" class="hidden md:block bg-kyotoCharcoal text-kyotoSand px-8 py-3 text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-kyotoClay transition-all">
+                Book Expedition
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button id="hamburger" class="md:hidden flex flex-col space-y-1.5 focus:outline-none z-[110]">
+                <span class="w-8 h-[2px] bg-kyotoCharcoal transition-all" id="bar1"></span>
+                <span class="w-8 h-[2px] bg-kyotoCharcoal transition-all" id="bar2"></span>
+                <span class="w-8 h-[2px] bg-kyotoCharcoal transition-all" id="bar3"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="fixed inset-0 bg-kyotoCharcoal z-[105] flex flex-col items-center justify-center space-y-12">
+        <nav class="flex flex-col items-center space-y-8 text-kyotoSand text-4xl font-serif italic">
+            <a href="#expeditions" class="mobile-link">Expeditions</a>
+            <a href="#visuals" class="mobile-link">Visuals</a>
+            <a href="#guestbook" class="mobile-link">Guestbook</a>
+        </nav>
+        <a href="#request" class="mobile-link bg-kyotoClay text-kyotoSand px-12 py-4 text-sm uppercase tracking-widest font-sans font-bold">Book Expedition</a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-6 z-10" data-aos="fade-right">
+                <p class="uppercase tracking-[0.4em] text-kyotoClay text-xs mb-8 font-bold">Kyoto • Established 2026</p>
+                <h1 class="font-serif text-6xl md:text-8xl leading-[0.85] text-kyotoCharcoal mb-8">
+                    The Path of <br><span class="italic font-light md:pl-20">Silence.</span>
+                </h1>
+                <p class="text-kyotoCharcoal/80 max-w-sm text-lg font-light mb-12 leading-relaxed">
+                    Exclusive, scholar-led access to Kyoto’s most sacred Zen temples. Experience the architecture of stillness, tailored for the discerning global traveler.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#request" class="bg-kyotoCharcoal text-kyotoSand px-10 py-5 text-xs uppercase tracking-widest font-bold hover:bg-kyotoClay transition-all">Start Journey</a>
+                </div>
+            </div>
+            
+            <div class="md:col-span-6 relative h-[600px] md:h-[800px]" data-aos="zoom-out" data-aos-duration="1500">
+                <img src="https://images.unsplash.com/photo-1574236170880-fbbca132d83d?w=1000&auto=format&fit=crop" 
+                     class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 shadow-2xl" alt="Kyoto Temple">
+                <div class="absolute -bottom-10 -left-10 w-64 h-80 border-[20px] border-kyotoSand z-20 hidden md:block">
+                    <img src="https://images.unsplash.com/photo-1610338732118-09d3b6fd030c?w=400&auto=format&fit=crop" class="w-full h-full object-cover" alt="Zen Detail">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPEDITIONS (BENTO GRID) -->
+    <section id="expeditions" class="py-32 px-6 bg-kyotoCharcoal text-kyotoSand">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20" data-aos="fade-up">
+                <div class="max-w-xl">
+                    <h2 class="font-serif text-5xl md:text-7xl mb-6">Sacred <br>Itineraries</h2>
+                    <p class="text-kyotoSand/50 font-light text-lg">Curated paths through the spiritual heart of Japan.</p>
+                </div>
+                <div class="w-24 h-[1px] bg-kyotoClay mb-4"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Tour 1 -->
+                <div class="group bento-img bg-stone-900 overflow-hidden" data-aos="fade-up">
+                    <div class="h-[400px] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1530634082454-f57b7d567b25?w=600&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all" alt="Zen Garden">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-3xl mb-4 italic text-kyotoSand">Zen Garden Rituals</h3>
+                        <p class="text-kyotoSand/60 text-sm font-light leading-loose mb-6">A private study of dry landscape gardens and early morning meditation sessions.</p>
+                        <a href="#request" class="text-[10px] uppercase font-bold tracking-widest border-b border-kyotoClay pb-1">Enquire</a>
+                    </div>
+                </div>
+
+                <!-- Tour 2 -->
+                <div class="group bento-img bg-stone-900 overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-[400px] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all" alt="Gold Pavilion">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-3xl mb-4 italic text-kyotoSand">Imperial Kyoto</h3>
+                        <p class="text-kyotoSand/60 text-sm font-light leading-loose mb-6">Scholar-led expeditions through the historical villas and royal temple sanctuaries.</p>
+                        <a href="#request" class="text-[10px] uppercase font-bold tracking-widest border-b border-kyotoClay pb-1">Enquire</a>
+                    </div>
+                </div>
+
+                <!-- Tour 3 -->
+                <div class="group bento-img bg-stone-900 overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+                    <div class="h-[400px] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1595782014129-d8ca7a691d83?w=600&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all" alt="Temple Gate">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-3xl mb-4 italic text-kyotoSand">The Hidden Path</h3>
+                        <p class="text-kyotoSand/60 text-sm font-light leading-loose mb-6">Off-schedule access to private sub-temples normally closed to the public.</p>
+                        <a href="#request" class="text-[10px] uppercase font-bold tracking-widest border-b border-kyotoClay pb-1">Enquire</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISUALS / INSTAGRAM -->
+    <section id="visuals" class="py-32 px-6">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="space-y-4">
+                    <img src="https://images.unsplash.com/photo-1558870832-c8db4b5b47d1?w=500&auto=format&fit=crop" class="w-full h-64 object-cover" data-aos="zoom-in" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1527063460378-8fdae9ccc174?w=500&auto=format&fit=crop" class="w-full h-96 object-cover" data-aos="zoom-in" alt="Gallery">
+                </div>
+                <div class="space-y-4 pt-12">
+                    <img src="https://images.unsplash.com/photo-1618749543000-4a3885939752?w=500&auto=format&fit=crop" class="w-full h-[500px] object-cover" data-aos="zoom-in" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1742744410496-236640a43503?w=500&auto=format&fit=crop" class="w-full h-64 object-cover" data-aos="zoom-in" alt="Gallery">
+                </div>
+                <div class="space-y-4">
+                    <img src="https://images.unsplash.com/photo-1723708889726-1c94a79f85fe?w=500&auto=format&fit=crop" class="w-full h-96 object-cover" data-aos="zoom-in" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1670736498426-6fdf271419ef?w=500&auto=format&fit=crop" class="w-full h-64 object-cover" data-aos="zoom-in" alt="Gallery">
+                </div>
+                <div class="space-y-4 pt-8">
+                    <img src="https://images.unsplash.com/photo-1610338732118-09d3b6fd030c?w=500&auto=format&fit=crop" class="w-full h-64 object-cover" data-aos="zoom-in" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1530634082454-f57b7d567b25?w=500&auto=format&fit=crop" class="w-full h-96 object-cover" data-aos="zoom-in" alt="Gallery">
+                </div>
+            </div>
+            <div class="mt-16 text-center">
+                <p class="font-serif italic text-2xl text-kyotoCharcoal">Moments of Zen @KyoEthereal</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GUESTBOOK (REVIEWS) -->
+    <section id="guestbook" class="py-24 bg-white border-y border-kyotoCharcoal/5">
+        <div class="marquee-wrapper">
+            <div class="marquee-content gap-8">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="flex text-kyotoClay mb-6 text-xs font-bold tracking-widest uppercase">★★★★★ Google Review</div>
+                    <p class="text-kyotoCharcoal text-sm font-light leading-relaxed italic mb-8">"This was not just a tour, but a spiritual transformation. Our guide, a former monk, provided insights into Zen architecture that changed how I see the world."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-kyotoCharcoal/40">— Dr. Aris Thorne, Cambridge</p>
+                </div>
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="flex text-kyotoClay mb-6 text-xs font-bold tracking-widest uppercase">★★★★★ Google Review</div>
+                    <p class="text-kyotoCharcoal text-sm font-light leading-relaxed italic mb-8">"The language barrier is zero. Their English support is flawless, and the private car service made navigating Kyoto's busy streets incredibly peaceful."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-kyotoCharcoal/40">— Helena Richardson, Sydney</p>
+                </div>
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div class="flex text-kyotoClay mb-6 text-xs font-bold tracking-widest uppercase">★★★★★ Google Review</div>
+                    <p class="text-kyotoCharcoal text-sm font-light leading-relaxed italic mb-8">"The 'Hidden Path' tour was exactly as promised. We visited shrines where we were the only foreigners present. Truly bespoke."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-kyotoCharcoal/40">— Mark & Sarah, NYC</p>
+                </div>
+                <!-- Duplicate -->
+                <div class="review-card">
+                    <div class="flex text-kyotoClay mb-6 text-xs font-bold tracking-widest uppercase">★★★★★ Google Review</div>
+                    <p class="text-kyotoCharcoal text-sm font-light leading-relaxed italic mb-8">"This was not just a tour, but a spiritual transformation."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-kyotoCharcoal/40">— Dr. Aris Thorne</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REQUEST FORM -->
+    <section id="request" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto" data-aos="fade-up">
+            <div class="text-center mb-20">
+                <h2 class="font-serif text-5xl md:text-7xl mb-4">Request a Path</h2>
+                <p class="text-kyotoCharcoal/60 font-light">Custom journeys require 14-day advance notice for temple approvals.</p>
+            </div>
+
+            <form class="grid md:grid-cols-2 gap-x-12 gap-y-10">
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black">Lead Traveler Name</label>
+                    <input type="text" placeholder="Your Name" class="kyo-input" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black">Contact Phone</label>
+                    <input type="tel" placeholder="+1-000-000-0000" class="kyo-input" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black">Expedition Date</label>
+                    <input type="date" class="kyo-input" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black">Preferred Journey</label>
+                    <select class="kyo-input">
+                        <option>Zen Garden Rituals</option>
+                        <option>Imperial Kyoto</option>
+                        <option>The Hidden Path</option>
+                        <option>Bespoke Multi-Day Path</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black">Group Size</label>
+                    <select class="kyo-input">
+                        <option>Solo Traveler</option>
+                        <option>2 Guests</option>
+                        <option>3 - 4 Guests</option>
+                        <option>Private Group (5+)</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black">Kyoto Accommodation</label>
+                    <input type="text" placeholder="Hotel name for pickup" class="kyo-input" required>
+                </div>
+                <div class="md:col-span-2 pt-10">
+                    <button type="submit" class="w-full bg-kyotoCharcoal text-kyotoSand py-6 text-xs uppercase tracking-widest font-bold hover:bg-kyotoClay transition-all">
+                        Submit Expedition Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-kyotoCharcoal text-kyotoSand pt-32 pb-12 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-16 mb-20">
+            <div class="md:col-span-5">
+                <h2 class="font-serif text-3xl mb-8">KyoEthereal</h2>
+                <p class="text-kyotoSand/40 font-light leading-relaxed max-w-sm italic">
+                    "Preserving the sanctity of Kyoto's spiritual heritage through curated education and respectful visitation."
+                </p>
+                <div class="mt-10 space-y-2 text-xs tracking-widest uppercase text-kyotoSand/50">
+                    <p>Phone: +81 (0) 75 400 9999</p>
+                    <p>Hours: 08:00 — 20:00 JST</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-3">
+                <h4 class="text-kyotoClay uppercase tracking-widest text-[10px] font-black mb-8">Sanctuary Base</h4>
+                <div class="font-serif text-xl space-y-2">
+                    <p>60-1 Gionmachi, <br>Higashiyama-ku, Kyoto <br>Japan 605-0073</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-4">
+                <div class="w-full h-64 grayscale brightness-50 border border-kyotoSand/10 relative group overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Map">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="px-6 py-2 border border-kyotoSand/20 text-[10px] tracking-widest uppercase backdrop-blur-sm">View Base Grid</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto border-t border-kyotoSand/10 pt-12 flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-[0.4em] text-kyotoSand/20 font-bold">
+            <p>© 2026 KyoEthereal Temple Expeditions</p>
+            <p class="mt-4 md:mt-0">Designed by <span class="text-kyotoSand/80">HANEI.JP</span></p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true, easing: 'ease-out-expo' });
+
+        const hamburger = document.getElementById('hamburger');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+        const b1 = document.getElementById('bar1');
+        const b2 = document.getElementById('bar2');
+        const b3 = document.getElementById('bar3');
+
+        function toggleMenu() {
+            menu.classList.toggle('active');
+            document.body.classList.toggle('overflow-hidden');
+            b1.classList.toggle('rotate-45');
+            b1.classList.toggle('translate-y-[8px]');
+            b1.classList.toggle('bg-kyotoSand');
+            b2.classList.toggle('opacity-0');
+            b3.classList.toggle('-rotate-45');
+            b3.classList.toggle('-translate-y-[8px]');
+            b3.classList.toggle('bg-kyotoSand');
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        links.forEach(l => l.addEventListener('click', () => {
+            if (menu.classList.contains('active')) toggleMenu();
+        }));
+
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Request sent. A scholar-guide will contact you within 24 hours to verify temple availability.');
+        });
+    </script>
+    <!-- HANEI OVERLAY -->
+    <a href="/demos" class="fixed bottom-8 left-8 z-[200] bg-kyotoCharcoal text-kyotoSand px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-2xl border border-kyotoClay/30 hover:bg-kyotoClay transition-all flex items-center gap-2 group"><span class="group-hover:-translate-x-1 transition-transform">←</span> Return to Hanei</a>
+
+    <script>
+      // Hanei JP Context Detection
+      (function() {
+        const returnLink = document.querySelector('a[href*="hanei.jp"]') || document.querySelector('a[href*="/demos"]');
+        if (returnLink) {
+          // Normalize to base demos link
+          returnLink.href = "/demos"; 
+          
+          // Detect Japanese context from referrer
+          if (document.referrer.includes("-jp")) {
+            returnLink.href = "/demos-jp";
+            returnLink.innerHTML = "← Haneiに戻る";
+          }
+        }
+      })();
+    </script>
+</body>
+</html>

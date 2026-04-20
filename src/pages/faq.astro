@@ -1,0 +1,189 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = { 
+  title: 'FAQ | Strategic Support | English Support',
+  description: 'Professional support and frequently asked questions regarding our boutique branding and digital marketing services.'
+};
+---
+<Layout metadata={metadata}>
+  <HeroText 
+    tagline="Support Center" 
+    title="Frequently Asked Questions" 
+    subtitle="Clarity and precision for your brand growth. Jump to a specific service below or browse our common questions."
+    actions={[
+      { text: 'Welcome Page', href: '#one-page-faq', variant: 'secondary' },
+      { text: 'Reputation Review Marketing', href: '#review-engine-faq', variant: 'secondary' },
+      { text: 'Global Reach Hub', href: '#english-hanare-faq', variant: 'secondary' },
+      { text: 'Brand Modernization', href: '#reform-faq', variant: 'secondary' },
+      { text: 'Flagship Launch', href: '#new-faq', variant: 'secondary' },
+      { text: 'General', href: '#general-faq', variant: 'secondary' },
+    ]}
+  />
+
+  <!-- 1-PAGE WELCOME FAQ -->
+  <FAQs
+    id="one-page-faq"
+    title="Inbound English Welcome"
+    subtitle="The Digital Brand Guide for local and global discovery."
+    classes={{ container: 'py-8 md:py-12' }}
+    columns={1}
+    items={[
+      { title: 'What exactly is an Inbound English Welcome?', description: 'It is a high-conversion digital destination that presents your services, menus, and house rules on a single, professionally designed page optimized for mobile discovery.' },
+      { title: 'Is the "Order by Noon, Live by Afternoon" promise real?', description: 'Yes. For the Inbound English Welcome package, if your info is submitted by 12:00 PM JST, our creative team prioritizes your launch for a same-day live date.' },
+      { title: 'Can I update my menu or rules later?', description: 'Absolutely. We provide lifetime white-glove updates. Simply send us your changes via email or chat, and we apply them to your site within 24 hours.' },
+      { title: 'Does it come with a QR code for my shop?', description: 'Yes. Every Welcome Page includes a custom, high-resolution QR code kit designed for printing on table stands, windows, or menus.' },
+      { title: 'Is this better than a social media page?', description: 'Yes. Unlike social media, your Hanei site is indexed by Google for local search and doesn’t require your customers to have an account to see your info.' },
+      { title: 'Are there any recurring monthly fees?', description: 'No. The Welcome Page is a one-time marketing investment. You own your digital presence forever without ongoing hosting or management bills.' },
+    ]}
+    callToAction={{ text: 'View Welcome Page Details', href: '/one-page-welcome', variant: 'primary' }}
+  />
+
+  <!-- REVIEW ENGINE FAQ -->
+  <FAQs
+    id="review-engine-faq"
+    title="Reputation & Visibility Engine"
+    subtitle="Automated trust and Google Maps visibility."
+    classes={{ container: 'py-8 md:py-12' }}
+    columns={1}
+    items={[
+      { title: 'How does the QR code review system work?', description: 'Customers scan a code at your shop, which opens a branded page guiding them to leave a 5-star Google review in just 3 clicks.' },
+      { title: 'Do I need to share my Google account password?', description: 'Never. We only need your public Google Business link. Your account remains 100% secure and private at all times.' },
+      { title: 'What is the branded review experience?', description: 'We provide a professionally branded Review experience for your customers that is fast, easy to use, and designed to match your business identity.' },
+      { title: 'Can I show these reviews on my existing site?', description: 'Yes. We provide a beautiful, automated widget that syncs your best Google reviews directly onto your current site in real-time.' },
+      { title: 'How does this help my shop appear on Google Maps?', description: 'Google rewards businesses that receive frequent, high-quality reviews. Our system automates this activity, signaling to Google that you are an active local business.' },
+      { title: 'Is there a limit to how many reviews I can collect?', description: 'There are no limits. Whether you serve 10 or 1,000 customers a day, the system is built to handle unlimited traffic for life.' },
+    ]}
+    callToAction={{ text: 'View Reputation Review Marketing Details', href: '/review-engine', variant: 'primary' }}
+  />
+
+  <!-- ENGLISH HANARE FAQ -->
+  <FAQs
+    id="english-hanare-faq"
+    title="Global Reach Hub (Hanare)"
+    subtitle="Global expansion without brand risk."
+    classes={{ container: 'py-8 md:py-12' }}
+    columns={1}
+    items={[
+      { title: 'Will this affect my existing Japanese website?', description: 'No. We build your English hub on a dedicated address like en.yourdomain.com. Your original site remains 100% untouched and safe.' },
+      { title: 'Do I need to manage two different systems?', description: 'No. We handle all the ongoing creative management of your English hub. You focus on your business while we ensure your global presence stays updated.' },
+      { title: 'What is a "website address record" and is it hard to set up?', description: 'It is a simple domain setting. Our team provides complete, hands-on assistance to apply this change for you. It takes less than 2 minutes.' },
+      { title: 'Who writes the English content for my business?', description: 'Our native English copywriters handle everything. We translate your Japanese craftsmanship into professional English that resonates with global clients.' },
+      { title: 'Is this suitable for manufacturers and B2B?', description: 'Yes. We build hubs for craftsmen, exporters, and service providers looking to reach international partners and global markets.' },
+      { title: 'Does it include a contact or inquiry form?', description: 'Yes. We include a professional English-language inquiry form that sends leads directly to your inbox for easy management.' },
+    ]}
+    callToAction={{ text: 'View Global Reach Hub Details', href: '/english-hanare', variant: 'primary' }}
+  />
+
+  <!-- GRAND REFORM FAQ -->
+  <FAQs
+    id="reform-faq"
+    title="Brand Modernization (Facelift)"
+    subtitle="Elevating your existing digital home."
+    classes={{ container: 'py-8 md:py-12' }}
+    columns={1}
+    items={[
+      { title: 'Can you keep my existing photos and history?', description: 'Yes. A brand modernization is about elevation. We take your current content and wrap it in a modern, luxury interface that matches global standards.' },
+      { title: 'Will my site be offline during the modernization?', description: 'No. We design your new look on our staging servers. Your old site stays live until the moment you approve the final design and we switch to the new look.' },
+      { title: 'Will the new design be faster than my old one?', description: 'Significantly. We migrate your presence to a global edge network, which results in near-instant loading speeds for every visitor.' },
+      { title: 'Is the design optimized for mobile phones?', description: 'Absolutely. Every Brand Modernization project follows a mobile-first philosophy, ensuring your site looks perfect on every smartphone screen.' },
+      { title: 'Do you improve my website security?', description: 'Yes. We implement full SSL encryption and modern security protocols as part of the standard modernization package.' },
+      { title: 'How long does a design refresh take?', description: 'We typically complete a Brand Modernization within 1 to 2 business days from the moment we receive your assets.' },
+    ]}
+    callToAction={{ text: 'View Modernization Details', href: '/grand-opening/#reform', variant: 'primary' }}
+  />
+
+  <!-- GRAND NEW FAQ -->
+  <FAQs
+    id="new-faq"
+    title="Flagship Digital Launch (New Build)"
+    subtitle="Total brand blueprint and launch from scratch."
+    classes={{ container: 'py-8 md:py-12' }}
+    columns={1}
+    items={[
+      { title: 'What makes a custom brand launch better?', description: 'A custom launch allows us to design your presence specifically for your brand goals, ensuring high performance and a unique professional identity.' },
+      { title: 'What technology do you use for the new site?', description: 'We use a modern, high-performance marketing foundation that provides the world’s fastest loading times and unshakeable stability.' },
+      { title: 'Does Hanei help with search engine visibility?', description: 'Yes. We build search engine friendly features into the foundation of your site to help Google find and index your business correctly.' },
+      { title: 'Who owns the site once it is finished?', description: 'You do. We believe in total ownership. There are no proprietary lock-ins; you own your domain, your content, and your brand assets.' },
+      { title: 'Does it include integrated booking or contact flows?', description: 'Yes. We design custom reservation and contact flows that integrate seamlessly with your existing business operations.' },
+      { title: 'How long is the launch cycle for a new flagship?', description: 'A standard Flagship Digital Launch is delivered within 1 business day, including testing and initial optimization.' },
+    ]}
+    callToAction={{ text: 'View Launch Details', href: '/grand-opening/#new', variant: 'primary' }}
+  />
+
+  <!-- GENERAL QUESTIONS FAQ -->
+  <FAQs
+    id="general-faq"
+    title="General Questions"
+    subtitle="Operational standards and communication."
+    classes={{ container: 'py-8 md:py-12' }}
+    columns={1}
+    items={[
+      { title: 'How does Hanei communicate with clients?', description: 'We are a fully email and text chat based marketing studio. This allows us to maintain a written record of all requests and deliver results with maximum speed and precision.' },
+      { title: 'What is the "Hanei Standard"?', description: 'It is our commitment to absolute precision: high-speed performance, elite visual rhythm, and zero-risk strategic brand logic for every client.' },
+      { title: 'How do I pay for my service?', description: 'We accept all major credit cards and local payment methods via Stripe and PayPal. All transactions are fully encrypted and secure.' },
+      { title: 'What if I am not satisfied with the result?', description: 'We offer unlimited revisions. We do not stop working until your digital presence perfectly reflects the heart and craft of your business.' },
+      { title: 'Do you offer ongoing visibility support?', description: 'Every package includes 60 days of priority visibility support. Beyond that, we provide lifetime white-glove updates for minor content changes.' },
+      { title: 'Can you help me with my social media as well?', description: 'We focus on your core brand presence, but we integrate your live social feeds directly onto your site so your portfolio stays current automatically.' },
+      { title: 'Is this a monthly subscription?', description: 'No. Our core services are one-time marketing investments. We prioritize your ownership and long-term stability without recurring monthly fees.' },
+      { title: 'How do I get started?', description: 'Choose your package, complete your secure payment, and fill out our simple onboarding form. We handle everything else from there.' },
+    ]}
+  />
+
+  <hr class="max-w-7xl mx-auto border-t dark:border-slate-800" />
+
+  <Features2
+    title="Secure Your Elite Digital Asset Today"
+    subtitle="Choose the specific solution your business needs to grow."
+    columns={3}
+    items={[
+      {
+        title: 'Inbound English Welcome',
+        description: 'The Digital Brand Guide. Order by noon, live by the afternoon.',
+        icon: 'tabler:square-number-1',
+        callToAction: { text: 'View Package', href: '/one-page-welcome' },
+      },
+      {
+        title: 'Reputation Review Marketing',
+        description: 'Automated Trust. Turn happy customers into 5-star Google reviews.',
+        icon: 'tabler:stars',
+        callToAction: { text: 'View Package', href: '/review-engine' },
+      },
+      {
+        title: 'Global Reach Hub',
+        description: 'Global Expansion. A detached English hub without touching your current site.',
+        icon: 'tabler:language',
+        callToAction: { text: 'View Package', href: '/english-hanare' },
+      },
+      {
+        title: 'Brand Modernization',
+        description: 'Modern Aesthetic Facelift. Refresh your existing brand design.',
+        icon: 'tabler:palette',
+        callToAction: { text: 'View Reform', href: '/grand-opening/#reform' },
+      },
+      {
+        title: 'Flagship Digital Launch',
+        description: 'Total Brand Blueprint. A complete from-scratch professional launch.',
+        icon: 'tabler:rocket',
+        callToAction: { text: 'View New Build', href: '/grand-opening/#new' },
+      },
+      {
+        title: 'Community Mission',
+        description: 'Elite Strategic Support. Professional brand support for local NPOs, free of charge.',
+        icon: 'tabler:heart',
+        callToAction: { text: 'Learn More', href: '/community-mission' },
+      },
+    ]}
+    classes={{ container: 'py-12 md:py-20' }}
+  />
+
+  <CallToAction
+    title="Still have questions?"
+    subtitle="Our team is available for bespoke strategy requests and strategic inquiries. Reach out to us directly for a professional consultation."
+    actions={[{ variant: 'primary', text: 'Contact Our Team', href: '/contact' }]}
+  />
+</Layout>

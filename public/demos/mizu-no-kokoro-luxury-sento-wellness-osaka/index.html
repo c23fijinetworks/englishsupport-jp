@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mizu no Kokoro | Luxury Sento & Wellness Osaka</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        indigoDark: '#1A232E',
+                        stoneLight: '#F4F2EE',
+                        cedar: '#5C4033',
+                        waterBlue: '#3A5A6D'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #F4F2EE; color: #1A232E; }
+        
+        /* High Contrast Review Marquee */
+        .marquee-wrapper { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
+        .marquee-content { display: inline-flex; animation: scroll 40s linear infinite; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-content:hover { animation-play-state: paused; }
+
+        /* Review Card Styling - Overflow Prevention */
+        .review-card {
+            white-space: normal;
+            word-wrap: break-word;
+            max-width: 400px;
+        }
+
+        /* Bento Grid Custom Height */
+        .bento-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 300px);
+            gap: 1rem;
+        }
+
+        /* Minimalist Form */
+        .sento-input {
+            background: transparent;
+            border-bottom: 2px solid #1A232E;
+            width: 100%;
+            padding: 1rem 0;
+            outline: none;
+            transition: all 0.3s ease;
+            color: #1A232E;
+        }
+        .sento-input:focus { border-bottom-color: #3A5A6D; }
+        
+        /* Mobile Menu Overlay */
+        #mobile-menu {
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        /* Contrast Utility */
+        .text-high-contrast { color: #1A232E; }
+        .bg-indigo-section { background-color: #1A232E; color: #F4F2EE; }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+
+    <!-- NAVIGATION -->
+    <header class="fixed w-full top-0 z-[100] bg-stoneLight/90 backdrop-blur-lg border-b border-indigoDark/10">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-bold tracking-tighter uppercase text-indigoDark">Mizu no Kokoro</a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-12 text-xs uppercase tracking-[0.2em] font-semibold text-indigoDark">
+                <a href="#rituals" class="hover:text-waterBlue transition-colors">Rituals</a>
+                <a href="#gallery" class="hover:text-waterBlue transition-colors">Visuals</a>
+                <a href="#reviews" class="hover:text-waterBlue transition-colors">Testimonials</a>
+            </nav>
+
+            <a href="#booking" class="hidden md:block bg-indigoDark text-stoneLight px-8 py-3 text-xs uppercase tracking-widest hover:bg-waterBlue transition-all">
+                Book Reservation
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button id="hamburger" class="md:hidden flex flex-col space-y-1.5 focus:outline-none z-[110]">
+                <span class="w-8 h-[2px] bg-indigoDark transition-all duration-300 origin-center" id="bar1"></span>
+                <span class="w-8 h-[2px] bg-indigoDark transition-all duration-300" id="bar2"></span>
+                <span class="w-5 h-[2px] bg-indigoDark self-end transition-all duration-300 origin-center" id="bar3"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="fixed inset-0 bg-indigoDark z-[105] translate-x-full flex flex-col items-center justify-center space-y-10">
+        <nav class="flex flex-col items-center space-y-8 text-stoneLight text-3xl font-serif">
+            <a href="#rituals" class="mobile-link">Rituals</a>
+            <a href="#gallery" class="mobile-link">Visuals</a>
+            <a href="#reviews" class="mobile-link">Testimonials</a>
+            <a href="#booking" class="mobile-link bg-stoneLight text-indigoDark px-10 py-4 text-sm uppercase tracking-widest font-sans">Book Now</a>
+        </nav>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center pt-20 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-6 z-10" data-aos="fade-right">
+                <p class="uppercase tracking-[0.4em] text-waterBlue text-xs mb-6 font-semibold">Osaka Premium Wellness</p>
+                <h1 class="font-serif text-6xl md:text-8xl leading-[0.9] text-indigoDark mb-8">
+                    Silence <br><span class="italic text-waterBlue md:pl-20">In Every Drop.</span>
+                </h1>
+                <p class="text-indigoDark/80 max-w-md text-lg font-light mb-10 leading-relaxed">
+                    Step into an English-friendly sanctuary where ancient bathing traditions meet contemporary Osaka luxury. A curated experience for the modern soul.
+                </p>
+                <a href="#booking" class="inline-block bg-indigoDark text-stoneLight px-12 py-5 text-sm uppercase tracking-widest hover:bg-waterBlue transition-all shadow-xl">
+                    Begin the Journey
+                </a>
+            </div>
+            
+            <div class="md:col-span-6 relative" data-aos="fade-left">
+                <div class="relative w-full aspect-[4/5] z-10">
+                    <img src="https://images.unsplash.com/photo-1764057146162-64aaea28494a?w=800&auto=format&fit=crop" 
+                         class="w-full h-full object-cover shadow-2xl" alt="Sento Hero">
+                </div>
+                <!-- Overlapping Decorative Element -->
+                <div class="absolute -top-10 -right-10 w-64 h-80 bg-waterBlue/10 -z-0 hidden md:block"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES (RITUALS BENTO GRID) -->
+    <section id="rituals" class="py-32 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20" data-aos="fade-up">
+                <div class="max-w-xl">
+                    <h2 class="font-serif text-5xl md:text-6xl text-indigoDark mb-4">Therapeutic Rituals</h2>
+                    <p class="text-indigoDark/60 font-light">Curated facilities designed for detoxification and mental clarity.</p>
+                </div>
+                <div class="hidden md:block w-32 h-[1px] bg-indigoDark/20 mb-4"></div>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6 h-auto">
+                <!-- Large Feature -->
+                <div class="md:col-span-2 md:row-span-2 relative overflow-hidden group min-h-[500px]" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1759271339366-fd558ca24b2c?w=800&auto=format&fit=crop" 
+                         class="absolute inset-0 w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-110" alt="Bath">
+                    <div class="absolute inset-0 bg-indigoDark/40 group-hover:bg-indigoDark/20 transition-all"></div>
+                    <div class="absolute bottom-10 left-10 text-stoneLight">
+                        <h3 class="font-serif text-3xl mb-2">Mineral Carbonated Bath</h3>
+                        <p class="text-stoneLight/80 text-sm max-w-xs">High-density CO2 springs to stimulate circulation and skin health.</p>
+                    </div>
+                </div>
+                <!-- Small Item 1 -->
+                <div class="md:col-span-2 bg-stoneLight p-10 flex flex-col justify-between border border-indigoDark/5" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <h3 class="font-serif text-2xl mb-4 text-indigoDark">Private Hinoki Sauna</h3>
+                        <p class="text-indigoDark/70 text-sm leading-loose">Experience the aromatic scent of Japanese Cypress in our temperature-controlled dry saunas.</p>
+                    </div>
+                    <a href="#booking" class="text-xs uppercase tracking-widest font-bold border-b border-indigoDark w-fit pb-1">Learn More</a>
+                </div>
+                <!-- Small Item 2 -->
+                <div class="bg-waterBlue text-stoneLight p-10 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="font-serif text-2xl">Cold Plunge Ritual</h3>
+                    <p class="text-stoneLight/70 text-xs uppercase tracking-widest">Post-Sauna Recovery</p>
+                </div>
+                <!-- Small Item 3 -->
+                <div class="bg-cedar text-stoneLight p-10 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="font-serif text-2xl">Stone Shiatsu</h3>
+                    <p class="text-stoneLight/70 text-xs uppercase tracking-widest">Deep Tissue Release</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY (INSTAGRAM STYLE) -->
+    <section id="gallery" class="py-32 px-6">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <p class="uppercase tracking-[0.3em] text-waterBlue text-xs mb-4">Digital Feed</p>
+                <h2 class="font-serif text-4xl text-indigoDark">Life at Mizu no Kokoro</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2">
+                <div class="aspect-square overflow-hidden" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1759310708340-90eba93e94e4?w=500&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" alt="Sento 1">
+                </div>
+                <div class="aspect-square overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1733653024328-9d3f37fdfb73?w=500&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" alt="Sento 2">
+                </div>
+                <div class="aspect-square overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1764057146162-64aaea28494a?w=500&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" alt="Sento 3">
+                </div>
+                <div class="aspect-square overflow-hidden" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1759271339366-fd558ca24b2c?w=500&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" alt="Sento 4">
+                </div>
+                <div class="aspect-square overflow-hidden hidden md:block" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1759310708340-90eba93e94e4?w=500&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" alt="Sento 5">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS MARQUEE -->
+    <section id="reviews" class="py-24 bg-indigoDark">
+        <div class="marquee-wrapper">
+            <div class="marquee-content gap-8 px-4">
+                <!-- Review 1 -->
+                <div class="review-card bg-stoneLight p-10 shadow-xl shrink-0">
+                    <div class="flex text-waterBlue mb-4 text-sm font-bold">★★★★★ VERIFIED GUEST</div>
+                    <p class="text-indigoDark text-sm font-light leading-relaxed italic">"An absolute oasis for foreigners in Osaka. Most Sentos are intimidating if you don't speak Japanese, but here the staff made me feel welcome and the instructions were perfectly translated."</p>
+                    <p class="mt-8 font-serif text-cedar">— Alexander Wright, Google Local Guide</p>
+                </div>
+                <!-- Review 2 -->
+                <div class="review-card bg-stoneLight p-10 shadow-xl shrink-0">
+                    <div class="flex text-waterBlue mb-4 text-sm font-bold">★★★★★ VERIFIED GUEST</div>
+                    <p class="text-indigoDark text-sm font-light leading-relaxed italic">"The Hinoki sauna was life-changing. Everything from the quality of the towels to the precision of the temperature control screams luxury. A must-visit."</p>
+                    <p class="mt-8 font-serif text-cedar">— Chloe Henderson</p>
+                </div>
+                <!-- Review 3 -->
+                <div class="review-card bg-stoneLight p-10 shadow-xl shrink-0">
+                    <div class="flex text-waterBlue mb-4 text-sm font-bold">★★★★★ VERIFIED GUEST</div>
+                    <p class="text-indigoDark text-sm font-light leading-relaxed italic">"Stunning design. It feels like a 5-star spa but keeps the authentic heart of an Osaka public bath. High contrast, clean, and very quiet."</p>
+                    <p class="mt-8 font-serif text-cedar">— Marcus Chen</p>
+                </div>
+                <!-- Duplicate for Loop -->
+                <div class="review-card bg-stoneLight p-10 shadow-xl shrink-0">
+                    <div class="flex text-waterBlue mb-4 text-sm font-bold">★★★★★ VERIFIED GUEST</div>
+                    <p class="text-indigoDark text-sm font-light leading-relaxed italic">"An absolute oasis for foreigners in Osaka. Most Sentos are intimidating, but here the staff made me feel welcome."</p>
+                    <p class="mt-8 font-serif text-cedar">— Alexander Wright</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING FORM -->
+    <section id="booking" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto" data-aos="fade-up">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-5xl mb-4 text-indigoDark uppercase">Reserve Your Calm</h2>
+                <p class="text-indigoDark/60 font-light">Reservations are recommended for private facilities and therapeutic Shiatsu.</p>
+            </div>
+
+            <form class="grid md:grid-cols-2 gap-x-12 gap-y-10">
+                <div class="space-y-1">
+                    <label class="text-[10px] uppercase tracking-widest font-bold text-indigoDark">Full Name</label>
+                    <input type="text" placeholder="Your English Name" class="sento-input" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] uppercase tracking-widest font-bold text-indigoDark">Contact Phone</label>
+                    <input type="tel" placeholder="090-0000-0000" class="sento-input" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] uppercase tracking-widest font-bold text-indigoDark">Service Choice</label>
+                    <select class="sento-input bg-transparent">
+                        <option>Full Sento Access</option>
+                        <option>Private Hinoki Sauna (90min)</option>
+                        <option>Shiatsu Massage Therapy</option>
+                        <option>Full Wellness Package</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] uppercase tracking-widest font-bold text-indigoDark">Guest Count</label>
+                    <select class="sento-input bg-transparent">
+                        <option>1 Guest</option>
+                        <option>2 Guests</option>
+                        <option>3 - 4 Guests</option>
+                        <option>Large Group Booking</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] uppercase tracking-widest font-bold text-indigoDark">Preferred Date</label>
+                    <input type="date" class="sento-input" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] uppercase tracking-widest font-bold text-indigoDark">Entry Window</label>
+                    <select class="sento-input bg-transparent">
+                        <option>Morning (09:00 - 12:00)</option>
+                        <option>Afternoon (12:00 - 17:00)</option>
+                        <option>Evening (17:00 - 22:00)</option>
+                    </select>
+                </div>
+                <div class="md:col-span-2 pt-10 text-center">
+                    <button type="submit" class="bg-indigoDark text-stoneLight px-20 py-5 text-sm uppercase tracking-widest hover:bg-waterBlue transition-all w-full md:w-auto shadow-2xl">
+                        Inquire Now
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-indigoDark text-stoneLight pt-32 pb-12 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-16 mb-20">
+            <div class="md:col-span-5">
+                <h2 class="font-serif text-3xl mb-8">Mizu no Kokoro</h2>
+                <p class="text-stoneLight/50 font-light leading-relaxed max-w-sm mb-10 italic font-serif">
+                    "Healing the soul through the quiet resonance of Osaka's purest waters."
+                </p>
+                <div class="text-xs tracking-widest uppercase text-stoneLight/40 space-y-2">
+                    <p>Open Daily: 09:00 — 23:00</p>
+                    <p>Phone: +81 (0) 6 4555 1212</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-3">
+                <h4 class="text-waterBlue uppercase tracking-widest text-[10px] font-bold mb-6">Osaka Sanctuary</h4>
+                <div class="font-serif text-xl space-y-4">
+                    <p>2-4-15 Namba-naka, <br>Naniwa-ku, Osaka <br>Japan 556-0011</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-4">
+                <div class="w-full h-64 grayscale brightness-75 border border-stoneLight/10 relative overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Map">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="bg-indigoDark/80 backdrop-blur-sm px-4 py-2 text-[10px] tracking-widest uppercase border border-stoneLight/20">View on Maps</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto border-t border-stoneLight/10 pt-12 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.2em] text-stoneLight/30">
+            <p>© 2026 Mizu no Kokoro Sento</p>
+            <p class="mt-4 md:mt-0">Designed by <span class="text-stoneLight/80 font-bold tracking-normal">HANEI.JP</span></p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // AOS Initialize
+        AOS.init({ duration: 1000, once: true, easing: 'ease-out-quart' });
+
+        // Mobile Menu Logic
+        const hamburger = document.getElementById('hamburger');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+        const bars = [document.getElementById('bar1'), document.getElementById('bar2'), document.getElementById('bar3')];
+
+        function toggleMenu() {
+            menu.classList.toggle('translate-x-full');
+            document.body.classList.toggle('overflow-hidden');
+            
+            // Bar animations
+            bars[0].classList.toggle('rotate-45');
+            bars[0].classList.toggle('translate-y-[8px]');
+            bars[0].classList.toggle('bg-stoneLight');
+            bars[1].classList.toggle('opacity-0');
+            bars[2].classList.toggle('-rotate-45');
+            bars[2].classList.toggle('-translate-y-[8px]');
+            bars[2].classList.toggle('bg-stoneLight');
+            bars[2].classList.toggle('w-8');
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+
+        // Auto-close on link click
+        links.forEach(l => {
+            l.addEventListener('click', () => {
+                if (!menu.classList.contains('translate-x-full')) toggleMenu();
+            });
+        });
+
+        // Demo Form Alert
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Your inquiry for Mizu no Kokoro has been received. Our English desk will contact you shortly.');
+        });
+    </script>
+    <!-- HANEI OVERLAY -->
+    <a href="/demos" class="fixed bottom-8 left-8 z-[115] bg-indigoDark text-stoneLight px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-2xl border border-waterBlue/30 hover:bg-waterBlue transition-all flex items-center gap-2 group"><span class="group-hover:-translate-x-1 transition-transform">←</span> Return to Hanei</a>
+
+    <script>
+      // Hanei JP Context Detection
+      (function() {
+        const returnLink = document.querySelector('a[href*="hanei.jp"]') || document.querySelector('a[href*="/demos"]');
+        if (returnLink) {
+          // Normalize to base demos link
+          returnLink.href = "/demos"; 
+          
+          // Detect Japanese context from referrer
+          if (document.referrer.includes("-jp")) {
+            returnLink.href = "/demos-jp";
+            returnLink.innerHTML = "← Haneiに戻る";
+          }
+        }
+      })();
+    </script>
+</body>
+</html>

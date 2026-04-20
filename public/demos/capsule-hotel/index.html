@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenPod Tokyo | Premium Capsule Experience (Demo)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { washi: '#F9F8F6', sumi: '#1C1C1C', wood: '#CBA36F', indigo: '#2B3A4A' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Noto Serif JP', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #F9F8F6; color: #1C1C1C; }
+        .glass-header { background: rgba(249, 248, 246, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(28, 28, 28, 0.05); }
+        .zen-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid #1C1C1C; padding: 12px 0; outline: none; transition: border-color 0.3s; border-radius: 0; font-family: inherit; }
+        .zen-input:focus { border-bottom-color: #CBA36F; }
+        .marquee-container { overflow: hidden; width: 100%; position: relative; }
+        .marquee-content { display: inline-flex; animation: marquee 40s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+    <a href="/demos" class="fixed bottom-8 left-8 z-[100] bg-sumi text-washi px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-2xl border border-wood/30 hover:bg-wood transition-all flex items-center gap-2 group"><span class="group-hover:-translate-x-1 transition-transform">←</span> Return to Hanei</a>
+    <header class="fixed w-full top-0 z-50 glass-header"><div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center"><a href="#" class="font-serif text-2xl tracking-widest text-sumi">ZENPOD <span class="text-wood">TOKYO</span></a><nav class="hidden md:flex space-x-8 items-center text-xs uppercase tracking-[0.2em] text-sumi/80"><a href="#services" class="hover:text-wood transition-colors">Experience</a><a href="#social" class="hover:text-wood transition-colors">Gallery</a><a href="#reviews" class="hover:text-wood transition-colors">Guests</a><div class="h-4 w-[1px] bg-sumi/20"></div><button class="font-semibold text-sumi uppercase">English</button></nav><a href="#reserve-form" class="bg-sumi text-washi px-8 py-3 text-xs uppercase tracking-widest hover:bg-wood transition-colors duration-300">Reserve</a></div></header>
+    <section class="relative min-h-screen flex items-center justify-center pt-20"><div class="absolute inset-0 z-0"><img src="https://images.unsplash.com/photo-1539606420556-14c457c45507?w=1600" class="w-full h-full object-cover" /><div class="absolute inset-0 bg-sumi/50"></div></div><div class="relative z-10 text-center px-4 max-w-4xl mx-auto text-washi"><p data-aos="fade-down" class="font-serif text-xl tracking-[0.3em] text-wood mb-4">カプセルホテル</p><h1 data-aos="fade-up" class="font-serif text-5xl md:text-7xl leading-tight mb-6">The Art of Minimalist Rest.</h1><p data-aos="fade-up" data-aos-delay="200" class="text-lg font-light text-washi/90 mb-10 max-w-2xl mx-auto">Premium capsule experience in Shibuya. Immerse yourself in Japanese Omotenashi without sacrificing modern comfort.</p><a href="#reserve-form" class="inline-block border border-washi text-washi px-10 py-4 uppercase text-sm tracking-widest hover:bg-washi hover:text-sumi transition-all">Book Your Pod</a></div></section>
+    <section id="services" class="py-24 px-6 bg-washi"><div class="max-w-7xl mx-auto"><div class="text-center mb-20" data-aos="fade-up"><p class="uppercase tracking-[0.2em] text-xs text-wood mb-2">Refined Living</p><h2 class="font-serif text-4xl text-sumi">Boutique Features</h2></div><div class="grid md:grid-cols-3 gap-12"><div data-aos="fade-up"><img src="https://images.unsplash.com/photo-1697714721457-b51205361598?w=800" class="w-full aspect-[3/2] object-cover mb-6 rounded-sm shadow-xl" /><h3 class="font-serif text-2xl text-sumi mb-3 border-b border-sumi/10 pb-2">Superior Pods</h3><p class="text-sumi/70 font-light text-sm">Custom Sealy mattresses and ambient light controls for total sensory rest.</p></div><div data-aos="fade-up" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1721299417031-de890ff33b26?w=800" class="w-full aspect-[3/2] object-cover mb-6 rounded-sm shadow-xl" /><h3 class="font-serif text-2xl text-sumi mb-3 border-b border-sumi/10 pb-2">Sento Spa</h3><p class="text-sumi/70 font-light text-sm">Traditional public bathhouse with curated premium Japanese amenities.</p></div><div data-aos="fade-up" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1661683508913-b6bb64235147?w=800" class="w-full aspect-[3/2] object-cover mb-6 rounded-sm shadow-xl" /><h3 class="font-serif text-2xl text-sumi mb-3 border-b border-sumi/10 pb-2">Zen Lounge</h3><p class="text-sumi/70 font-light text-sm">A sanctuary for work and socialization, serving artisanal Kyoto matcha.</p></div></div></div></section>
+    <section id="social" class="py-24 bg-white border-t border-sumi/5"><div class="max-w-7xl mx-auto px-6 text-center mb-16" data-aos="fade-up"><p class="uppercase tracking-[0.2em] text-xs text-wood mb-2">Visual Narrative</p><h2 class="font-serif text-4xl text-sumi">Guest Gallery</h2></div><div class="grid grid-cols-2 md:grid-cols-4 gap-2 px-2"><img src="https://images.unsplash.com/photo-1539606420556-14c457c45507?w=600" class="aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-700" data-aos="zoom-in"><img src="https://images.unsplash.com/photo-1697714721457-b51205361598?w=600" class="aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-700" data-aos="zoom-in" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1721299417031-de890ff33b26?w=600" class="aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-700" data-aos="zoom-in" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1661683508913-b6bb64235147?w=600" class="aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-700" data-aos="zoom-in" data-aos-delay="300"></div></section>
+
+    <section id="reviews" class="py-24 bg-washi overflow-hidden border-t border-sumi/10"><h2 class="font-serif text-4xl text-sumi mb-16 text-center" data-aos="fade-up">Global Guest Voices</h2><div class="marquee-container"><div class="marquee-content flex gap-8"><div class="bg-white p-8 w-[400px] shrink-0 border border-sumi/5 shadow-sm italic text-sm">"Incredibly safe and comfortable. Staff spoke excellent English."<p class="font-bold not-italic mt-4">— Emma W.</p></div><div class="bg-white p-8 w-[400px] shrink-0 border border-sumi/5 shadow-sm italic text-sm">"Perfect base for meetings in Shibuya. The design is beautiful."<p class="font-bold not-italic mt-4">— Mark T.</p></div><div class="bg-white p-8 w-[400px] shrink-0 border border-sumi/5 shadow-sm italic text-sm">"A true luxury experience without the high price tag."<p class="font-bold not-italic mt-4">— Daniel V.</p></div></div></div></section>
+    
+    <section id="reserve-form" class="py-24 px-6 bg-white border-t border-sumi/5"><div class="max-w-2xl mx-auto" data-aos="fade-up"><div class="text-center mb-16"><p class="uppercase tracking-[0.2em] text-xs text-wood mb-2">Availability Request</p><h2 class="font-serif text-4xl text-sumi">Reservation Inquiry</h2></div><form class="space-y-10"><div class="grid md:grid-cols-2 gap-10"><div><label class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Full Name</label><input type="text" placeholder="Guest Name" class="zen-input" required></div><div><label class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Email Address</label><input type="email" placeholder="email@example.com" class="zen-input" required></div></div><div class="grid grid-cols-2 gap-10"><div><label class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Check-In</label><input type="date" class="zen-input text-gray-400" required></div><div><label class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Check-Out</label><input type="date" class="zen-input text-gray-400" required></div></div><div class="grid md:grid-cols-2 gap-10"><div><label class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Number of Pods</label><select class="zen-input bg-transparent"><option>1 Pod</option><option>2 Pods</option><option>Group Inquiry</option></select></div><div><label class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Pod Type</label><select class="zen-input bg-transparent"><option>Standard Single</option><option>Premium Zen Box</option></select></div></div><div><label class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Special Requests</label><textarea placeholder="Dietary requirements or arrival time..." class="zen-input h-20 resize-none"></textarea></div><div class="text-center"><button type="submit" class="bg-sumi text-washi px-16 py-5 uppercase tracking-[0.3em] text-xs font-bold hover:bg-wood transition-all shadow-xl">Submit Inquiry</button><p class="text-[10px] text-gray-400 mt-6 uppercase tracking-widest">Inquiries are processed within 12 hours.</p></div></form></div></section>
+    
+    <footer class="bg-sumi text-washi py-12 px-6 border-t-[4px] border-wood text-center"><h2 class="font-serif text-2xl mb-4">ZENPOD TOKYO</h2><p class="text-washi/40 text-[10px] uppercase tracking-[0.3em]">&copy; 2026 ZenPod. Powered by Hanei.JP</p></footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><script>AOS.init({ once: true, duration: 1000 });</script>
+
+    <script>
+      // Hanei JP Context Detection
+      (function() {
+        const returnLink = document.querySelector('a[href*="hanei.jp"]') || document.querySelector('a[href*="/demos"]');
+        if (returnLink) {
+          // Normalize to base demos link
+          returnLink.href = "/demos"; 
+          
+          // Detect Japanese context from referrer
+          if (document.referrer.includes("-jp")) {
+            returnLink.href = "/demos-jp";
+            returnLink.innerHTML = "← Haneiに戻る";
+          }
+        }
+      })();
+    </script>
+</body>
+</html>

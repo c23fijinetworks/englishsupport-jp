@@ -1,0 +1,73 @@
+---
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+
+const metadata = { 
+  title: 'レピュテーション・レビュー・マーケティング | 星5つの社会的証明を自動化 | English Support',
+  description: 'お客様の満足を最強のマーケティング資産へ。私たちが管理するQR連動型マーケティング資産により、Googleでの星5つ評価の収集を驚くほど簡単にします。'
+};
+
+const pricingData = { 
+  title: 'レピュテーション・レビュー・マーケティング・パッケージ', 
+  price: '¥19,800', 
+  subTitle: '今すぐ開始',
+  badge: '一括マーケティング投資 <br/> 生涯続く成長を',
+  items: [
+    { description: 'ブランド専用レビューポータルのデザイン' }, 
+    { description: 'Googleマップへの直接連携' }, 
+    { description: '自動更新レビュー表示ウィジェット' }, 
+    { description: '超高速エッジサーバー配信' },
+    { description: '24時間以内のスピード公開' }
+  ]
+};
+---
+<Layout metadata={metadata}>
+  <Hero2 
+    tagline="評判管理のオートメーション" 
+    title='お客様の「ありがとう」を、<br/><span class="text-accent">星5つの評価に変える。</span>' 
+    subtitle='満足されたお客様が何も言わずに帰ってしまう機会損失を防ぎましょう。私たちが完全に管理する戦略的なマーケティングフローにより、Googleでの高評価収集を最小限の労力で実現します。' 
+    actions={[{ variant: 'primary', text: '今すぐ開始する', href: '#pricing' }]} 
+    image={{ src: '/images/review_engine/testimonial-1.webp', alt: 'レビュー' }} 
+  />
+  
+  <Content 
+    isReversed={false} 
+    title="01. ブランド専用レビューポータル" 
+    subtitle="お客様を迎えるプレミアムな「デジタルのレッドカーペット」を構築します。貴社のブランドに合わせたクリーンで魅力的なデザイン。グローバルなネットワークで管理されるため、通信環境を問わず瞬時に読み込まれます。" 
+    items={[{ title: '視覚的な信頼性', description: '複雑な入力は不要。直感的なインターフェース。', icon: 'tabler:palette' }]} 
+    image={{ src: '/images/review_engine/testimonial-2.webp', alt: 'ポータル' }} 
+  />
+  
+  <Content 
+    isReversed={true} 
+    title="02. 信頼を証明する「レビュー・ウォール」" 
+    subtitle="届いたばかりの最高評価を自社のマーケティング拠点へ自動的に表示。このリアルタイムの「社会的証明」が、貴社の品質を即座に証明します。地域で信頼できる店を探している新規訪問者に対し、圧倒的な安心感を与えます。" 
+    items={[{ title: '社会的証明', description: '検証済みの満足度をリアルタイムで可視化。', icon: 'tabler:stars' }]} 
+    image={{ src: '/images/review_engine/testimonial-3.webp', alt: 'レビュー表示' }} 
+  />
+  
+  <Content 
+    isReversed={false} 
+    title="03. ストレスフリーな3クリック・フロー" 
+    subtitle="専用アプリのインストールは不要です。スマートフォンでの投稿体験を徹底的に最適化し、わずか15秒でレビューが完了する動線を設計。お客様の満足度が最も高まっている「その瞬間」を逃さずキャッチします。" 
+    items={[{ title: 'スピードこそ正義', description: '感動が冷めないうちに評価を蓄積。', icon: 'tabler:pointer' }]} 
+    image={{ src: '/images/review_engine/testimonial-4.webp', alt: 'クリックフロー' }} 
+  />
+  
+  <Content 
+    isReversed={true} 
+    title="04. SEO（検索順位）向上エンジン" 
+    subtitle="新鮮な口コミが継続的に集まることは、Googleに対し「貴社のブランドが活発で、選ばれている」という強力な信号を送ります。この自動マーケティングエンジンが地域検索での上位表示を維持させ、 residentsと旅行者の双方にアピールします。" 
+    items={[{ title: '視認性の向上', description: 'Googleは新しい活動のあるブランドを優遇します。', icon: 'tabler:trending-up' }]} 
+    image={{ src: '/images/review_engine/testimonial-5.webp', alt: 'SEO効果' }} 
+  />
+
+  <Pricing 
+    id="pricing" 
+    title="明朗な一括料金。生涯続く成長。" 
+    subtitle="今すぐ評判管理を自動化しましょう。追加の月額費用は一切発生しません。"
+    prices={[pricingData]} 
+  />
+</Layout>

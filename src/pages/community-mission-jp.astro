@@ -1,0 +1,83 @@
+---
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = { 
+  title: '地域貢献活動 | 公共の利益のための無料Web制作支援 | English Support', 
+  description: '日本のNPO法人や地域コミュニティに対し、プロフェッショナルなプレゼンスを完全無償で提供します。',
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero2
+    tagline="地域貢献活動（コミュニティ・ミッション）"
+    title='日本の志を形に：<br/><span class="text-accent">公共の利益のため、Web制作を無料で提供。</span>'
+    subtitle="皆様の活動と想いを社会に届けるために。私たちは自らの技術を公共の利益に資する無料サービスとして提供します。日本国内の登録NPO法人等に向けた、エリート・デジタル拠点構築支援です。"
+    actions={[{ variant: 'primary', text: '支援について問い合わせる', href: 'mailto:webmaster@fijinetworks.com?subject=Community Mission Inquiry (JP)', target: '_blank' }]}
+    image={{ src: '/images/hanei-media/031.webp', alt: '日本のコミュニティ' }}
+  />
+  
+  <Content isReversed={true} classes={{ container: 'py-8 md:py-12' }}>
+    <Fragment slot="content">
+      <h3 class="text-3xl font-bold mb-4 text-slate-950">日本各地の「志」に、最高水準のWebを。</h3>
+      <p class="text-lg text-slate-600 mb-4 font-medium">
+        神戸や広島の強靭なコミュニティから、東京や京都での活発な社会的取り組みまで。日本社会の基盤を強化するために、現場で人知れず汗を流す「地域のヒーロー」たちがいます。
+      </p>
+      <p class="text-lg text-slate-600 font-medium">
+        Haneiは、社会に最も貢献している方々が、デジタル資源の不足によってその活動を制限されるべきではないと信じています。皆様の地域でのミッションには、手作りのテンプレートではなく、絶対的な精度で作られたプロフェッショナルなデジタルの拠点が必要です。
+      </p>
+    </Fragment>
+    <Fragment slot="image">
+       <img src="/images/hanei-media/014.webp" alt="伝統的な日本" class="rounded-lg shadow-xl w-full" />
+    </Fragment>
+  </Content>
+
+  <Content
+    isReversed={false}
+    isAfterContent={true}
+    tagline="支援の対象"
+    title="公共の利益に資する4つの柱"
+    items={[
+        { title: '障がい者支援', description: '最新のアクセシビリティ基準に準拠した、誰もが使いやすい拠点構築。', icon: 'tabler:accessible' },
+        { title: '動物愛護・保護活動', description: '動物たちの魅力を伝え、里親申し込みや寄付をスムーズにする設計。', icon: 'tabler:paw' },
+        { title: '高齢者支援・福祉', description: '視認性が高く、高齢者と地域のリソースを繋ぐ温かみのあるデザイン。', icon: 'tabler:old' },
+        { title: '子ども・若者支援', description: '子ども食堂や学習支援など、安全で開かれたオンライン空間の創造。', icon: 'tabler:school' },
+    ]}
+    image={{ src: '/images/hanei-media/007.webp', alt: 'アニマルケア' }}
+    classes={{ container: 'py-8 md:py-12' }}
+  >
+    <Fragment slot="content">
+      <p class="text-lg text-muted mb-6">
+        思いやりのある社会の基盤となる分野に焦点を当て、日本全国の団体を支援しています。
+      </p>
+    </Fragment>
+  </Content>
+
+  <Features2
+    title='すべての支援プロジェクトに適用される <br/><span class="text-accent">「Haneiスタンダード」：</span>'
+    subtitle="企業クライアントへ提供するものと全く同じエリート・ウェブ・ソリューションを無償提供します。"
+    columns={3}
+    items={[
+      { title: 'プロによる完全オリジナルデザイン', description: '団体のビジョンと想いを反映した独自の外観。', icon: 'tabler:circle-check' },
+      { title: 'モバイル最適化', description: 'スマートフォンで最も快適に閲覧・操作できる設計。', icon: 'tabler:circle-check' },
+      { title: '検索エンジン最適化', description: '地域の皆様がネット検索から確実に団体を見つけられる仕組み。', icon: 'tabler:circle-check' },
+      { title: '安全な公開環境の提供', description: '個人情報を守るための、最も安全な運用環境の構築。', icon: 'tabler:circle-check' },
+      { title: '運用トレーニング', description: '活動報告をご自身で更新できるよう、スタッフの方々をレクチャー。', icon: 'tabler:circle-check' },
+      { title: '多言語対応（バイリンガル）', description: '在日外国人コミュニティや海外の支援者との架け橋となる設計。', icon: 'tabler:circle-check' },
+    ]}
+  />
+
+  <div id="application" class="scroll-mt-20 py-24 text-center px-4">
+    <div class="max-w-4xl mx-auto bg-slate-50 rounded-[3rem] p-12 md:p-24 border-2 border-slate-100 shadow-2xl">
+      <h3 class="text-4xl md:text-6xl font-black text-slate-950 uppercase tracking-tighter mb-8 leading-tight">皆様の活動を、<br/>デジタルの力で支援します</h3>
+      <p class="text-xl md:text-2xl text-slate-600 mb-12 font-bold leading-relaxed">
+        日本国内のNPO法人、一般社団法人、または実績のある地域コミュニティ団体を対象としています。詳細はメールにて直接お問い合わせください。
+      </p>
+      <a href="mailto:webmaster@fijinetworks.com?subject=Community Mission Support Request (JP)" target="_blank" class="inline-block bg-blue-600 text-white px-12 py-6 rounded-2xl text-2xl font-black uppercase tracking-widest hover:bg-slate-950 transition-all transform hover:-translate-y-1 shadow-2xl">
+        事務局へメールを送る
+      </a>
+    </div>
+  </div>
+</Layout>

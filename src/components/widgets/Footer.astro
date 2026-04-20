@@ -1,0 +1,110 @@
+---
+import { getHomePermalink } from '~/utils/permalinks';
+
+interface Link { text?: string; href?: string; }
+interface Links { links: Array<Link>; }
+export interface Props { links: Array<Links>; secondaryLinks: Array<Link>; footNote?: string; }
+
+const { secondaryLinks = [], links = [], footNote = '' } = Astro.props;
+
+const pathname = Astro.url.pathname;
+const cleanPath = pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
+const showPortfolio = !['/demos', '/demos-jp'].includes(cleanPath);
+const isJp = cleanPath.endsWith('-jp') || cleanPath.includes('trust-kit') || cleanPath.includes('-jp/');
+
+// Standardized Copy
+const aboutTitle = `<img src="/images/logo_main.png" class="inline-block h-8 md:h-10 w-auto mr-3 align-middle rounded-md shadow-sm" /> Hanei Premium Inbound`;
+
+const aboutText = isJp
+  ? "私たちは、ブランドのグローバルな認知度を高めることに特化しています。戦略的なストーリーテリングこそが国際的な顧客を惹きつける鍵であると確信し、文化の壁を排除して集客を最大化します。<br /><br /><span class=\"font-bold text-slate-900 dark:text-white uppercase tracking-wider\">クライアントへのフォーカス</span><br />私たちは、高度な英語マーケティングと日本の地域特性を熟知したパートナーを必要とする組織に最適です。<br /><br /><span class=\"font-bold text-slate-900 dark:text-white uppercase tracking-wider\">国際企業：</span><br />海外資本の企業が国内でのブランドポジショニングを研ぎ澄まし、メッセージを洗練させ、質の高いリードを継続的に獲得できるよう支援します。<br /><br /><span class=\"font-bold text-slate-900 dark:text-white uppercase tracking-wider\">地域ビジネスおよび在住外国人市場：</span><br />外国人居住者やプロフェッショナルなコミュニティをターゲットとするブランドに対し、文化的な共鳴を生むコンテンツと最適化されたセールスファンネルを通じてサポートを提供します。"
+  : "We are dedicated to amplifying global brand visibility. We believe that strategic storytelling is the ultimate driver for attracting international guests, and we deploy elite digital marketing assets to ensure your message resonates worldwide—maximizing customer reach while eliminating cultural barriers.<br /><br /><span class=\"font-bold text-slate-900 dark:text-white uppercase tracking-wider\">Our Client Focus</span><br />We are the ideal match for organizations that require a dual-perspective partner: someone who masters high-growth English marketing while navigating the unique local landscape.<br /><br /><span class=\"font-bold text-slate-900 dark:text-white uppercase tracking-wider\">International Entities:</span><br />We empower overseas-owned companies to sharpen their local brand positioning, refine their messaging, and build a consistent pipeline of high-quality leads.<br /><br /><span class=\"font-bold text-slate-900 dark:text-white uppercase tracking-wider\">The Local Business and Local Expat Market:</span><br />We provide specialized support for brands targeting international residents and professional communities through culturally resonant content and optimized sales funnels.";
+
+// Portfolio Block Copy
+const portTag = isJp ? "至高のギャラリー" : "Gallery of Excellence";
+const portTitle = isJp ? "制作実績<br/>デモ一覧。" : "Portfolio <br/><span class='italic font-light text-slate-400 uppercase tracking-normal'>Demos.</span>";
+const portText = isJp 
+  ? "ラグジュアリーなカプセルホテル、伝統的な温泉、プライベートツアーガイドから、ロースタリーや職人技が光るブティックまで。集客を最大化するEnglish Support Digital Standardの拠点をご覧ください。"
+  : "From luxury capsule hotels, traditional onsens, and private tour guides to roasteries and artisanal boutiques. Explore our high-visibility marketing hubs built to the English Support Digital Standard.";
+const portBtn = isJp ? "デモ一覧を見る" : "View Portfolio Demos";
+const portHref = isJp ? "/demos-jp" : "/demos";
+
+const slogan = "";
+---
+
+<footer class="relative border-t border-gray-200 dark:border-slate-800 not-prose bg-white dark:bg-slate-900">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+    
+    {showPortfolio && (
+    <div class="pt-16 pb-8">
+      <div class="bg-slate-950 rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-20 text-center shadow-2xl relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+          <img src="/images/hanei-media/005.webp" class="w-full h-full object-cover" alt="Hanei Backdrop" />
+        </div>
+        <div class="relative z-10">
+          <p class="text-blue-500 uppercase tracking-[0.4em] font-black text-[10px] md:text-xs mb-6">{portTag}</p>
+          <h2 class="text-4xl md:text-7xl font-black text-white tracking-tighter mb-8 leading-none" set:html={portTitle}></h2>
+          <p class="text-lg md:text-2xl text-slate-400 max-w-4xl mx-auto mb-12 font-medium leading-relaxed">
+            {portText}
+          </p>
+          <a href={portHref} class="inline-block bg-white text-slate-950 px-10 py-5 md:px-16 md:py-6 rounded-2xl text-xl md:text-2xl font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all transform hover:-translate-y-1 shadow-2xl">
+            {portBtn}
+          </a>
+        </div>
+      </div>
+    </div>
+    )}
+
+    <div class="pt-8 md:pt-12 pb-6">
+      <div class="max-w-3xl mx-auto text-center p-8 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm bg-slate-50/50 dark:bg-slate-800/30">
+        <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4 text-gray-900 dark:text-white">
+          <Fragment set:html={aboutTitle} />
+        </h2>
+        <p class="text-xl text-muted dark:text-slate-400 leading-relaxed">
+          <Fragment set:html={aboutText} />
+        </p>
+      </div>
+    </div>
+
+    <div class="py-6 md:py-8">
+      <div class="flex flex-col md:flex-row md:justify-between items-center gap-8">
+        <div class="text-center md:text-left">
+          <span class="text-xl font-bold">English Support</span>
+        </div>
+
+        <nav aria-label="Footer Navigation">
+          <ul class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-semibold">
+            {links[0]?.links.map((link) => (
+              <li>
+                <a class="text-muted hover:text-primary transition dark:text-gray-400 whitespace-nowrap" href={link.href}>
+                  {link.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="pt-6 pb-12 md:pt-8 md:pb-16 border-t border-gray-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest text-center md:text-left">
+        <Fragment set:html={footNote} />
+      </div>
+
+      <div class="flex flex-wrap justify-center items-center text-[10px] font-bold text-gray-500 uppercase tracking-wider gap-y-2">
+        {secondaryLinks.map(({ text, href }, index) => (
+          <Fragment key={index}>
+            {text?.includes('English') && <div class="basis-full h-0"></div>}
+            <div class="flex items-center">
+              <a class="hover:text-primary transition flex items-center whitespace-nowrap px-2" href={href}>
+                <span class="normal-case flex items-center gap-1" set:html={text}></span>
+              </a>
+              {index < secondaryLinks.length - 1 && !secondaryLinks[index+1]?.text?.includes('English') && (
+                <span class="text-gray-300 dark:text-slate-700 font-light select-none">|</span>
+              )}
+            </div>
+          </Fragment>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>

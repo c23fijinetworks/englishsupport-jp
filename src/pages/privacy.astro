@@ -1,0 +1,49 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+
+const metadata = { 
+  title: 'Privacy Policy | English Support',
+  description: 'Comprehensive data protection and privacy standards for English Support Inbound Digital services.'
+};
+---
+<Layout metadata={metadata}>
+  <HeroText title="Privacy Policy" subtitle="Last Updated: April 2026" />
+  
+  <section class="px-4 py-12 sm:px-6 mx-auto lg:py-20 max-w-4xl">
+    <div class="prose prose-lg dark:prose-invert max-w-none text-muted dark:text-slate-400">
+      
+      <h2 class="text-slate-900 dark:text-white">1. Data Sovereignty</h2>
+      <p>At English Support, we believe your business data should belong to you. We only handle the data required to build and maintain your high-performance Inbound Digital presence.</p>
+
+      <h2 class="text-slate-900 dark:text-white">2. Information We Collect</h2>
+      <p>We collect information through onboarding forms and direct communication, including business name, contact details, menus, service lists, and high-resolution photography. We do not store credit card data; all payments are processed through Stripe or PayPal.</p>
+
+      <h2 class="text-slate-900 dark:text-white">3. The Zero-Access Philosophy</h2>
+      <p>To maximize your security, we operate a <strong>Zero-Access</strong> strategic model. We do not store passwords for your third-party accounts. By using public address records (DNS) to connect your Hanei brand assets, we ensure your internal data remains private and isolated.</p>
+
+      <h2 class="text-slate-900 dark:text-white">4. Use of Information</h2>
+      <p>Your data is used strictly to design, launch, and host your professional digital presence, configure your Reputation Review Marketing, and provide ongoing visibility support or white-glove updates.</p>
+
+      <h2 class="text-slate-900 dark:text-white">5. Data Sharing & Hosting</h2>
+      <p>We do not sell your data. We share information only with trusted delivery partners essential for serving your assets, such as global edge hosting networks and Google Business Profile APIs.</p>
+
+      <h2 class="text-slate-900 dark:text-white">6. International Data Transfers</h2>
+      <p>As a global studio, your data may be processed on secure servers located outside of Japan. We ensure all partners adhere to rigorous protection standards (GDPR/APPI) to keep your information secure across all regions.</p>
+
+      <h2 class="text-slate-900 dark:text-white">7. Data Retention</h2>
+      <p>We retain your business content as long as your digital brand asset is active. If you choose to terminate your service, we securely delete your specific data assets from our primary storage within 90 days.</p>
+
+      <h2 class="text-slate-900 dark:text-white">8. Your Rights</h2>
+      <p>You have the right to request a copy of the data we hold regarding your business. Because our sites are built for public discovery, content provided for display on your live marketing hub is excluded from "Private Data" requests.</p>
+
+      <h2 class="text-slate-900 dark:text-white">9. Cookies and Tracking</h2>
+      <p>We use essential cookies to maintain website performance. We avoid invasive third-party tracking. Any analytics we provide are privacy-first and focused on aggregate traffic data rather than individual user identification.</p>
+    </div>
+
+    <div class="mt-20 pt-10 border-t border-gray-200 dark:border-slate-800 text-center">
+      <p class="text-xl font-bold text-slate-900 dark:text-white mb-2">Have a Question?</p>
+      <a href="/contact" class="text-primary hover:text-accent font-black text-2xl underline decoration-2 underline-offset-8 transition-colors">Please contact us!</a>
+    </div>
+  </section>
+</Layout>

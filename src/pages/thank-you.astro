@@ -1,0 +1,31 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+
+const metadata = { 
+    title: 'Order Confirmed | Strategic Inbound Launch | English Support',
+    robots: { index: false }
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero2
+    tagline="Payment Successful"
+    title='Welcome to the <br/><span class="text-accent">Hanei Standard.</span>'
+    subtitle="Thank you for choosing Hanei! Your order and payment is complete. To maintain our launch standard of 24-72 hours, we require your brand details immediately."
+    image={{ src: '/images/demos/azabu-medical.webp', alt: 'Brand Launch Initialization' }}
+  />
+
+  <div class="py-24 text-center px-4">
+    <div class="max-w-4xl mx-auto bg-white border-4 border-slate-950 rounded-[3rem] p-12 md:p-24 shadow-[20px_20px_0px_0px_rgba(0,0,0,1)]">
+      <h2 class="text-4xl md:text-6xl font-black text-slate-950 uppercase tracking-tighter mb-8 leading-tight">Final Step: <br/> Brand Launch Initialization</h2>
+      <p class="text-xl md:text-2xl text-slate-600 mb-16 font-bold leading-relaxed">
+        Please complete the Master Onboarding Form on Google. Our creative production team will begin the launch process immediately upon receipt.
+      </p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScm1dnWCyPE6UfJ2tk9Hvkbwq1ffRhUnruqMtHOtRFeC16DbQ/viewform" target="_blank" class="inline-block bg-blue-600 text-white px-12 py-6 rounded-2xl text-2xl font-black uppercase tracking-widest hover:bg-slate-950 transition-all transform hover:-translate-y-1 shadow-2xl">
+        Open Onboarding Form
+      </a>
+      <p class="mt-12 text-sm font-black text-slate-400 uppercase tracking-widest italic">Link opens in a new secure tab</p>
+    </div>
+  </div>
+</Layout>

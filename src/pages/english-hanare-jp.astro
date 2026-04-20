@@ -1,0 +1,62 @@
+---
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+
+const metadata = { 
+  title: '英語専用デジタル別館（Hanare） | 独立型英語マーケティング拠点 | English Support',
+  description: '日本企業のためのプロフェッショナルな英語プレゼンス。既存サイトに影響を与えない、世界進出のための独立型マーケティング拠点。'
+};
+
+const prices = [
+  { 
+    title: 'スターター・別館', 
+    price: '¥22,500', 
+    subTitle: '着手金 50%',
+    badge: '総額: ¥45,000 <br/> 納品後残金: ¥22,500',
+    items: [{ description: '最大3ページの英語拠点' }, { description: '超高速エッジ配信' }, { description: 'モバイルファーストUI' }, { description: '標準的な英語翻訳' }, { description: '安全な拠点の公開' }] 
+  },
+  { 
+    title: 'グロース・別館', 
+    price: '¥47,500', 
+    subTitle: '着手金 50%',
+    badge: '総額: ¥95,000 <br/> 納品後残金: ¥47,500',
+    items: [{ description: '最大8ページの英語拠点' }, { description: 'ネイティブによる執筆' }, { description: 'グローバル視認性戦略' }, { description: 'Googleマップ同期' }, { description: '優先48時間デプロイ' }] 
+  },
+  { 
+    title: 'プレミアム・別館', 
+    price: '¥97,500', 
+    subTitle: '着手金 50%',
+    badge: '総額: ¥195,000 <br/> 納品後残金: ¥97,500',
+    items: [{ description: 'ブランド認知最大化拠点' }, { description: '高度なストーリーテリング' }, { description: 'カスタム問い合わせフォーム' }, { description: 'ブランディング・コンサル' }, { description: '優先技術サポート' }] 
+  }
+];
+---
+<Layout metadata={metadata}>
+  <Hero2 
+    tagline="「デジタルの離れ」英語マーケティング戦略" 
+    title='貴社の価値を、<br/><span class="text-accent">世界水準の英語で提示する。</span>' 
+    subtitle='既存の日本語サイトに手を加えるリスクを冒さずに、海外旅行者やグローバルパートナーへのリーチを拡大しましょう。独立して機能する、高パフォーマンスな英語マーケティング拠点を構築します。' 
+    actions={[{ variant: 'primary', text: 'プランの詳細を見る', href: '#pricing' }]} 
+    image={{ src: '/images/hanei-media/024.webp', alt: '日本の品質' }} 
+  />
+  
+  <Content isReversed={false} title="01. ゼロ・ブランドリスク" subtitle="英語資産を独立したサブドメイン上に構築するため、既存のビジネスの「顔」には一切触れず、100%安全かつ正常な稼働を維持したまま導入可能です。" image={{ src: '/images/demos/kagari-izakaya-grill-shinjuku-tokyo-gastronomy.webp', alt: '安全' }} />
+  <Content isReversed={true} title="02. モダンな世界基準" subtitle="貴社の「英語別館」は、圧倒的な英語マーケティング基準とスピードを備え、移動中の海外顧客に対しても瞬時の表示を約束します。" image={{ src: '/images/hanei-media/019.webp', alt: 'パフォーマンス' }} />
+  <Content isReversed={false} title="03. プロのネイティブ執筆" subtitle="機械的な翻訳を、富裕層やプロフェッショナルな顧客の心を動かす「説得力のある英語」に置き換えます。信頼は、正しいニュアンスから生まれます。" image={{ src: '/images/demos/shika-an-nara-luxury-heritage-guesthouse.webp', alt: 'ニュアンス' }} />
+  <Content isReversed={true} title="04. 徹底した検索視認性" subtitle="海外企業やグローバルな顧客層が貴社のサービスを探す際に使用する、特定の検索キーワードにおいて、貴社の英語マーケティング資産を上位に位置づけます。" image={{ src: '/images/demos/osaka-unseen-luxury-culinary-expeditions.webp', alt: '東京リーチ' }} />
+  <Content isReversed={false} title="05. アクセス権限不要の公開" subtitle="構築から公開まで、すべて弊社の安全なサーバー上で行います。公開に必要な手順は、ドメイン設定の軽微な更新のみ。私たちが全面的にサポートいたします。" image={{ src: '/images/demos/takumi-precision-tokyo-engineering-the-future.webp', alt: 'プライバシー' }} />
+
+  <Pricing texts={{ labelBiz: "1. 店名・貴社名", phBiz: "名称を入力", labelWeb: "2. 現在のサイト (任意)", phWeb: "https://...", labelEmail: "連絡先メールアドレス", phEmail: "example@mail.com", submit: "決済して制作を開始する" }} id="pricing" title="戦略的なグローバル拡大。<br/> 英語専用デジタル別館。" subtitle="プロフェッショナルな別館を、50%の着手金で確保。残金は納品完了後のお支払いです。" prices={prices} hasUrlField={true} />
+
+  <!-- BESPOKE SECTION FOR OVER 20 PAGES -->
+  <Content
+    isReversed={true}
+    title="20ページ以上の英語マーケティングが必要ですか？"
+    subtitle="複雑なブランドの移行や、大容量のコンテンツハブについては、オーダーメイドのクリエイティブ・ソリューションを提供しております。貴社の業界特有の要件に対応するため、カスタマイズされた英語プレゼンスを設計いたします。"
+    callToAction={{ text: '個別見積もりを依頼する', href: '/contact-jp', variant: 'primary' }}
+    image={{ src: '/images/demos/omotesando-dental.webp', alt: 'ハイエンド・マーケティング拠点' }}
+    classes={{ container: 'py-12 md:py-20 bg-slate-50 dark:bg-transparent border-t dark:border-slate-800' }}
+  />
+</Layout>

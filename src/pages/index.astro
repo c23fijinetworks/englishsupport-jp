@@ -1,0 +1,94 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Content from '~/components/widgets/Content.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+
+const metadata = { title: 'Hanei English Inbound Digital | High-Visibility English Marketing Hubs for Local Business' };
+---
+<Layout metadata={metadata}>
+  
+  <Hero2
+    tagline="Digital English Marketing"
+    title='Connect Your Business with <br/><span class="text-accent dark:text-white">Local and Global Customers & Visitors</span>'
+    subtitle="We deploy Premium Marketing Hubs and Reputation Marketing that help your brand grow and attract more guests. Get your new digital presence ready to welcome customers in just 24~48 hours."
+    actions={[
+      { variant: 'primary', text: 'View Marketing Hubs', href: '#services' },
+      { text: 'Custom Strategy', href: '/contact', class: '!bg-orange-600 !text-white !border-none hover:!bg-orange-700' },
+    ]}
+    image={{ src: '/images/hanei-media/033.webp', alt: 'Japanese Street' }}
+    classes={{ inner: 'pb-4 md:pb-6' }}
+  />
+
+  <div class="text-center px-4 mb-4 mt-12 md:mt-20">
+    <h2 class="text-2xl md:text-4xl font-black text-slate-950 uppercase tracking-tighter mb-2">High-Impact Premium English Digital Marketing</h2>
+    <p class="text-lg md:text-xl text-slate-600 font-bold uppercase tracking-widest">Turn International and Local Curiosity into Bookings</p>
+  </div>
+  <Stats
+    classes={{ container: 'pt-0 md:pt-0 pb-12' }}
+    stats={[ 
+      { title: 'Full Brand Setup', amount: '100%' }, 
+      { title: 'English', amount: 'Fluent' }, 
+      { title: 'Launch Speed', amount: '24 Hrs' }, 
+      { title: 'Subscription Fees', amount: '$0' }
+    ]} 
+  />
+
+  <Content 
+    id="services"
+    tagline="Service: Inbound Welcome Digital Branding" 
+    title="Make it Easy for New Customers to Find and Choose You." 
+    subtitle="We create a high-conversion digital brand guide that explains your shop rules, menus, and services clearly. This helps both local residents and travelers feel comfortable walking through your door. Clear inbound marketing removes the confusion that often stops people from entering a new shop." 
+    callToAction={{ text: 'View Inbound Welcome Digital Branding', href: '/one-page-welcome' }} 
+    image={{ src: '/images/demos/shika-an-nara-luxury-heritage-guesthouse.webp', alt: 'Welcome' }} 
+  />
+
+  <Content 
+    isReversed={true} 
+    tagline="Service: Reputation Marketing" 
+    title="Build Instant Trust with an Automated Wall of Reviews." 
+    subtitle="Showcase your best customer feedback directly on your digital hub to prove your quality. We deploy an automated marketing asset that encourages happy guests to leave 5-star reviews on Google. Positive reputation is the most powerful way to convince new people to visit your business." 
+    callToAction={{ text: 'View Reputation Marketing', href: '/review-engine' }} 
+    image={{ src: '/images/review_engine/testimonial-6.webp', alt: 'Review' }} 
+  />
+
+  <Content 
+    isReversed={false} 
+    tagline="Service: Inbound English Hanare" 
+    title="Add a Professional English Section to Your Current Presence." 
+    subtitle="Build a dedicated marketing hub for your international guests without changing your existing content. This is the fastest way to attract global customers while keeping your current assets safe. We handle all the strategic layout and translation so you can focus on your craft." 
+    callToAction={{ text: 'View Inbound English Hanare', href: '/english-hanare' }} 
+    image={{ src: '/images/demos/capsule-hotel.webp', alt: 'Hanare' }} 
+  />
+
+  <Content 
+    isReversed={true} 
+    tagline="Service: Brand Modernization & Launch" 
+    title="Modernize Your Presence with a Total Brand Transformation." 
+    subtitle="We either reboot your existing presence or deploy a brand-new professional marketing hub from scratch in a single weekend. A modern, high-quality Digital Presence ensures your business looks perfect on mobile phones and stands out from local competition. We deliver a digital destination that wins more customers." 
+    callToAction={{ text: 'View Launch Options', href: '/grand-opening' }} 
+    image={{ src: '/images/hanei-media/021.webp', alt: 'Reboot' }} 
+  />
+
+  <Content 
+    isReversed={false} 
+    tagline="Community Mission" 
+    title="Creative Marketing Support for Local Charities." 
+    subtitle="We provide high-quality brand support for local NPOs and essential community services in Japan, free of charge. Our goal is to help those who are helping our local neighborhoods look professional online. Your mission deserves a great digital presence, and we are proud to deploy it for you." 
+    callToAction={{ text: 'Learn About Our Mission', href: '/community-mission' }} 
+    image={{ src: '/images/hanei-media/031.webp', alt: 'NPO' }} 
+  />
+
+  <FAQs 
+    title="Common Questions" 
+    classes={{ container: 'pt-8 md:pt-12' }} 
+    items={[
+      { title: 'Do I need marketing experience?', description: 'No. Our Inbound Digital hubs create immediate brand impact. We handle the strategic storytelling and visibility, delivering a high-end customer experience without any effort from your side.' }, 
+      { title: 'How long does the deployment take?', description: 'We offer a 24-hour turnaround for small packages and 48 hours for full brand transformations.' }, 
+      { title: 'Are there hidden monthly fees?', description: 'No. Most of our services are one-time marketing investments. We believe in helping you own your digital presence without ongoing subscription costs.' }, 
+      { title: 'How do you attract global visitors?', description: 'We deploy targeted English digital assets designed to resonate with international audiences. By positioning your brand where global guests are searching, we ensure maximum inbound visibility.' }
+    ]} 
+    callToAction={{ variant: 'primary', text: 'View All FAQs', href: '/faq' }} 
+  />
+</Layout>

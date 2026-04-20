@@ -1,0 +1,101 @@
+---
+const { 
+  labels = {}, 
+  options = {}, 
+  formAction,
+  ids = {}
+} = Astro.props;
+
+const successTitle = labels.success_title || "Message Dispatched";
+const successMessage = labels.success_message || "The studio has received your inquiry. <br/> We guarantee a reply within 24 hours.";
+const sendingLabel = labels.sending || "DISPATCHING...";
+---
+<section class="py-12 md:py-20 bg-white dark:bg-slate-900">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div id="bespoke-shell" class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-8 md:p-12 shadow-xl border border-slate-200 dark:border-slate-700">
+      
+      <!-- SUCCESS DISPLAY -->
+      <div id="bespoke-success" class="hidden text-center py-20">
+        <div class="bg-blue-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl">
+          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+        </div>
+        <h2 class="text-4xl font-black text-slate-950 uppercase tracking-tighter mb-4" set:html={successTitle}></h2>
+        <p class="text-xl text-slate-600 dark:text-slate-400 font-medium font-sans" set:html={successMessage}></p>
+      </div>
+
+      <!-- FORM UI -->
+      <div id="bespoke-ui">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 text-center uppercase tracking-widest text-slate-900 dark:text-white font-heading">{labels.title}</h2>
+        {labels.description && <p class="text-center text-lg text-slate-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed font-sans">{labels.description}</p>}
+
+        <iframe name="bespoke_trap" id="bespoke_trap" style="display:none;"></iframe>
+        
+        <form action={formAction} method="POST" target="bespoke_trap" id="bespoke-locked-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="flex flex-col">
+            <label class="block text-xs font-bold mb-2 uppercase tracking-wide text-slate-500">{labels.client_name} *</label>
+            <input type="text" name={ids.name} required class="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-primary outline-none text-slate-900" />
+          </div>
+          <div class="flex flex-col">
+            <label class="block text-xs font-bold mb-2 uppercase tracking-wide text-slate-500">{labels.company_name}</label>
+            <input type="text" name={ids.company} class="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-primary outline-none text-slate-900" />
+          </div>
+          <div class="flex flex-col">
+            <label class="block text-xs font-bold mb-2 uppercase tracking-wide text-slate-500">{labels.email || 'Email Address'} *</label>
+            <input type="email" name="emailAddress" required class="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-primary outline-none text-slate-900" />
+          </div>
+          
+          <div class="flex flex-col">
+            <label class="block text-xs font-bold mb-2 uppercase tracking-wide text-slate-500">{labels.request_type} *</label>
+            <select name={ids.category} required class="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-primary outline-none text-slate-900">
+              {options.requests && options.requests.map(opt => <option value={opt.value || opt}>{opt.label || opt}</option>)}
+            </select>
+          </div>
+
+          <div class="flex flex-col">
+            <label class="block text-xs font-bold mb-2 uppercase tracking-wide text-slate-500">{labels.budget_range || 'ESTIMATED BUDGET'}</label>
+            <select name={ids.budget} class="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-primary outline-none text-slate-900">
+              {options.budgets && options.budgets.map(opt => <option value={opt.value || opt}>{opt.label || opt}</option>)}
+            </select>
+          </div>
+
+          <div class="flex flex-col">
+            <label class="block text-xs font-bold mb-2 uppercase tracking-wide text-slate-500">{labels.deadline || 'DESIRED TIMELINE'}</label>
+            <select name={ids.timeline} class="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-primary outline-none text-slate-900">
+              {options.timelines && options.timelines.map(opt => <option value={opt.value || opt}>{opt.label || opt}</option>)}
+            </select>
+          </div>
+
+          <div class="flex flex-col md:col-span-2">
+            <label class="block text-xs font-bold mb-2 uppercase tracking-wide text-slate-500">{labels.project_summary} *</label>
+            <textarea name={ids.summary} required rows="5" class="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-primary outline-none text-slate-900"></textarea>
+          </div>
+          <div class="md:col-span-2 pt-6">
+            <button type="submit" id="bespoke-lock-btn" data-sending={sendingLabel} class="w-full py-5 bg-primary hover:bg-slate-900 text-white font-bold rounded-xl shadow-lg transform hover:-translate-y-1 transition-all text-lg uppercase tracking-widest">
+              {labels.submit}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  function initBespokeLock() {
+    const form = document.getElementById('bespoke-locked-form');
+    if (form) {
+      form.addEventListener('submit', function() {
+        const btn = document.getElementById('bespoke-lock-btn');
+        btn.innerHTML = btn.getAttribute('data-sending') || "DISPATCHING...";
+        btn.disabled = true;
+        btn.style.opacity = "0.5";
+        setTimeout(() => {
+          document.getElementById('bespoke-ui').classList.add('hidden');
+          document.getElementById('bespoke-success').classList.remove('hidden');
+          window.scrollTo({ top: document.getElementById('bespoke-shell').offsetTop - 100, behavior: 'smooth' });
+        }, 800);
+      });
+    }
+  }
+  document.addEventListener('astro:page-load', initBespokeLock);
+</script>

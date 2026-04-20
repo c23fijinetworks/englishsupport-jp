@@ -1,0 +1,62 @@
+---
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+
+const metadata = { 
+  title: 'English Hanare | Independent English Reach Hub | English Support',
+  description: 'A professional English presence for Japanese businesses. Stand-alone digital marketing hubs for global visibility.'
+};
+
+const prices = [
+  { 
+    title: 'Starter Hanare', 
+    price: '¥22,500', 
+    subTitle: 'Start Deposit 50%',
+    badge: 'Total: ¥45,000 <br/> Final Balance after delivery: ¥22,500',
+    items: [{ description: 'Up to 3-Page English Hub' }, { description: 'High-Speed Edge Serving' }, { description: 'Mobile-First Global UI' }, { description: 'Standard English Translation' }, { description: 'Secure Hub Deployment' }] 
+  },
+  { 
+    title: 'Growth Hanare', 
+    price: '¥47,500', 
+    subTitle: 'Start Deposit 50%',
+    badge: 'Total: ¥95,000 <br/> Final Balance after delivery: ¥47,500',
+    items: [{ description: 'Up to 8-Page English Hub' }, { description: 'NATIVE English Copywriting' }, { description: 'Global Visibility Strategy' }, { description: 'Google Maps Profile Sync' }, { description: 'Priority 48-Hour Deployment' }] 
+  },
+  { 
+    title: 'Premium Hanare', 
+    price: '¥97,500', 
+    subTitle: 'Start Deposit 50%',
+    badge: 'Total: ¥195,000 <br/> Final Balance after delivery: ¥97,500',
+    items: [{ description: 'Full Brand Reach Hub' }, { description: 'Advanced Native Storytelling' }, { description: 'Custom Lead Injection Forms' }, { description: 'Bespoke Branding Consultation' }, { description: 'Priority White-Glove Support' }] 
+  }
+];
+---
+<Layout metadata={metadata}>
+  <Hero2 
+    tagline="Detached Digital English Marketing" 
+    title='Your Business, Presented <br/><span class="text-accent">to a Global Audience.</span>' 
+    subtitle='Expand your reach to international travelers and global partners without the risk of modifying your current Japanese site. We build a high-performance English marketing hub that stands alone.' 
+    actions={[{ variant: 'primary', text: 'View Premium Tiers', href: '#pricing' }]} 
+    image={{ src: '/images/hanei-media/024.webp', alt: 'Japanese Quality' }} 
+  />
+  
+  <Content isReversed={false} title="01. Zero Brand Risk" subtitle="We build your English assets on a separate sub-domain, ensuring your original business face remains 100% untouched and operational." image={{ src: '/images/demos/kagari-izakaya-grill-shinjuku-tokyo-gastronomy.webp', alt: 'Secure' }} />
+  <Content isReversed={true} title="02. Modern, Global Standards" subtitle="Your English Hanare is designed with stunning English marketing standards and speed to load instantly for visitors on the move." image={{ src: '/images/hanei-media/019.webp', alt: 'Performance' }} />
+  <Content isReversed={false} title="03. Professional Native Copy" subtitle="We replace basic translation with persuasive English that builds trust with high-end travelers and professional clients." image={{ src: '/images/demos/shika-an-nara-luxury-heritage-guesthouse.webp', alt: 'Nuance' }} />
+  <Content isReversed={true} title="04. Total Search Visibility" subtitle="We ensure your stunning English Digital marketing assets to rank for the specific search terms used by international companies and global clients seeking your services." image={{ src: '/images/demos/osaka-unseen-luxury-culinary-expeditions.webp', alt: 'Tokyo Reach' }} />
+  <Content isReversed={false} title="05. No Access Needed" subtitle="We build your English marketing hub and deploy entirely on our secure servers. The only step required to go live is a minor update to your domain name address record—and we fully assist you." image={{ src: '/images/demos/takumi-precision-tokyo-engineering-the-future.webp', alt: 'Privacy' }} />
+
+  <Pricing id="pricing" title="Strategic Global Expansion. <br/> The English Hanare." subtitle="Secure your professional annex with a 50% start deposit. Final balance due after delivery." prices={prices} hasUrlField={true} />
+
+  <!-- BESPOKE SECTION FOR OVER 20 PAGES -->
+  <Content
+    isReversed={true}
+    title="Need more than 20 English Marketing pages?"
+    subtitle="For complex brand migrations or high-volume content hubs, we offer bespoke creative solutions. Our team will blueprint a tailored English marketing presence designed to handle your specific industry requirements."
+    callToAction={{ text: 'Inquire for Custom Quote', href: '/contact', variant: 'primary' }}
+    image={{ src: '/images/demos/omotesando-dental.webp', alt: 'Enterprise Hub' }}
+    classes={{ container: 'py-12 md:py-20 bg-slate-50 dark:bg-transparent border-t dark:border-slate-800' }}
+  />
+</Layout>

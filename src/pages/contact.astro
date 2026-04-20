@@ -1,0 +1,54 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+import BespokeForm from '~/components/widgets/BespokeForm.astro';
+
+const metadata = { 
+  title: 'Contact | Strategic Inbound Marketing | English Support',
+  description: 'Connect with English Support for boutique inbound marketing and high-visibility digital hubs. Guaranteed same day reply to all professional inquiries.'
+};
+
+const enLabels = {
+    title: "Get in Touch",
+    description: "We are ready to discuss your brand visibility and provide the strategic creative guidance you need. We guarantee a same-day reply to all professional inquiries.",
+    client_name: "Name",
+    company_name: "Company Name",
+    email: "Email Address",
+    request_type: "Strategy Category",
+    project_summary: "Tell us about your brand goals or project",
+    budget_range: "Marketing Investment Level",
+    deadline: "Desired Launch Timeline",
+    submit: "Send Message"
+};
+
+const enOptions = {
+    requests: ["Inbound English Welcome", "Reputation Review Marketing", "Global Reach Hub (Hanare)", "Brand Modernization", "Flagship Digital Launch", "General Marketing Inquiry", "Custom Marketing Logic / API", "Other"],
+    budgets: ["Not Applicable", "¥100k - ¥300k", "¥300k - ¥500k", "¥500k - ¥1M", "¥1M+"],
+    timelines: ["Today / ASAP", "Within this week", "Within 1 month", "Flexible", "Other"],
+    referrals: ["Google Search", "Social Media", "Friend / Colleague", "Other"]
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero2
+    tagline="Inbound Marketing Consultation"
+    title='Let’s Architect Your <br/><span class="text-accent">Digital Presence.</span>'
+    subtitle="From rapid launch marketing assets to bespoke high-visibility hubs. Guaranteed same day reply to every message received."
+    image={{ src: '/images/demos/capsule-hotel.webp', alt: 'Professional Collaboration' }}
+    classes={{ inner: 'pb-4 md:pb-6' }}
+  />
+  
+  <BespokeForm 
+    labels={enLabels} 
+    options={enOptions} 
+    formAction="https://docs.google.com/forms/d/e/1FAIpQLSetNa1Mq_nYvkKp5h2fUIPZFRCvfFs5hvcYoawFk1eX0p6t3w/formResponse"
+    ids={{
+      name: "entry.1770250121",
+      company: "entry.1744957567",
+      category: "entry.491532461",
+      budget: "entry.1285777990",
+      timeline: "entry.1375463449",
+      summary: "entry.1193708562"
+    }}
+  />
+</Layout>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zen Relocations Japan Relocations | Premium Moving Services in Japan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com">    const links = document.querySelectorAll('.mobile-link'); links.forEach(l => l.addEventListener('click', toggleMenu));
+        const links = document.querySelectorAll('.mobile-link'); links.forEach(l => l.addEventListener('click', toggleMenu));
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { movingWhite: '#FAFAFA', movingNavy: '#0F172A', movingBlue: '#1D4ED8', movingGray: '#F1F5F9', movingGold: '#D97706' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Noto Serif', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #FAFAFA; color: #0F172A; }
+        .glass-header { background: rgba(250, 250, 250, 0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(15, 23, 42, 0.05); }
+        .quote-input { width: 100%; background: #FFFFFF; border: 1px solid #CBD5E1; padding: 14px 16px; font-size: 0.95rem; color: #0F172A; border-radius: 4px; outline: none; transition: all 0.3s ease; }
+        .quote-input:focus { border-color: #1D4ED8; box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.2); }
+        select.quote-input { appearance: none; cursor: pointer; }
+        .quote-label { display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #475569; margin-bottom: 0.5rem; }
+        .quote-checkbox { accent-color: #1D4ED8; width: 1.25rem; height: 1.25rem; cursor: pointer; }
+        .marquee-container { overflow: hidden; width: 100%; position: relative; }
+        .marquee-content { display: inline-flex; animation: marquee 45s linear infinite; }
+        .marquee-content:hover { animation-play-state: paused; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .review-card { white-space: normal; word-wrap: break-word; overflow: hidden; }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden selection:bg-movingBlue selection:text-white">
+    <a href="/demos" class="fixed bottom-8 left-8 z-[100] bg-movingNavy text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-2xl border border-movingBlue/30 hover:bg-movingBlue transition-all flex items-center gap-2 group"><span class="group-hover:-translate-x-1 transition-transform">←</span> Return to Hanei</a>
+    <header class="fixed w-full top-0 z-50 transition-all duration-300 glass-header shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-bold tracking-tight text-movingNavy flex items-center gap-2">
+                <svg class="w-8 h-8 text-movingBlue" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" /></svg>
+                Zen Relocations Japan
+            </a>
+            <nav class="hidden md:flex space-x-8 items-center text-sm font-semibold uppercase tracking-wider text-movingNavy">
+                <a href="#services" class="hover:text-movingBlue transition-colors">Services</a>
+                <a href="#gallery" class="hover:text-movingBlue transition-colors">Gallery</a>
+                <a href="#reviews" class="hover:text-movingBlue transition-colors">Reviews</a>
+            </nav>
+            <a href="#quote" class="hidden md:inline-flex items-center gap-2 bg-movingBlue text-white px-6 py-3 text-sm font-bold uppercase tracking-wider hover:bg-movingNavy transition-colors duration-300 rounded shadow-md">Get a Free Quote</a>
+            <button id="mobile-btn" class="md:hidden text-movingNavy focus:outline-none"><svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg></button>
+        </div>
+    </header>
+    <div id="mobile-menu" class="fixed inset-0 bg-movingNavy text-white z-40 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col items-center justify-center space-y-8">
+        <button id="close-btn" class="absolute top-6 right-6 text-white focus:outline-none"><svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" /></svg></button>
+        <a href="#services" class="mobile-link text-2xl font-serif tracking-widest">Services</a>
+        <a href="#gallery" class="mobile-link text-2xl font-serif tracking-widest">Gallery</a>
+        <a href="#reviews" class="mobile-link text-2xl font-serif tracking-widest">Reviews</a>
+        <a href="#quote" class="mobile-link bg-movingBlue px-8 py-4 text-sm font-bold uppercase tracking-widest rounded shadow-lg">Get a Free Quote</a>
+    </div>
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1722487631997-cf1e0f92c2c4?w=1920&auto=format&fit=crop&q=80" class="w-full h-full object-cover object-center" />
+            <div class="absolute inset-0 bg-movingNavy/70"></div>
+        </div>
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto text-white">
+            <div data-aos="fade-down" class="inline-flex items-center gap-2 bg-movingBlue/20 border border-movingBlue/50 px-4 py-1.5 rounded-full mb-6">
+                <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                <span class="uppercase tracking-widest text-xs font-bold text-blue-100">Japan's #1 Expat Moving Service</span>
+            </div>
+            <h1 data-aos="fade-up" class="font-serif text-5xl md:text-7xl font-bold leading-tight mb-6">The Japanese Standard<br>of Meticulous Moving.</h1>
+            <p data-aos="fade-up" class="text-lg md:text-xl font-light text-gray-200 mb-10 max-w-3xl mx-auto leading-relaxed">Experience the world-renowned <em>Omotenashi</em> moving service. We protect your walls, wear fresh socks inside your home, and handle your belongings with absolute precision. 100% English support.</p>
+            <div data-aos="fade-up" class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#quote" class="w-full sm:w-auto bg-movingBlue text-white px-10 py-4 font-bold uppercase text-sm tracking-widest hover:bg-white hover:text-movingNavy transition-colors duration-300 rounded shadow-xl">Calculate Moving Cost</a>
+                <a href="#services" class="w-full sm:w-auto border-2 border-white text-white px-10 py-4 font-bold uppercase text-sm tracking-widest hover:bg-white hover:text-movingNavy transition-colors rounded">How We Work</a>
+            </div>
+        </div>
+    </section>
+    <section id="services" class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <p class="uppercase font-bold tracking-[0.2em] text-sm text-movingBlue mb-2">Our Logistics Process</p>
+                <h2 class="font-serif text-4xl font-bold text-movingNavy">Unmatched Care & Precision</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div data-aos="fade-up" class="group">
+                    <div class="overflow-hidden mb-6 h-72 rounded shadow-sm"><img src="https://images.unsplash.com/photo-1624137527136-66e631bdaa0e?w=800&auto=format&fit=crop&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" /></div>
+                    <h3 class="font-serif text-2xl font-bold text-movingNavy mb-3 border-b-2 border-movingGray pb-2">White-Glove Packing</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">We provide specialized padding for furniture, custom boxes for dishes, and hanging wardrobe boxes for your clothes. You won't need to lift a finger.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="100" class="group">
+                    <div class="overflow-hidden mb-6 h-72 rounded shadow-sm"><img src="https://images.unsplash.com/photo-1682619722526-2ec0e396f009?w=800&auto=format&fit=crop&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" /></div>
+                    <h3 class="font-serif text-2xl font-bold text-movingNavy mb-3 border-b-2 border-movingGray pb-2">Property Protection</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">As per Japanese standards, we install protective wall panelling and floor mats in your buildings before moving a single box to prevent any scratches.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200" class="group">
+                    <div class="overflow-hidden mb-6 h-72 rounded shadow-sm"><img src="https://images.unsplash.com/photo-1702973109670-ed95a5759ed7?w=800&auto=format&fit=crop&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" /></div>
+                    <h3 class="font-serif text-2xl font-bold text-movingNavy mb-3 border-b-2 border-movingGray pb-2">Unpacking & Setup</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">Our crews wear fresh indoor shoes. We carefully place furniture on sensitive tatami mats, connect appliances, and remove all empty boxes upon departure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="gallery" class="py-24 bg-movingGray">
+        <div class="max-w-[1400px] mx-auto px-4 text-center mb-12" data-aos="fade-up">
+            <h2 class="font-serif text-4xl font-bold text-movingNavy mb-2">See Us In Action</h2>
+            <p class="text-gray-500 font-bold text-sm tracking-widest uppercase">Follow our logistics feed @ZenRelocationsJapan</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-2 px-2">
+            <img src="https://images.unsplash.com/photo-1722487631997-cf1e0f92c2c4?w=600" class="aspect-square object-cover" data-aos="zoom-in">
+            <img src="https://images.unsplash.com/photo-1624137527136-66e631bdaa0e?w=600" class="aspect-square object-cover" data-aos="zoom-in" data-aos-delay="100">
+            <img src="https://images.unsplash.com/photo-1682619722526-2ec0e396f009?w=600" class="aspect-square object-cover" data-aos="zoom-in" data-aos-delay="200">
+            <img src="https://images.unsplash.com/photo-1702973109670-ed95a5759ed7?w=600" class="aspect-square object-cover" data-aos="zoom-in" data-aos-delay="300">
+        </div>
+    </section>
+    <section id="reviews" class="py-24 bg-white overflow-hidden border-t border-movingGray">
+        <div class="max-w-7xl mx-auto px-6 mb-12 text-center" data-aos="fade-up">
+            <h2 class="font-serif text-4xl font-bold text-movingNavy mb-4">Trusted by Tokyo's Expats</h2>
+            <div class="flex justify-center mt-4"><span class="text-xs font-bold bg-movingGray px-4 py-2 rounded-full shadow-sm text-gray-700 flex items-center gap-2">5.0/5 AVERAGE RATING ON GOOGLE</span></div>
+        </div>
+        <div class="marquee-container py-4">
+            <div class="marquee-content gap-6 px-3">
+                <div class="review-card bg-white p-8 w-[320px] md:w-[400px] shrink-0 border border-gray-200 shadow-lg flex flex-col justify-between">
+                    <div><p class="text-gray-700 italic mb-6">"The level of care is insane. They put protective cardboard along the walls and wiped down every piece of furniture. Truly top-tier."</p></div>
+                    <p class="font-bold text-movingNavy text-sm uppercase">— Daniel V. (Minato-ku)</p>
+                </div>
+                <div class="review-card bg-white p-8 w-[320px] md:w-[400px] shrink-0 border border-gray-200 shadow-lg flex flex-col justify-between">
+                    <div><p class="text-gray-700 italic mb-6">"As someone who speaks zero Japanese, finding Zen Relocations was a lifesaver. The entire move was handled in perfect English."</p></div>
+                    <p class="font-bold text-movingNavy text-sm uppercase">— Sarah Jenkins (Shibuya)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="quote" class="py-24 px-6 bg-movingNavy text-white">
+        <div class="max-w-4xl mx-auto" data-aos="fade-up">
+            <div class="text-center mb-12"><h2 class="font-serif text-4xl font-bold">Request a Quote</h2><p class="text-gray-400 mt-4">English logistics coordinators will analyze your requirements and provide an estimate.</p></div>
+            <form class="bg-movingGray text-movingNavy p-6 md:p-10 rounded shadow-2xl">
+                <div class="mb-8"><label class="quote-label">Full Name</label><input type="text" class="quote-input" required></div>
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div><label class="quote-label">Current Location</label><input type="text" placeholder="Minato-ku" class="quote-input" required></div>
+                    <div><label class="quote-label">Destination</label><input type="text" placeholder="Shibuya-ku" class="quote-input" required></div>
+                </div>
+                <div class="mb-8"><label class="quote-label">Move Size</label><select class="quote-input" required><option>1R / Studio</option><option>1LDK</option><option>2LDK+</option></select></div>
+                <div class="text-center"><button type="submit" class="bg-movingBlue text-white px-14 py-4 font-bold uppercase text-sm tracking-widest hover:bg-movingNavy transition-all w-full md:w-auto rounded shadow-lg">Request Estimate</button></div>
+            </form>
+        </div>
+    </section>
+    <footer class="bg-white text-movingNavy pt-20 pb-8 px-6 border-t border-gray-200 text-center uppercase tracking-widest text-[10px] font-bold">
+        <p>&copy; 2026 Zen Relocations Japan. Designed by HANEI.JP</p>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, duration: 800 });
+        const mobileBtn = document.getElementById('mobile-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        function toggleMenu() { mobileMenu.classList.toggle('translate-x-full'); document.body.classList.toggle('overflow-hidden'); }
+        mobileBtn.onclick = toggleMenu; closeBtn.onclick = toggleMenu;
+    </script>
+
+    <script>
+      // Hanei JP Context Detection
+      (function() {
+        const returnLink = document.querySelector('a[href*="hanei.jp"]') || document.querySelector('a[href*="/demos"]');
+        if (returnLink) {
+          // Normalize to base demos link
+          returnLink.href = "/demos"; 
+          
+          // Detect Japanese context from referrer
+          if (document.referrer.includes("-jp")) {
+            returnLink.href = "/demos-jp";
+            returnLink.innerHTML = "← Haneiに戻る";
+          }
+        }
+      })();
+    </script>
+
+    <!-- HANEI UI FIX: FORCED MENU TERMINATION -->
+    <script>
+      (function() {
+        const links = document.querySelectorAll('.mobile-link');
+        const overlay = document.getElementById('mobile-nav-overlay') || document.getElementById('mobile-menu');
+        links.forEach(link => {
+          link.addEventListener('click', () => {
+            if (overlay) {
+              overlay.classList.add('translate-x-full');
+              document.body.classList.remove('overflow-hidden');
+            }
+          });
+        });
+      })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azabu Premium Medical | English-Speaking Doctors in Tokyo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { medLight:'#F8F9FA', medDark:'#1E293B', medAccent:'#475569', medHighlight:'#0D9488' },
+                    fontFamily: { sans:['Inter','sans-serif'], serif:['Noto Serif','serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body{background-color:#F8F9FA;color:#1E293B}.glass-header{background:rgba(248,249,250,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,41,59,0.05)}.med-input{width:100%;background:transparent;border:none;border-bottom:1px solid #CBD5E1;padding:12px 0;outline:none;transition:border-color 0.3s ease}.med-input:focus{border-bottom-color:#0D9488}select.med-input{appearance:none;border-radius:0}.marquee-container{overflow:hidden;width:100%;position:relative}.marquee-content{display:inline-flex;animation:marquee 35s linear infinite}.marquee-content:hover{animation-play-state:paused}@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.review-card{white-space:normal;word-wrap:break-word}
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden selection:bg-medHighlight selection:text-white relative">
+    <a href="/demos" class="fixed bottom-8 left-8 z-[100] bg-medDark text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-2xl border border-medHighlight/30 hover:bg-medHighlight transition-all flex items-center gap-2 group"><span class="group-hover:-translate-x-1 transition-transform">←</span> Return to Hanei</a>
+    
+    <header class="fixed w-full top-0 z-50 glass-header"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"><a href="#" class="font-serif text-2xl tracking-wide text-medDark flex items-center gap-3"><svg class="w-6 h-6 text-medHighlight" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>AZABU MEDICAL</a><nav class="hidden md:flex space-x-8 items-center text-xs uppercase tracking-widest text-medAccent"><a href="#services" class="hover:text-medHighlight transition-colors">Specialties</a><a href="#gallery" class="hover:text-medHighlight transition-colors">Facilities</a><a href="#reviews" class="hover:text-medHighlight transition-colors">Patients</a></nav><a href="#booking" class="hidden md:inline-block bg-medDark text-white px-6 py-3 text-xs uppercase tracking-widest hover:bg-medHighlight transition-colors duration-300">Book Appointment</a></div></header>
+    
+    <section class="relative min-h-screen flex items-center justify-center pt-20"><div class="absolute inset-0 z-0"><img src="https://images.unsplash.com/photo-1631248055158-edec7a3c072b?w=1920&auto=format&fit=crop&q=80" class="w-full h-full object-cover object-center"/><div class="absolute inset-0 bg-medDark/60"></div></div><div class="relative z-10 text-center px-4 max-w-4xl mx-auto text-white"><p data-aos="fade-down" class="uppercase tracking-[0.3em] text-sm text-medLight mb-4 font-light">Expat-Friendly Healthcare</p><h1 data-aos="fade-up" class="font-serif text-5xl md:text-7xl leading-tight mb-6">Premium Medicine.<br>No Language Barrier.</h1><p data-aos="fade-up" class="text-lg font-light text-gray-200 mb-10 max-w-2xl mx-auto">Internationally trained physicians providing thorough, English-speaking care in the heart of Azabu.</p><a href="#booking" class="bg-medHighlight text-white px-10 py-4 uppercase text-sm tracking-widest hover:bg-white hover:text-medDark transition-colors duration-300 shadow-lg">Schedule Consultation</a></div></section>
+
+    <section id="services" class="py-24 px-6 bg-white"><div class="max-w-7xl mx-auto text-center mb-16" data-aos="fade-up"><p class="uppercase tracking-[0.2em] text-xs text-medHighlight mb-2">Specialties</p><h2 class="font-serif text-4xl text-medDark">Comprehensive Care</h2></div><div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-10"><div data-aos="fade-up" class="group"><div class="overflow-hidden mb-6 h-72"><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800" class="w-full h-full object-cover transition duration-700 group-hover:scale-105"/></div><h3 class="font-serif text-2xl text-medDark mb-3">Internal Medicine</h3><p class="text-medAccent text-sm">Diagnosis and management of acute and chronic health conditions.</p></div><div data-aos="fade-up" class="group"><div class="overflow-hidden mb-6 h-72"><img src="https://images.unsplash.com/photo-1616391182219-e080b4d1043a?w=800" class="w-full h-full object-cover transition duration-700 group-hover:scale-105"/></div><h3 class="font-serif text-2xl text-medDark mb-3">Health Screening</h3><p class="text-medAccent text-sm">Comprehensive preventative diagnostics for lifelong wellness.</p></div><div data-aos="fade-up" class="group"><div class="overflow-hidden mb-6 h-72"><img src="https://images.unsplash.com/photo-1579488081688-3dbbbae7893e?w=800" class="w-full h-full object-cover transition duration-700 group-hover:scale-105"/></div><h3 class="font-serif text-2xl text-medDark mb-3">Specialist Access</h3><p class="text-medAccent text-sm">Seamless referrals to Japan's top specialist university hospitals.</p></div></div></section>
+    <section id="gallery" class="py-24 bg-medLight"><div class="max-w-7xl mx-auto px-6 mb-12 text-center" data-aos="fade-up"><p class="uppercase tracking-[0.2em] text-xs text-medHighlight mb-2">The Facility</p><h2 class="font-serif text-4xl text-medDark">A Modern Healing Environment</h2></div><div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-4"><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600" class="aspect-square object-cover rounded shadow-lg" data-aos="zoom-in"><img src="https://images.unsplash.com/photo-1616391182219-e080b4d1043a?w=600" class="aspect-square object-cover rounded shadow-lg" data-aos="zoom-in" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1631248055158-edec7a3c072b?w=600" class="aspect-square object-cover rounded shadow-lg" data-aos="zoom-in" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1579488081688-3dbbbae7893e?w=600" class="aspect-square object-cover rounded shadow-lg" data-aos="zoom-in" data-aos-delay="300"></div></section>
+
+    <section id="reviews" class="py-24 bg-white overflow-hidden border-t border-gray-100"><div class="max-w-7xl mx-auto px-6 mb-12 text-center" data-aos="fade-up"><h2 class="font-serif text-4xl text-medDark mb-4">Patient Experiences</h2><div class="flex justify-center mt-4"><span class="text-xs font-semibold bg-medLight px-4 py-2 rounded-full shadow-sm text-medAccent border border-gray-200">4.9/5 AVERAGE RATING</span></div></div><div class="marquee-container py-4"><div class="marquee-content gap-6 px-3"><div class="review-card bg-white p-8 w-[320px] md:w-[380px] shrink-0 border border-gray-100 shadow-sm flex flex-col justify-between text-sm italic">"Finally a clinic in Tokyo where I feel understood. Fluent English support."<p class="font-semibold not-italic mt-4 text-medDark uppercase">— DAVID M.</p></div><div class="review-card bg-white p-8 w-[320px] md:w-[380px] shrink-0 border border-gray-100 shadow-sm flex flex-col justify-between text-sm italic">"Extremely professional and efficient. Highly recommend for the expat community."<p class="font-semibold not-italic mt-4 text-medDark uppercase">— SARAH J.</p></div><div class="review-card bg-white p-8 w-[320px] md:w-[380px] shrink-0 border border-gray-100 shadow-sm flex flex-col justify-between text-sm italic">"Modern facilities and unhurried consultations. The teal standard of care."<p class="font-semibold not-italic mt-4 text-medDark uppercase">— ELENA P.</p></div></div></div></section>
+
+    <section id="booking" class="py-24 px-6 bg-medDark text-white"><div class="max-w-4xl mx-auto text-center" data-aos="fade-up"><h2 class="font-serif text-4xl mb-4">Request an Appointment</h2><p class="text-gray-400 mb-12">Our English-speaking desk will contact you within 24 hours.</p><form class="bg-white text-medDark p-8 md:p-12 shadow-2xl text-left"><div class="grid md:grid-cols-2 gap-8 mb-8"><div class="flex flex-col"><label class="text-[10px] uppercase font-bold text-gray-400 mb-1">Full Name</label><input type="text" placeholder="John Doe" class="med-input font-medium" required></div><div class="flex flex-col"><label class="text-[10px] uppercase font-bold text-gray-400 mb-1">Email Address</label><input type="email" placeholder="john@example.com" class="med-input font-medium" required></div></div><div class="grid md:grid-cols-2 gap-8 mb-8"><div class="flex flex-col"><label class="text-[10px] uppercase font-bold text-gray-400 mb-1">Phone Number</label><input type="tel" placeholder="+81 00-0000-0000" class="med-input font-medium" required></div><div class="flex flex-col"><label class="text-[10px] uppercase font-bold text-gray-400 mb-1">Preferred Date</label><input type="date" class="med-input font-medium text-gray-500" required></div></div><div class="mb-10 flex flex-col"><label class="text-[10px] uppercase font-bold text-gray-400 mb-1">Department</label><select class="med-input font-medium bg-white" required><option value="" disabled selected>Select reason for visit...</option><option>General Internal Medicine</option><option>Dermatology</option><option>Health Screening / Ningen Dock</option><option>Other</option></select></div><button type="submit" class="bg-medHighlight text-white px-12 py-4 uppercase text-sm font-bold tracking-widest hover:bg-medDark transition-all w-full md:w-auto">Submit Request</button></form></div></section>
+    
+    <footer class="bg-white text-medDark py-12 text-center border-t border-gray-100 text-[10px] tracking-widest uppercase font-bold"><p>&copy; 2026 Azabu Premium Medical. Designed by HANEI.JP</p></footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><script>AOS.init({once:true,duration:800});</script>
+
+    <script>
+      // Hanei JP Context Detection
+      (function() {
+        const returnLink = document.querySelector('a[href*="hanei.jp"]') || document.querySelector('a[href*="/demos"]');
+        if (returnLink) {
+          // Normalize to base demos link
+          returnLink.href = "/demos"; 
+          
+          // Detect Japanese context from referrer
+          if (document.referrer.includes("-jp")) {
+            returnLink.href = "/demos-jp";
+            returnLink.innerHTML = "← Haneiに戻る";
+          }
+        }
+      })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+---
+import { Icon } from 'astro-icon/components';
+import Button from '~/components/ui/Button.astro';
+import { twMerge } from 'tailwind-merge';
+
+const {
+  id,
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline,
+  content = await Astro.slots.render('content'),
+  items = [],
+  image: imageProp,
+  isReversed = false,
+  isAfterContent = false,
+  callToAction,
+  classes = {},
+} = Astro.props;
+
+const imageSlot = await Astro.slots.render('image');
+const image = imageProp || imageSlot;
+const isUrl = typeof image === 'string' && (image.startsWith('http') || image.startsWith('/') || image.startsWith('.'));
+---
+
+<section id={id} class={twMerge(
+  isAfterContent ? 'pb-8 md:pb-12' : 'py-12 md:py-20',
+  'scroll-mt-20 relative not-prose',
+  classes?.container
+)}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class:list={['flex flex-col items-center md:gap-16', isReversed ? 'md:flex-row-reverse' : 'md:flex-row']}>
+      
+      <div class="md:basis-1/2 w-full">
+        {tagline && <p class="text-base text-secondary dark:text-gray-400 font-bold tracking-widest uppercase mb-3">{tagline}</p>}
+        {title && <h2 class="text-3xl md:text-4xl font-bold leading-tight tracking-tighter mb-4 font-heading">{title}</h2>}
+        {subtitle && <p class="text-xl text-muted mb-6 leading-relaxed" set:html={subtitle} />}
+        {content && <div class="text-lg text-muted mb-6 leading-relaxed" set:html={content} />}
+        {items && items.length > 0 && (
+          <ul class="space-y-6 mb-8">
+            {items.map(({ title: itemTitle, description, icon }) => (
+              <li class="flex max-w-md">
+                <div class="flex-shrink-0">
+                  <div class="flex items-center justify-center h-10 w-10 rounded-full bg-primary text-gray-50 shadow-md">
+                    {icon && <Icon name={icon} class="w-5 h-5" />}
+                  </div>
+                </div>
+                <div class="ml-4">
+                  {itemTitle && <h3 class="text-lg font-bold">{itemTitle}</h3>}
+                  {description && <p class="text-muted leading-relaxed" set:html={description} />}
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+        {callToAction && (
+          <div class="mt-4">
+            <Button {...callToAction} class="bg-slate-900 text-white hover:bg-slate-800 shadow-xl" />
+          </div>
+        )}
+      </div>
+
+      <div class="md:basis-1/2 mt-10 md:mt-0 w-full">
+        {image && (
+          
+      <div class="relative m-auto max-w-5xl aspect-[3/2] overflow-hidden rounded-lg shadow-2xl border-4 border-white dark:border-slate-800 group">
+        <!-- HANEI WATERMARK OVERLAY -->
+        <div class="absolute bottom-[8%] right-[5%] z-20 w-[15%] max-w-[80px] opacity-90 pointer-events-none drop-shadow-md transition-opacity group-hover:opacity-100">
+          <img src="/images/logo_main.png" alt="English Support" class="w-full h-auto rounded-md" />
+        </div>
+
+            {isUrl ? (
+              <img src={image} alt="Demo" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+            ) : image.src ? (
+              <img src={image.src} alt={image.alt || 'Demo'} class="w-full h-full object-cover" loading="lazy" decoding="async" />
+            ) : (
+              <div class="w-full h-full [&_img]:w-full [&_img]:h-full [&_img]:object-cover [&_img]:aspect-[3/2]">
+                <Fragment set:html={image} />
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
+    </div>
+  </div>
+</section>

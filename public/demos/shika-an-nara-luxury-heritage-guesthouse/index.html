@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth overflow-x-hidden max-w-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHIKA-AN NARA | Luxury Heritage Guesthouse</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        heritageBlack: '#1A2421', /* Deep Forest Coal */
+                        washi: '#F9F7F2',         /* Traditional Paper */
+                        moss: '#4A5D4E',          /* Nara Moss */
+                        earth: '#8C7355'          /* Temple Wood */
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #F9F7F2; color: #1A2421; }
+        
+        /* Navigation Transition */
+        #mobile-menu {
+            transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            visibility: hidden;
+            opacity: 0;
+        }
+        #mobile-menu.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Continuous Marquee for Reviews */
+        .marquee-container { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
+        .marquee-content { display: inline-flex; animation: scroll 50s linear infinite; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-content:hover { animation-play-state: paused; }
+
+        /* Prevent Text Overflow in Reviews */
+        .review-card {
+            white-space: normal;
+            word-wrap: break-word;
+            width: 400px;
+            background: white;
+            padding: 2.5rem;
+            margin-right: 2rem;
+            border: 1px solid rgba(26, 36, 33, 0.05);
+        }
+
+        /* Custom Input Styling */
+        .shika-input {
+            background: transparent;
+            border: 1px solid rgba(26, 36, 33, 0.2);
+            width: 100%;
+            padding: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .shika-input:focus { border-color: #8C7355; background: white; }
+
+        /* Custom Underline Effect */
+        .link-hover {
+            position: relative;
+        }
+        .link-hover::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: #8C7355;
+            transition: width 0.3s ease;
+        }
+        .link-hover:hover::after { width: 100%; }
+    </style>
+</head>
+<body class="overflow-x-hidden max-w-full font-sans antialiased overflow-x-hidden">
+
+    <!-- NAVIGATION -->
+    <header class="fixed w-full top-0 z-[100] bg-washi/90 backdrop-blur-md border-b border-heritageBlack/5">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-bold tracking-tight text-heritageBlack uppercase">Shika-An</a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-12 text-[10px] uppercase tracking-[0.3em] font-semibold text-heritageBlack">
+                <a href="#retreat" class="link-hover">The Retreat</a>
+                <a href="#sanctuary" class="link-hover">Sanctuary</a>
+                <a href="#voices" class="link-hover">Voices</a>
+            </nav>
+
+            <a href="#booking" class="hidden md:block bg-heritageBlack text-washi px-8 py-3 text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-earth transition-all">
+                Book Stay
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button id="hamburger" class="md:hidden flex flex-col space-y-1.5 focus:outline-none z-[110]">
+                <span id="bar1" class="w-8 h-[2px] bg-heritageBlack transition-all duration-300"></span>
+                <span id="bar2" class="w-8 h-[2px] bg-heritageBlack transition-all duration-300"></span>
+                <span id="bar3" class="w-5 h-[2px] bg-heritageBlack self-end transition-all duration-300"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="fixed inset-0 bg-heritageBlack z-[105] flex flex-col items-center justify-center space-y-10">
+        <nav class="flex flex-col items-center space-y-8 text-washi text-3xl font-serif">
+            <a href="#retreat" class="mobile-link">The Retreat</a>
+            <a href="#sanctuary" class="mobile-link">Sanctuary</a>
+            <a href="#voices" class="mobile-link">Voices</a>
+            <a href="#booking" class="mobile-link bg-earth text-washi px-10 py-4 text-sm uppercase tracking-widest font-sans font-bold">Reservations</a>
+        </nav>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-4 items-center">
+            <div class="md:col-span-7 relative z-10" data-aos="fade-right">
+                <div class="bg-washi/95 p-8 md:p-16 md:-mr-32 relative shadow-2xl border border-heritageBlack/5">
+                    <p class="uppercase tracking-[0.4em] text-earth text-xs mb-6 font-bold">Nara Park • Established 1922</p>
+                    <h1 class="font-serif text-5xl md:text-8xl leading-none text-heritageBlack mb-8">
+                        Awaken Among <br><span class="italic font-light">the Sacred.</span>
+                    </h1>
+                    <p class="text-heritageBlack/80 max-w-md text-lg font-light mb-10 leading-relaxed">
+                        A historic Nara guesthouse offering an unparalleled sanctuary of stillness. Experience heritage luxury where the deer roam freely at your doorstep.
+                    </p>
+                    <a href="#booking" class="inline-block bg-heritageBlack text-washi px-12 py-5 text-xs uppercase tracking-[0.3em] font-bold hover:bg-earth transition-all">
+                        Inquire Availability
+                    </a>
+                </div>
+            </div>
+            
+            <div class="md:col-span-5 h-[400px] md:h-[700px] w-full" data-aos="zoom-out" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1530708780517-cc640cf05561?w=800&auto=format&fit=crop" 
+                     class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 shadow-2xl" alt="Nara Deer">
+            </div>
+        </div>
+    </section>
+
+    <!-- THE RETREAT (SERVICES STAGGERED) -->
+    <section id="retreat" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-24 items-center mb-32">
+                <div data-aos="fade-up">
+                    <p class="uppercase tracking-[0.3em] text-earth text-xs mb-4 font-bold">The Experience</p>
+                    <h2 class="font-serif text-5xl md:text-6xl text-heritageBlack mb-8">Refined Heritage <br>Living.</h2>
+                    <p class="text-heritageBlack/70 text-lg font-light leading-relaxed mb-8">
+                        Our rooms are designed to bridge the gap between historic Nara architecture and modern luxury comfort. Each suite features century-old timber and curated Japanese art.
+                    </p>
+                    <div class="grid grid-cols-2 gap-8 text-xs uppercase tracking-widest font-bold text-earth">
+                        <p class="flex items-center gap-2"><span class="w-2 h-[1px] bg-earth"></span> Tatami Suites</p>
+                        <p class="flex items-center gap-2"><span class="w-2 h-[1px] bg-earth"></span> Garden Onsen</p>
+                        <p class="flex items-center gap-2"><span class="w-2 h-[1px] bg-earth"></span> Tea Rituals</p>
+                        <p class="flex items-center gap-2"><span class="w-2 h-[1px] bg-earth"></span> Guided Walks</p>
+                    </div>
+                </div>
+                <div class="relative" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1698239307081-375b3f3da4c0?w=800&auto=format&fit=crop" 
+                         class="w-full h-[500px] object-cover shadow-2xl" alt="Tatami Room">
+                    <div class="absolute -bottom-8 -left-8 w-64 h-48 border-[12px] border-washi z-10 hidden md:block">
+                        <img src="https://images.unsplash.com/photo-1620107132931-f8700460c7ef?w=400&auto=format&fit=crop" class="w-full h-full object-cover" alt="Detail">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SANCTUARY (BENTO GRID GALLERY) -->
+    <section id="sanctuary" class="py-32 bg-heritageBlack text-washi px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="font-serif text-5xl md:text-6xl mb-4">The Sanctuary</h2>
+                <p class="text-washi/50 tracking-widest uppercase text-[10px] font-bold">Captured Moments at @ShikaAnNara</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 h-[600px] md:h-[800px]">
+                <div class="md:col-span-2 md:row-span-2 overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1570155477957-321e66a5751e?w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Temple">
+                </div>
+                <div class="overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1584957076812-00c2c80d1f8b?w=500&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Deer">
+                </div>
+                <div class="overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1748525591661-c741b5df919c?w=500&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Park">
+                </div>
+                <div class="md:col-span-2 overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1669612803668-2b2a770f9890?w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Interior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VOICES (MARQUEE) -->
+    <section id="voices" class="py-32 bg-washi border-y border-heritageBlack/5">
+        <div class="max-w-7xl mx-auto px-6 mb-16" data-aos="fade-up">
+            <h2 class="font-serif text-4xl text-heritageBlack">Guest Voices</h2>
+            <div class="flex items-center gap-4 mt-4">
+                <span class="text-earth">★★★★★</span>
+                <span class="text-[10px] uppercase tracking-widest font-bold text-heritageBlack/40">Verified Google Reviews</span>
+            </div>
+        </div>
+
+        <div class="marquee-container">
+            <div class="marquee-content gap-8">
+                <!-- Review 1 -->
+                <div class="review-card shadow-sm">
+                    <p class="text-heritageBlack text-sm font-light italic leading-loose mb-8">"Staying at Shika-An was the highlight of our Japan trip. Awakening to the sound of the park and having deer practically greet us at the door was magical."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-earth">— Robert & Claire, UK</p>
+                </div>
+                <!-- Review 2 -->
+                <div class="review-card shadow-sm">
+                    <p class="text-heritageBlack text-sm font-light italic leading-loose mb-8">"The attention to detail in the heritage suite was breathtaking. It's rare to find a place that feels so authentic yet so luxurious."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-earth">— Sarah L., USA</p>
+                </div>
+                <!-- Review 3 -->
+                <div class="review-card shadow-sm">
+                    <p class="text-heritageBlack text-sm font-light italic leading-loose mb-8">"Perfect English support. We felt so taken care of. The private morning temple tour they arranged was a once-in-a-lifetime experience."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-earth">— Thomas M., AUS</p>
+                </div>
+                <!-- Duplicates -->
+                <div class="review-card shadow-sm">
+                    <p class="text-heritageBlack text-sm font-light italic leading-loose mb-8">"Staying at Shika-An was the highlight of our trip. Awakening to the deer practically greeting us was magical."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-earth">— Robert & Claire, UK</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING FORM -->
+    <section id="booking" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto bg-white p-10 md:p-20 shadow-2xl" data-aos="fade-up">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-5xl mb-4">Plan Your Escape</h2>
+                <p class="text-heritageBlack/50 font-light">Complete the form below to request your heritage stay.</p>
+            </div>
+
+            <form class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-2">
+                    <label class="text-[10px] uppercase tracking-widest font-bold">Full Name</label>
+                    <input type="text" placeholder="Your Name" class="shika-input" required>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] uppercase tracking-widest font-bold">Phone Number</label>
+                    <input type="tel" placeholder="090-0000-0000" class="shika-input" required>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] uppercase tracking-widest font-bold">Check-In Date</label>
+                    <input type="date" class="shika-input" required>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] uppercase tracking-widest font-bold">Check-Out Date</label>
+                    <input type="date" class="shika-input" required>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] uppercase tracking-widest font-bold">Suite Selection</label>
+                    <select class="shika-input">
+                        <option>Heritage Garden Suite</option>
+                        <option>Temple View Villa</option>
+                        <option>Classic Tatami Room</option>
+                        <option>The Shika Hermitage (Private)</option>
+                    </select>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] uppercase tracking-widest font-bold">Guest Count</label>
+                    <select class="shika-input">
+                        <option>1 Adult</option>
+                        <option>2 Adults</option>
+                        <option>3 Adults</option>
+                        <option>Family (4+)</option>
+                    </select>
+                </div>
+                <div class="md:col-span-2 pt-10 text-center">
+                    <button type="submit" class="bg-heritageBlack text-washi px-20 py-5 text-sm uppercase tracking-widest font-bold hover:bg-earth transition-all w-full md:w-auto">
+                        Send Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-heritageBlack text-washi pt-32 pb-12 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-16 mb-20">
+            <div class="md:col-span-5">
+                <h2 class="font-serif text-3xl mb-8">Shika-An Nara</h2>
+                <p class="text-washi/40 font-light leading-relaxed max-w-sm mb-10 italic font-serif">
+                    "A bridge between the modern traveler and the eternal spirit of Japan's ancient capital."
+                </p>
+                <div class="mt-10 space-y-2 text-xs tracking-widest text-washi/60 uppercase">
+                    <p>Open Daily for Guests</p>
+                    <p>Concierge: +81 (0) 742 99 9999</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-3">
+                <h4 class="text-earth uppercase tracking-widest text-[10px] font-bold mb-8">Location</h4>
+                <div class="font-serif text-xl space-y-2">
+                    <p>8-Chome, Kasugano-cho, <br>Nara Park, Nara <br>Japan 630-8212</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-4">
+                <div class="w-full h-64 grayscale brightness-75 border border-washi/10 relative group overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Map">
+                    <div class="absolute inset-0 flex items-center justify-center bg-heritageBlack/20">
+                        <span class="px-6 py-2 border border-washi/20 text-[10px] tracking-widest uppercase backdrop-blur-sm">View Location</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto border-t border-washi/10 pt-12 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.2em] text-washi/30">
+            <p>© 2026 Shika-An Nara Heritage Retreat</p>
+            <p class="mt-4 md:mt-0">Designed by <span class="text-washi/70 font-bold">HANEI.JP</span></p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // AOS Initialize
+        AOS.init({ duration: 1000, once: true, easing: 'ease-out-quart' });
+
+        // Mobile Menu Logic
+        const hamburger = document.getElementById('hamburger');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+        const b1 = document.getElementById('bar1');
+        const b2 = document.getElementById('bar2');
+        const b3 = document.getElementById('bar3');
+
+        function toggleMenu() {
+            menu.classList.toggle('active');
+            document.body.classList.toggle('overflow-hidden');
+            
+            // Bar Animation
+            b1.classList.toggle('rotate-45');
+            b1.classList.toggle('translate-y-[8px]');
+            b1.classList.toggle('bg-washi');
+            
+            b2.classList.toggle('opacity-0');
+            
+            b3.classList.toggle('-rotate-45');
+            b3.classList.toggle('-translate-y-[8px]');
+            b3.classList.toggle('bg-washi');
+            b3.classList.toggle('w-8');
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+
+        // Auto-close menu on link click
+        links.forEach(l => {
+            l.addEventListener('click', () => {
+                if (menu.classList.contains('active')) toggleMenu();
+            });
+        });
+
+        // Demo Form Alert
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Your inquiry has been sent to Shika-An Nara. Our concierge will contact you within 24 hours.');
+        });
+    </script>
+    <!-- HANEI OVERLAY -->
+    <a href="/demos" class="fixed bottom-8 left-8 z-[115] bg-heritageBlack text-washi px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-2xl border border-earth/30 hover:bg-earth transition-all flex items-center gap-2 group"><span class="group-hover:-translate-x-1 transition-transform">←</span> Return to Hanei</a>
+
+    <script>
+      // Hanei JP Context Detection
+      (function() {
+        const returnLink = document.querySelector('a[href*="hanei.jp"]') || document.querySelector('a[href*="/demos"]');
+        if (returnLink) {
+          // Normalize to base demos link
+          returnLink.href = "/demos"; 
+          
+          // Detect Japanese context from referrer
+          if (document.referrer.includes("-jp")) {
+            returnLink.href = "/demos-jp";
+            returnLink.innerHTML = "← Haneiに戻る";
+          }
+        }
+      })();
+    </script>
+</body>
+</html>

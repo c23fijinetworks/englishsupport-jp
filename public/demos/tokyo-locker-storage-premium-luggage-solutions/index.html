@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth overflow-x-hidden max-w-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokyo Locker & Storage | Premium Luggage Solutions</title>
+    
+    <!-- Google Fonts: Elegant Serif & Professional Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vaultBlack: '#121212',
+                        vaultGrey: '#F5F5F5',
+                        vaultBronze: '#8B7153',
+                        vaultGold: '#C4A484',
+                        textMain: '#1A1A1A'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #FFFFFF; color: #1A1A1A; }
+        
+        /* Mobile Navigation Overlay */
+        #nav-overlay {
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            transform: translateX(100%);
+        }
+        #nav-overlay.active { transform: translateX(0); }
+
+        /* Review Marquee Animation */
+        .marquee-container { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
+        .marquee-content { display: inline-flex; animation: scroll 40s linear infinite; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-content:hover { animation-play-state: paused; }
+
+        /* Styling to prevent review overflow */
+        .review-card {
+            white-space: normal;
+            word-wrap: break-word;
+            width: 350px;
+            background: #FFFFFF;
+            padding: 2rem;
+            margin-right: 1.5rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+
+        /* Form Input High-End Styling */
+        .storage-input {
+            background: #FAFAFA;
+            border: 1px solid #E5E5E5;
+            width: 100%;
+            padding: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+        .storage-input:focus { border-color: #8B7153; background: #FFFFFF; }
+
+        /* Creative Overlapping Helper */
+        .overlap-box { margin-top: -100px; }
+        @media (max-width: 768px) { .overlap-box { margin-top: -40px; } }
+    </style>
+</head>
+<body class="overflow-x-hidden max-w-full font-sans antialiased overflow-x-hidden">
+
+    <!-- NAVIGATION -->
+    <header class="fixed w-full top-0 z-[100] bg-white/90 backdrop-blur-md border-b border-vaultBlack/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-serif text-xl font-bold tracking-tighter uppercase text-vaultBlack">
+                Tokyo <span class="italic font-light lowercase text-vaultBronze">Locker</span>
+            </a>
+            
+            <!-- Desktop Links -->
+            <nav class="hidden md:flex space-x-10 text-[10px] uppercase tracking-[0.3em] font-bold text-vaultBlack">
+                <a href="#services" class="hover:text-vaultBronze transition-colors">Storage</a>
+                <a href="#rules" class="hover:text-vaultBronze transition-colors">House Rules</a>
+                <a href="#gallery" class="hover:text-vaultBronze transition-colors">Visuals</a>
+            </nav>
+
+            <a href="#inquiry" class="hidden md:block bg-vaultBlack text-white px-8 py-3 text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-vaultBronze transition-all">
+                Book Space
+            </a>
+
+            <!-- Hamburger -->
+            <button id="hamburger" class="md:hidden flex flex-col space-y-1.5 focus:outline-none z-[110]">
+                <span class="w-8 h-[2px] bg-vaultBlack transition-all" id="bar1"></span>
+                <span class="w-8 h-[2px] bg-vaultBlack transition-all" id="bar2"></span>
+                <span class="w-5 h-[2px] bg-vaultBlack self-end transition-all" id="bar3"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div id="nav-overlay" class="fixed inset-0 bg-vaultBlack z-[105] flex flex-col items-center justify-center space-y-12">
+        <nav class="flex flex-col items-center space-y-8 text-white text-3xl font-serif">
+            <a href="#services" class="mobile-link">Storage</a>
+            <a href="#rules" class="mobile-link">House Rules</a>
+            <a href="#gallery" class="mobile-link">Visuals</a>
+        </nav>
+        <a href="#inquiry" class="mobile-link bg-vaultBronze text-white px-12 py-4 text-sm uppercase tracking-widest font-sans font-bold">Inquiry Now</a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden bg-vaultGrey">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-0 relative">
+            <div class="md:col-span-8 z-10" data-aos="fade-right">
+                <div class="bg-white p-8 md:p-20 shadow-2xl border-l-[10px] border-vaultBronze">
+                    <p class="uppercase tracking-[0.4em] text-vaultBronze text-xs mb-6 font-black">Professional One-Page Solution</p>
+                    <h1 class="font-serif text-5xl md:text-8xl leading-[0.9] text-vaultBlack mb-8">
+                        Explore <br>Without <span class="italic font-light text-vaultGold">Weight.</span>
+                    </h1>
+                    <p class="text-textMain/70 max-w-lg text-lg font-light mb-10 leading-relaxed">
+                        Ginza’s premier high-security concierge for the global traveler. Secure, climate-controlled storage for short-term visits or long-term residence. 
+                        <span class="block mt-4 font-bold text-vaultBlack uppercase text-sm tracking-widest">Order by noon, live by the afternoon.</span>
+                    </p>
+                    <a href="#inquiry" class="inline-block bg-vaultBlack text-white px-12 py-5 text-xs uppercase tracking-widest font-bold hover:bg-vaultBronze transition-all shadow-xl">
+                        View Availability
+                    </a>
+                </div>
+            </div>
+            <div class="md:col-span-4 h-[300px] md:h-auto overflow-hidden" data-aos="zoom-out">
+                <img src="https://images.unsplash.com/photo-1618438502398-195e47778d6c?w=1000&auto=format&fit=crop" 
+                     class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" alt="Lockers">
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-24" data-aos="fade-up">
+                <div class="max-w-2xl">
+                    <h2 class="font-serif text-5xl md:text-7xl text-vaultBlack leading-none mb-6">Tiered <br>Security</h2>
+                    <p class="text-textMain/60 font-light text-lg italic">From carry-on cases to private art collections.</p>
+                </div>
+                <div class="w-24 h-[1px] bg-vaultBronze mb-4 hidden md:block"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Large Locker -->
+                <div class="group relative overflow-hidden bg-vaultGrey p-10 h-[500px] flex flex-col justify-between" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1551313158-73d016a829ae?w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity" alt="Locker">
+                    <div class="relative z-10">
+                        <h3 class="font-serif text-4xl mb-4">The Suite</h3>
+                        <p class="text-xs uppercase tracking-widest font-bold text-vaultBronze">Large / Oversized</p>
+                    </div>
+                    <div class="relative z-10">
+                        <p class="text-sm leading-relaxed mb-6">Perfect for golf clubs, multiple large suitcases, or moving crates. Fully climate controlled.</p>
+                        <p class="text-xl font-serif text-vaultBlack">¥2,500 <span class="text-xs uppercase font-sans font-bold text-textMain/40">/ Day</span></p>
+                    </div>
+                </div>
+
+                <!-- Standard -->
+                <div class="group relative overflow-hidden bg-vaultBlack text-white p-10 h-[500px] flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1672552226686-17ae189fbf2c?w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-20 grayscale" alt="Standard">
+                    <div class="relative z-10">
+                        <h3 class="font-serif text-4xl mb-4 text-vaultGold">The Vessel</h3>
+                        <p class="text-xs uppercase tracking-widest font-bold text-white/50">Standard Luggage</p>
+                    </div>
+                    <div class="relative z-10">
+                        <p class="text-sm leading-relaxed mb-6 text-white/70">Secure pod for standard suitcases. Features 24/7 digital key access and biometric secondary lock.</p>
+                        <p class="text-xl font-serif">¥1,200 <span class="text-xs uppercase font-sans font-bold text-white/40">/ Day</span></p>
+                    </div>
+                </div>
+
+                <!-- Concierge -->
+                <div class="group relative overflow-hidden bg-vaultGrey p-10 h-[500px] flex flex-col justify-between" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1600181914037-b14638c1137d?w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity" alt="Concierge">
+                    <div class="relative z-10 text-vaultBlack">
+                        <h3 class="font-serif text-4xl mb-4">Concierge</h3>
+                        <p class="text-xs uppercase tracking-widest font-bold text-vaultBronze">Full Service</p>
+                    </div>
+                    <div class="relative z-10">
+                        <p class="text-sm leading-relaxed mb-6">Hotel-to-Vault transfer. We collect your bags from any Tokyo hotel and store them until your flight.</p>
+                        <p class="text-xl font-serif text-vaultBlack">Inquire <span class="text-xs uppercase font-sans font-bold text-textMain/40">/ Service</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOP RULES & PAYMENTS -->
+    <section id="rules" class="py-32 bg-vaultBlack text-white px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20">
+            <div data-aos="fade-right">
+                <h2 class="font-serif text-5xl mb-12">House Rules</h2>
+                <div class="space-y-8">
+                    <div class="flex items-start gap-6 border-l border-vaultBronze pl-6">
+                        <span class="font-serif italic text-vaultGold text-2xl">01</span>
+                        <div>
+                            <h4 class="font-bold uppercase tracking-widest text-xs mb-2">Identification</h4>
+                            <p class="text-sm text-white/60">A valid International Passport or Residence Card is required for all new contracts.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-6 border-l border-vaultBronze pl-6">
+                        <span class="font-serif italic text-vaultGold text-2xl">02</span>
+                        <div>
+                            <h4 class="font-bold uppercase tracking-widest text-xs mb-2">Prohibited Items</h4>
+                            <p class="text-sm text-white/60">Strictly no perishable foods, liquids, explosives, or illegal substances.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-6 border-l border-vaultBronze pl-6">
+                        <span class="font-serif italic text-vaultGold text-2xl">03</span>
+                        <div>
+                            <h4 class="font-bold uppercase tracking-widest text-xs mb-2">Access Hours</h4>
+                            <p class="text-sm text-white/60">Standard units accessible 08:00 - 22:00. 24/7 access available for VIP members.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-left">
+                <h2 class="font-serif text-5xl mb-12">Accepted Payments</h2>
+                <p class="text-white/50 font-light mb-10">We support all major international and local contactless methods for a seamless experience.</p>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-6 border border-white/10 flex items-center justify-center text-[10px] font-bold tracking-[0.3em] uppercase">Visa / Mastercard</div>
+                    <div class="p-6 border border-white/10 flex items-center justify-center text-[10px] font-bold tracking-[0.3em] uppercase">Amex / Discover</div>
+                    <div class="p-6 border border-white/10 flex items-center justify-center text-[10px] font-bold tracking-[0.3em] uppercase text-vaultGold">Suica / Pasmo</div>
+                    <div class="p-6 border border-white/10 flex items-center justify-center text-[10px] font-bold tracking-[0.3em] uppercase">Apple / Google Pay</div>
+                    <div class="p-6 border border-white/10 flex items-center justify-center text-[10px] font-bold tracking-[0.3em] uppercase">WeChat / Alipay</div>
+                    <div class="p-6 border border-white/10 flex items-center justify-center text-[10px] font-bold tracking-[0.3em] uppercase">Line Pay</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM FEED -->
+    <section id="gallery" class="py-32 px-6">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="font-serif text-5xl mb-4">Tokyo Unbound</h2>
+                <p class="text-vaultBronze tracking-[0.3em] uppercase text-xs font-black">Live @TokyoLockerStorage</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <img src="https://images.unsplash.com/photo-1721937718756-3bfec49f42a2?w=500&auto=format&fit=crop" class="aspect-square object-cover" data-aos="zoom-in" alt="IG 1">
+                <img src="https://images.unsplash.com/photo-1770720086655-22f3d1205dc2?w=500&auto=format&fit=crop" class="aspect-square object-cover" data-aos="zoom-in" data-aos-delay="100" alt="IG 2">
+                <img src="https://images.unsplash.com/photo-1700165644892-3dd6b67b25bc?w=500&auto=format&fit=crop" class="aspect-square object-cover" data-aos="zoom-in" data-aos-delay="200" alt="IG 3">
+                <img src="https://images.unsplash.com/photo-1551313158-73d016a829ae?w=500&auto=format&fit=crop" class="aspect-square object-cover" data-aos="zoom-in" data-aos-delay="300" alt="IG 4">
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="py-24 bg-vaultGrey border-y border-vaultBlack/5">
+        <div class="marquee-container">
+            <div class="marquee-content gap-8">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="flex text-vaultBronze mb-4 text-[10px] font-black tracking-widest uppercase">★★★★★ GOOGLE GUEST</div>
+                    <p class="text-textMain/80 text-sm font-light leading-relaxed italic mb-6">"Found them through a blog and it was the best decision. Dropped my heavy bags in Ginza and explored for 6 hours. Flawless service."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-vaultBronze">— Sarah K., London</p>
+                </div>
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="flex text-vaultBronze mb-4 text-[10px] font-black tracking-widest uppercase">★★★★★ GOOGLE GUEST</div>
+                    <p class="text-textMain/80 text-sm font-light leading-relaxed italic mb-6">"The only storage in Tokyo that actually fits my oversized ski gear. Staff speak perfect English and made the check-in easy."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-vaultBronze">— Michael T., Canada</p>
+                </div>
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div class="flex text-vaultBronze mb-4 text-[10px] font-black tracking-widest uppercase">★★★★★ GOOGLE GUEST</div>
+                    <p class="text-textMain/80 text-sm font-light leading-relaxed italic mb-6">"Secure, biometric entry gave me huge peace of mind for my laptop and tech gear. Highly high-end facility."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-vaultBronze">— Julian R., Singapore</p>
+                </div>
+                <!-- Duplicates -->
+                <div class="review-card">
+                    <div class="flex text-vaultBronze mb-4 text-[10px] font-black tracking-widest uppercase">★★★★★ GOOGLE GUEST</div>
+                    <p class="text-textMain/80 text-sm font-light leading-relaxed italic mb-6">"Dropped my heavy bags and explored. Flawless service."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-vaultBronze">— Sarah K.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INQUIRY FORM -->
+    <section id="inquiry" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto bg-white p-8 md:p-20 shadow-2xl border border-vaultBlack/5" data-aos="fade-up">
+            <div class="mb-16 text-center">
+                <h2 class="font-serif text-5xl md:text-7xl mb-4">Request <span class="italic text-vaultBronze font-light">Storage</span></h2>
+                <p class="text-textMain/50 font-light">Secure your space before arrival. Instant confirmation for daily lockers.</p>
+            </div>
+
+            <form class="grid md:grid-cols-2 gap-x-12 gap-y-8">
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-vaultBlack">Full Name</label>
+                    <input type="text" placeholder="Full Name" class="storage-input" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-vaultBlack">Phone Number</label>
+                    <input type="tel" placeholder="+1-000-000-0000" class="storage-input" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-vaultBlack">Locker Size</label>
+                    <select class="storage-input">
+                        <option>The Vessel (Standard Suitcase)</option>
+                        <option>The Suite (Oversized/Bulk)</option>
+                        <option>Document Vault (Biometric Safe)</option>
+                        <option>Private Unit (Long Term)</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-vaultBlack">Drop-Off Date</label>
+                    <input type="date" class="storage-input" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-vaultBlack">Expected Duration</label>
+                    <select class="storage-input">
+                        <option>Short Term (1-3 Days)</option>
+                        <option>Weekly (7+ Days)</option>
+                        <option>Monthly</option>
+                        <option>Expat / Seasonal Storage</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-vaultBlack">Bag Count</label>
+                    <input type="number" value="1" min="1" class="storage-input" required>
+                </div>
+                <div class="md:col-span-2 space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-vaultBlack">Special Requirements</label>
+                    <textarea placeholder="e.g. Fragile items, Hotel pickup request, Insurance top-up..." class="storage-input h-32 resize-none"></textarea>
+                </div>
+                <div class="md:col-span-2 pt-10">
+                    <button type="submit" class="w-full bg-vaultBlack text-white py-6 text-xs uppercase tracking-widest font-black hover:bg-vaultBronze transition-all">
+                        Dispatch Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-vaultBlack text-white pt-32 pb-12 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-16 mb-20">
+            <div class="md:col-span-5">
+                <h2 class="font-serif text-3xl mb-8">Tokyo Locker & Storage</h2>
+                <p class="text-white/40 font-light leading-relaxed max-w-sm italic">
+                    "Guarding the weight of your journey, enabling the lightness of your soul. Ginza’s gold-standard in urban security."
+                </p>
+                <div class="mt-8 space-y-2 text-xs tracking-widest uppercase text-white/50">
+                    <p>Open Daily: 08:00 — 22:00 JST</p>
+                    <p>Phone: +81 (0) 3 5555 8080</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-3">
+                <h4 class="text-vaultBronze uppercase tracking-widest text-[10px] font-black mb-8 italic font-serif">The Perimeter</h4>
+                <div class="font-serif text-xl space-y-2">
+                    <p>7-Chome, Ginza, <br>Chuo-ku, Tokyo <br>Japan 104-0061</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-4">
+                <div class="w-full h-64 grayscale brightness-50 border border-white/10 relative group overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Map">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="px-6 py-2 border border-white/20 text-[10px] tracking-widest uppercase backdrop-blur-sm">View Grid Coordinates</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto border-t border-white/10 pt-12 flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-[0.4em] text-white/30 font-bold">
+            <p>© 2026 Tokyo Locker & Storage</p>
+            <p class="mt-4 md:mt-0">Designed by <span class="text-white/80">HANEI.JP</span></p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // AOS Initialize
+        AOS.init({ duration: 1000, once: true, easing: 'ease-out-expo' });
+
+        // Mobile Nav Logic
+        const hamburger = document.getElementById('hamburger');
+        const overlay = document.getElementById('nav-overlay');
+        const links = document.querySelectorAll('.mobile-link');
+        const bars = [document.getElementById('bar1'), document.getElementById('bar2'), document.getElementById('bar3')];
+
+        function toggleMenu() {
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('overflow-hidden');
+            bars[0].classList.toggle('rotate-45');
+            bars[0].classList.toggle('translate-y-[8px]');
+            bars[1].classList.toggle('opacity-0');
+            bars[2].classList.toggle('-rotate-45');
+            bars[2].classList.toggle('-translate-y-[8px]');
+            bars[2].classList.toggle('w-8');
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        links.forEach(l => l.addEventListener('click', () => {
+            if (overlay.classList.contains('active')) toggleMenu();
+        }));
+
+        // Form Demo Alert
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Your storage request has been dispatched. A concierge will contact you shortly to confirm space availability.');
+        });
+    </script>
+    <!-- HANEI OVERLAY (MANDATORY) -->
+    <a href="/demos" class="fixed bottom-8 left-8 z-[115] bg-vaultBlack text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-2xl border border-vaultBronze/30 hover:bg-vaultBronze transition-all flex items-center gap-2 group"><span class="group-hover:-translate-x-1 transition-transform">←</span> Return to Hanei</a>
+
+    <script>
+      // Hanei JP Context Detection
+      (function() {
+        const returnLink = document.querySelector('a[href*="hanei.jp"]') || document.querySelector('a[href*="/demos"]');
+        if (returnLink) {
+          // Normalize to base demos link
+          returnLink.href = "/demos"; 
+          
+          // Detect Japanese context from referrer
+          if (document.referrer.includes("-jp")) {
+            returnLink.href = "/demos-jp";
+            returnLink.innerHTML = "← Haneiに戻る";
+          }
+        }
+      })();
+    </script>
+</body>
+</html>

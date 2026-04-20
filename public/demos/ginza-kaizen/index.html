@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth overflow-x-hidden max-w-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GINZA KAIZEN | Elite Hair Artistry Tokyo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com">    
+        
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sumiBlack: '#1A1A1A',
+                        washiPaper: '#FDFBF7',
+                        ginzaGold: '#8B7E66',
+                        shaleGrey: '#4A5859'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #FDFBF7; color: #1A1A1A; }
+        .marquee-wrapper { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
+        .marquee-content { display: inline-flex; animation: scroll 40s linear infinite; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-content:hover { animation-play-state: paused; }
+        .bento-item { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden; position: relative; }
+        .bento-item:hover { transform: scale(0.98); }
+        .kaizen-input {
+            background: transparent;
+            border-bottom: 1px solid #1A1A1A;
+            width: 100%;
+            padding: 1rem 0;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .kaizen-input:focus { border-bottom-color: #8B7E66; }
+        #mobile-nav-overlay {
+            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden max-w-full font-sans antialiased overflow-x-hidden">
+    <!-- HANEI OVERLAY -->
+    <a href="/demos" class="fixed bottom-8 left-8 z-[100] bg-sumiBlack text-washiPaper px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-2xl border border-ginzaGold/30 hover:bg-ginzaGold transition-all flex items-center gap-2 group"><span class="group-hover:-translate-x-1 transition-transform">←</span> Return to Hanei</a>
+
+    <header class="fixed w-full top-0 z-50 bg-washiPaper/90 backdrop-blur-md border-b border-sumiBlack/5">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-bold tracking-tighter uppercase">Ginza Kaizen</a>
+            <nav class="hidden md:flex space-x-12 text-xs uppercase tracking-[0.2em] font-semibold text-sumiBlack">
+                <a href="#services" class="hover:text-ginzaGold transition-colors">Treatments</a>
+                <a href="#portfolio" class="hover:text-ginzaGold transition-colors">Gallery</a>
+                <a href="#reviews" class="hover:text-ginzaGold transition-colors">Reviews</a>
+            </nav>
+            <a href="#booking" class="hidden md:block bg-sumiBlack text-washiPaper px-8 py-3 text-xs uppercase tracking-widest hover:bg-ginzaGold transition-all">Request Appointment</a>
+            <button id="hamburger" class="md:hidden flex flex-col space-y-1.5 focus:outline-none z-[60]">
+                <span class="w-8 h-[2px] bg-sumiBlack"></span>
+                <span class="w-8 h-[2px] bg-sumiBlack"></span>
+                <span class="w-5 h-[2px] bg-sumiBlack self-end"></span>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-nav-overlay" class="fixed inset-0 bg-sumiBlack z-[55] transform translate-x-full flex flex-col items-center justify-center space-y-8">
+        <nav class="flex flex-col items-center space-y-8 text-washiPaper text-2xl font-serif">
+            <a href="#services" class="mobile-link">Treatments</a>
+            <a href="#portfolio" class="mobile-link">Gallery</a>
+            <a href="#reviews" class="mobile-link">Reviews</a>
+            <a href="#booking" class="mobile-link bg-ginzaGold text-washiPaper px-10 py-4 text-sm uppercase tracking-[0.2em] font-sans">Book Now</a>
+        </nav>
+    </div>
+
+    <section class="relative min-h-screen flex items-center pt-20 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-8 items-center">
+            <div class="md:col-span-7 z-10" data-aos="fade-right">
+                <h2 class="font-serif italic text-ginzaGold text-xl md:text-2xl mb-4">Omotenashi Spirit</h2>
+                <h1 class="font-serif text-6xl md:text-8xl leading-[0.9] text-sumiBlack mb-8">Elevated <br><span class="md:pl-20">Refinement.</span></h1>
+                <p class="text-shaleGrey max-w-md text-lg font-light mb-10 leading-relaxed">Ginza's premier English-speaking sanctuary for bespoke color, precision cutting, and luxury hair restoration. Experience Japanese excellence, tailored for the global citizen.</p>
+                <a href="#booking" class="inline-flex items-center group">
+                    <span class="bg-sumiBlack text-washiPaper px-10 py-5 text-sm uppercase tracking-widest group-hover:bg-ginzaGold transition-all">Secure Your Session</span>
+                    <span class="p-5 border-y border-r border-sumiBlack group-hover:border-ginzaGold transition-all"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+                </a>
+            </div>
+            <div class="md:col-span-5 relative h-[500px] md:h-[700px]" data-aos="zoom-out" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?w=800&auto=format&fit=crop" class="w-full h-full object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000" alt="Ginza Salon">
+                <div class="absolute -bottom-10 -left-10 hidden md:block w-64 h-80 border-[10px] border-washiPaper z-20">
+                    <img src="https://images.unsplash.com/photo-1626379501846-0df4067b8bb9?w=400&auto=format&fit=crop" class="w-full h-full object-cover" alt="Detail">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-32 bg-sumiBlack text-washiPaper px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-20" data-aos="fade-up">
+                <p class="uppercase tracking-[0.3em] text-ginzaGold text-xs mb-4">Curated Offerings</p>
+                <h2 class="font-serif text-5xl md:text-6xl">Signature Treatments</h2>
+            </div>
+            <div class="grid md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[800px]">
+                <div class="md:col-span-2 md:row-span-2 bento-item bg-zinc-900 flex flex-col justify-end p-8" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1633681926035-ec1ac984418a?w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-50 transition-opacity" alt="Color">
+                    <div class="relative z-10">
+                        <h3 class="font-serif text-3xl mb-2">Bespoke Balayage</h3>
+                        <p class="text-washiPaper/60 font-light">Custom dimensional color work tailored to individual skin tones.</p>
+                    </div>
+                </div>
+                <div class="md:col-span-2 bento-item bg-zinc-900 p-8 flex items-center justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div class="z-10">
+                        <h3 class="font-serif text-2xl mb-2">Precision Cutting</h3>
+                        <p class="text-washiPaper/60 font-light">Architectural shapes that grow out beautifully.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1613754773306-532ec48b0de5?w=400&auto=format&fit=crop" class="w-32 h-32 rounded-full object-cover grayscale" alt="Cut">
+                </div>
+                <div class="bento-item bg-zinc-900 p-8" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1633681926019-03bd9325ec20?w=400&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-20" alt="Head Spa">
+                    <h3 class="font-serif text-2xl relative z-10">Scalp Rituals</h3>
+                </div>
+                <div class="bento-item bg-ginzaGold text-sumiBlack p-8 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="font-serif text-2xl">Refined Styling</h3>
+                    <p class="text-xs uppercase tracking-widest font-bold">Event Ready</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16" data-aos="fade-up">
+                <div class="max-w-xl">
+                    <p class="uppercase tracking-[0.3em] text-ginzaGold text-xs mb-4">Portfolio</p>
+                    <h2 class="font-serif text-5xl text-sumiBlack">Recent Transformations</h2>
+                </div>
+                <p class="text-shaleGrey mt-4 md:mt-0 italic font-serif">Syncing live from @GinzaKaizen</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="aspect-[4/5] bg-gray-100 overflow-hidden" data-aos="zoom-in"><img src="https://images.unsplash.com/photo-1581674210501-c760093514e8?w=500&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700"></div>
+                <div class="aspect-[4/5] bg-gray-100 overflow-hidden" data-aos="zoom-in" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1619218533116-f050e7d91d91?w=500&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700"></div>
+                <div class="aspect-[4/5] bg-gray-100 overflow-hidden" data-aos="zoom-in" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1641129915760-fd8da7097d7c?w=500&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700"></div>
+                <div class="aspect-[4/5] bg-gray-100 overflow-hidden" data-aos="zoom-in" data-aos-delay="300"><img src="https://images.unsplash.com/photo-1633681926035-ec1ac984418a?w=500&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="py-24 border-y border-sumiBlack/10 bg-washiPaper">
+        <div class="marquee-wrapper">
+            <div class="marquee-content gap-8 px-4">
+                <div class="w-[400px] bg-white p-8 shadow-sm border border-sumiBlack/5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-ginzaGold mb-4">★★★★★</div>
+                        <p class="text-sumiBlack text-sm font-light leading-relaxed whitespace-normal">"Best haircut in Tokyo! Being an expat, I was nervous about the language gap, but the staff here speak perfect English and understood my texture exactly."</p>
+                    </div>
+                    <p class="mt-6 font-serif italic text-shaleGrey">— Sarah Jenkins (Google Local Guide)</p>
+                </div>
+                <div class="w-[400px] bg-white p-8 shadow-sm border border-sumiBlack/5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-ginzaGold mb-4">★★★★★</div>
+                        <p class="text-sumiBlack text-sm font-light leading-relaxed whitespace-normal">"The Ginza salon experience I was looking for. Highly professional, zero rushing, and the balayage results are world-class. Worth every yen."</p>
+                    </div>
+                    <p class="mt-6 font-serif italic text-shaleGrey">— Mark Richardson</p>
+                </div>
+                <div class="w-[400px] bg-white p-8 shadow-sm border border-sumiBlack/5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-ginzaGold mb-4">★★★★★</div>
+                        <p class="text-sumiBlack text-sm font-light leading-relaxed whitespace-normal">"Exceptional head spa treatment. I left feeling refreshed and my hair has never looked healthier. A true Ginza gem for English speakers."</p>
+                    </div>
+                    <p class="mt-6 font-serif italic text-shaleGrey">— Emily Chen</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto bg-white p-10 md:p-20 shadow-[0_30px_100px_rgba(0,0,0,0.05)] border border-sumiBlack/5" data-aos="fade-up">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-5xl mb-4">Book Your Session</h2>
+                <p class="text-shaleGrey font-light">Our concierge will contact you to finalize your appointment.</p>
+            </div>
+            <form class="grid md:grid-cols-2 gap-x-12 gap-y-8">
+                <div><label class="text-[10px] uppercase tracking-widest font-bold text-sumiBlack">Full Name</label><input type="text" class="kaizen-input" required></div>
+                <div><label class="text-[10px] uppercase tracking-widest font-bold text-sumiBlack">Phone Number</label><input type="tel" class="kaizen-input" required></div>
+                <div><label class="text-[10px] uppercase tracking-widest font-bold text-sumiBlack">Desired Treatment</label><select class="kaizen-input text-shaleGrey"><option>Bespoke Color & Cut</option><option>Precision Cutting Only</option><option>Global Color Transformation</option><option>Luxury Head Spa Ritual</option></select></div>
+                <div><label class="text-[10px] uppercase tracking-widest font-bold text-sumiBlack">Time Slot</label><select class="kaizen-input text-shaleGrey"><option>Morning</option><option>Afternoon</option><option>Evening</option></select></div>
+                <div class="md:col-span-2 text-center pt-8"><button type="submit" class="bg-sumiBlack text-washiPaper px-20 py-5 text-sm uppercase tracking-widest hover:bg-ginzaGold transition-all w-full md:w-auto">Submit Request</button></div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-sumiBlack text-washiPaper pt-32 pb-12 px-6">
+        <div class="max-w-7xl mx-auto border-t border-washiPaper/10 pt-12 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.2em] text-washiPaper/40">
+            <p>© 2026 Ginza Kaizen Hair Artistry</p>
+            <p class="mt-4 md:mt-0">Designed by <span class="text-washiPaper/80 font-bold">HANEI.JP</span></p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        const hamburger = document.getElementById('hamburger');
+        const overlay = document.getElementById('mobile-nav-overlay');
+        hamburger.addEventListener('click', () => { overlay.classList.toggle('translate-x-full'); document.body.classList.toggle('overflow-hidden'); });
+    </script>
+
+    <script>
+      // Hanei JP Context Detection
+      (function() {
+        const returnLink = document.querySelector('a[href*="hanei.jp"]') || document.querySelector('a[href*="/demos"]');
+        if (returnLink) {
+          // Normalize to base demos link
+          returnLink.href = "/demos"; 
+          
+          // Detect Japanese context from referrer
+          if (document.referrer.includes("-jp")) {
+            returnLink.href = "/demos-jp";
+            returnLink.innerHTML = "← Haneiに戻る";
+          }
+        }
+      })();
+    </script>
+
+    <!-- HANEI UI FIX: FORCED MENU TERMINATION -->
+    <script>
+      (function() {
+        const links = document.querySelectorAll('.mobile-link');
+        const overlay = document.getElementById('mobile-nav-overlay') || document.getElementById('mobile-menu');
+        links.forEach(link => {
+          link.addEventListener('click', () => {
+            if (overlay) {
+              overlay.classList.add('translate-x-full');
+              document.body.classList.remove('overflow-hidden');
+            }
+          });
+        });
+      })();
+    </script>
+</body>
+</html>

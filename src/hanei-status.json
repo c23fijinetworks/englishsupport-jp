@@ -1,0 +1,8 @@
+{
+  "agent_status": "OPERATIONAL",
+  "studio": "English Support",
+  "active_services": ["1-Page Welcome", "Review Engine", "English Hanare", "Grand Opening"],
+  "demo_count": 14,
+  "standard_protocol": "v1.0",
+  "last_sync": "2026-04-10T08:30:00Z"
+}

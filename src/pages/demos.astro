@@ -1,0 +1,48 @@
+---
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = { 
+  title: 'Portfolio Demos | High-Conversion Marketing Hubs | English Support',
+  description: 'Explore our portfolio of high-converting boutique marketing demonstrations for Japanese industries.'
+};
+
+const demos = [
+  { title: "ZenPod Tokyo", sub: "Luxury capsule hotel concept blending Japanese aesthetics with high-converting marketing flows.", link: "/demos/capsule-hotel", img: "/images/demos/capsule-hotel.webp" },
+  { title: "Azabu Medical", sub: "Sophisticated medical facility demonstration highlighting physician-centric brand positioning.", link: "/demos/azabu-medical", img: "/images/demos/azabu-medical.webp" },
+  { title: "GINZA KAIZEN", sub: "Premium hair artistry sanctuary featuring English-speaking concierge brand integration.", link: "/demos/ginza-kaizen", img: "/images/demos/ginza-kaizen.webp" },
+  { title: "Tokyo Locker & Storage", sub: "Premium hospitality branding with tiered visibility and high-end service flows.", link: "/demos/tokyo-locker-storage-premium-luggage-solutions", img: "/images/demos/tokyo-locker-storage-premium-luggage-solutions.webp" },
+  { title: "Kagari Izakaya & Grill", sub: "Luxury gastronomy destination featuring seasonal omakase reservation storytelling.", link: "/demos/kagari-izakaya-grill-shinjuku-tokyo-gastronomy", img: "/images/demos/kagari-izakaya-grill-shinjuku-tokyo-gastronomy.webp" },
+  { title: "Shika-An Nara", sub: "Heritage guesthouse experience focused on tranquility and traditional luxury branding.", link: "/demos/shika-an-nara-luxury-heritage-guesthouse", img: "/images/demos/shika-an-nara-luxury-heritage-guesthouse.webp" },
+  { title: "Tokyo Unseen", sub: "Boutique culinary expeditions and luxury street food brand design.", link: "/demos/osaka-unseen-luxury-culinary-expeditions", img: "/images/demos/osaka-unseen-luxury-culinary-expeditions.webp" },
+  { title: "Takumi Precision", sub: "Digital branding and international marketing strategy for high-end artisanal firms.", link: "/demos/takumi-precision-tokyo-engineering-the-future", img: "/images/demos/takumi-precision-tokyo-engineering-the-future.webp" },
+  { title: "Omotesando Dental", sub: "Elite dentistry clinic focusing on English-speaking expats and medical authority branding.", link: "/demos/omotesando-dental", img: "/images/demos/omotesando-dental.webp" },
+  { title: "KyoEthereal", sub: "Scholar-led Kyoto temple expeditions and private spiritual journey brand planning.", link: "/demos/private-kyoto-temple-expeditions", img: "/images/demos/private-kyoto-temple-expeditions.webp" },
+  { title: "Mizu no Kokoro", sub: "Luxury wellness and brand design for the high-end Tokyo market.", link: "/demos/mizu-no-kokoro-luxury-sento-wellness-osaka", img: "/images/demos/mizu-no-kokoro-luxury-sento-wellness-osaka.webp" },
+  { title: "Kura Tokyo", sub: "Premium concierge branding and high-end security storytelling for luxury assets.", link: "/demos/kura-tokyo-premium-luggage-concierge-secure-storage", img: "/images/demos/kura-tokyo-premium-luggage-concierge-secure-storage.webp" },
+  { title: "Kissa & Co.", sub: "Boutique roastery and slow-coffee brand experience for artisanal cafes.", link: "/demos/kissa-co-osaka", img: "/images/demos/kissa-co-osaka.webp" },
+  { title: "Zen Relocations", sub: "Meticulous white-glove moving brand services for the international community.", link: "/demos/zen-relocations-japan-relocations", img: "/images/demos/zen-relocations-japan-relocations.webp" }
+];
+---
+<Layout metadata={metadata}>
+  <Hero2 
+    tagline="The Hanei Benchmark" 
+    title='Boutique Performance. <br/><span class="text-accent">Unrivaled Precision.</span>' 
+    subtitle="Step into our gallery of elite digital demonstrations. Each asset is a masterclass in high-conversion creative logic, meticulously designed to translate local Japanese excellence into a global authority signal."
+    image={{ src: '/images/demos/omotesando-dental.webp', alt: 'Hanei Showcase' }}
+  />
+
+  <div class="space-y-4">
+    {demos.map((demo, index) => (
+      <Content 
+        isReversed={index % 2 !== 0}
+        title={`Portfolio Demo: ${demo.title}`}
+        subtitle={demo.sub}
+        callToAction={{ variant: 'primary', text: 'Launch Live Demo', href: demo.link, target: '_blank' }}
+        image={{ src: demo.img, alt: demo.title }}
+        classes={{ container: 'py-12 md:py-20' }}
+      />
+    ))}
+  </div>
+</Layout>

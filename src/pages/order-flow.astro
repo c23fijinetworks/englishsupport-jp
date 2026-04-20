@@ -1,0 +1,124 @@
+---
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+
+const metadata = { 
+  title: 'Inbound Journey | Simple 3-Step Process | English Support',
+  description: 'From order to launch in record time. See how easy it is to start your professional inbound digital expansion with zero monthly fees.'
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero2
+    tagline="The Strategic Inbound Process"
+    title='Fast, Simple, and <br/><span class="text-accent">Stress-Free.</span>'
+    subtitle="We know you're busy running your business. That's why we’ve eliminated long meetings, complicated contracts, and recurring monthly fees. Get started in minutes."
+    image={{ src: '/images/demos/zen-relocations-japan-relocations.webp', alt: 'Efficient Workflow' }}
+    classes={{ inner: 'pb-4 md:pb-6' }}
+  />
+
+  <Content
+    isReversed={false}
+    tagline="Step 01"
+    title="Choose Your Marketing Package"
+    subtitle="Select the plan that fits your brand needs. Every package is a simple one-time marketing investment—meaning no hidden monthly subscriptions or ongoing maintenance fees ever. Complete your secure payment instantly via Stripe or PayPal to begin."
+    items={[{ title: 'One-Time Payment', description: 'Own your marketing assets forever with zero recurring costs.', icon: 'tabler:coin' }]}
+    image={{ src: '/images/hanei-media/020.webp' }}
+    classes={{ container: 'py-8 md:py-12' }}
+  />
+
+  <Content
+    isReversed={true}
+    isAfterContent={true}
+    tagline="Step 02"
+    title="Share Your Brand Details"
+    subtitle="Fill out our streamlined onboarding form. Simply provide your basic shop info, services, and high-resolution photos. We handle the complexity while you focus on your customers."
+    items={[{ title: 'Guided Onboarding', description: 'Our team assists you in gathering the right details.', icon: 'tabler:file-description' }]}
+    image={{ src: '/images/hanei-media/009.webp' }}
+    classes={{ container: 'py-8 md:py-12' }}
+  />
+
+  <Content
+    isReversed={false}
+    isAfterContent={true}
+    tagline="Step 03"
+    title="Creative Strategy & Review"
+    subtitle="Our creative strategists and writers construct your high-visibility hub within 24 to 72 hours. You will receive a private preview link to review the design and copy. We offer unlimited revisions until the final result perfectly reflects your craft."
+    items={[{ title: 'Absolute Precision', description: 'We polish every detail until you are 100% satisfied.', icon: 'tabler:tool' }]}
+    image={{ src: '/images/hanei-media/022.webp' }}
+    classes={{ container: 'py-8 md:py-12' }}
+  />
+
+  <Content
+    isReversed={true}
+    isAfterContent={true}
+    tagline="Step 04"
+    title="Launch and Global Reach"
+    subtitle="Once you love the result, we go live! Your brand is now connected to our high-visibility global network. We provide you with your custom QR kits and marketing assets so you can start welcoming new customers immediately."
+    items={[{ title: 'Record Launch Speed', description: 'Go from zero to live in as little as one business day.', icon: 'tabler:rocket' }]}
+    image={{ src: '/images/hanei-media/004.webp' }}
+    classes={{ container: 'py-8 md:py-12' }}
+  />
+
+  <Features3
+    title="Built for Busy Owners"
+    subtitle="We handle the heavy lifting so you don't have to."
+    columns={3}
+    items={[
+      { title: 'Zero Monthly Fees', description: 'Lifetime ownership. No fees, hosting bills, or hidden costs.', icon: 'tabler:circle-check' },
+      { title: 'Easy Setup', description: 'We communicate in plain language so it is easy for you to understand.', icon: 'tabler:message-circle' },
+      { title: 'Record Speed', description: 'Most services delivered within 24 to 72 hours.', icon: 'tabler:bolt' },
+    ]}
+    classes={{ container: 'py-8 md:py-12' }}
+  />
+
+  <hr class="max-w-7xl mx-auto border-t dark:border-slate-800" />
+
+  <Features2
+    title="Secure Your Elite Brand Asset Today"
+    subtitle="Choose the specific solution your business needs to grow."
+    columns={3}
+    items={[
+      {
+        title: 'Inbound English Welcome',
+        description: 'The Digital Brand Guide. Order by noon, live by the afternoon.',
+        icon: 'tabler:square-number-1',
+        callToAction: { text: 'View Package', href: '/one-page-welcome' },
+      },
+      {
+        title: 'Reputation Review Marketing',
+        description: 'Automated Trust. Turn happy customers into 5-star Google reviews.',
+        icon: 'tabler:stars',
+        callToAction: { text: 'View Package', href: '/review-engine' },
+      },
+      {
+        title: 'Global Reach Hub',
+        description: 'Global Expansion. A detached English hub without touching your current site.',
+        icon: 'tabler:language',
+        callToAction: { text: 'View Package', href: '/english-hanare' },
+      },
+      {
+        title: 'Brand Modernization',
+        description: 'Modern Aesthetic Facelift. Refresh your existing brand presence.',
+        icon: 'tabler:palette',
+        callToAction: { text: 'View Reform', href: '/grand-opening/#reform' },
+      },
+      {
+        title: 'Flagship Digital Launch',
+        description: 'Total Brand Blueprint. A complete from-scratch professional launch.',
+        icon: 'tabler:rocket',
+        callToAction: { text: 'View New Build', href: '/grand-opening/#new' },
+      },
+      {
+        title: 'Community Mission',
+        description: 'Elite Strategic Support. Professional brand support for local NPOs, free of charge.',
+        icon: 'tabler:heart',
+        callToAction: { text: 'Learn More', href: '/community-mission' },
+      },
+    ]}
+    classes={{ container: 'py-12 md:py-20' }}
+  />
+</Layout>

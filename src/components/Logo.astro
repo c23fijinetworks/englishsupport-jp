@@ -1,0 +1,11 @@
+---
+const pathname = Astro.url.pathname;
+const isJp = pathname.includes('-jp') || pathname.includes('trust-kit');
+const homeHref = isJp ? '/index-jp' : '/';
+---
+<a href={homeHref} class="flex items-center">
+  <img src="/images/logo_main.png" alt="English Support" class="h-10 w-auto rounded-md shadow-sm mr-2 rtl:mr-0 rtl:ml-2" loading="lazy" decoding="async">
+  <span class="self-center text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white">
+    English Support
+  </span>
+</a>

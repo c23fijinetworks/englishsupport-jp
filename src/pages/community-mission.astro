@@ -1,0 +1,83 @@
+---
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = { 
+  title: 'Community Mission | Free Web Hub Creation for the Public Good', 
+  description: 'Professional web presence for Japans NPOs and community services, provided free of charge.',
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero2
+    tagline="Community Mission"
+    title='Empowering the Heart of Japan: <br/><span class="text-accent">Professional Web, Free for the Public Good.</span>'
+    subtitle="You dedicate your lives to serving others. We dedicate our craft to ensuring the world sees your impact. Professional-grade digital hub solutions for registered NPOs in Japan."
+    actions={[{ variant: 'primary', text: 'Inquire for Support', href: 'mailto:webmaster@fijinetworks.com?subject=Community Mission Inquiry', target: '_blank' }]}
+    image={{ src: '/images/hanei-media/031.webp', alt: 'Japanese Community' }}
+  />
+  
+  <Content isReversed={true} classes={{ container: 'py-8 md:py-12' }}>
+    <Fragment slot="content">
+      <h3 class="text-3xl font-bold mb-4 text-slate-950">Elite Digital Support for Domestic Japan.</h3>
+      <p class="text-lg text-slate-600 mb-4 font-medium">
+        From the resilient communities in Kobe and Hiroshima to the bustling social initiatives in Tokyo and Kyoto, local heroes are working to strengthen the fabric of Japanese society.
+      </p>
+      <p class="text-lg text-slate-600 font-medium">
+        At Hanei, we believe those who do the most good shouldn’t be held back by a lack of digital resources. Your regional mission deserves a professional digital home—not a DIY template, but a digital destination built with absolute precision.
+      </p>
+    </Fragment>
+    <Fragment slot="image">
+       <img src="/images/hanei-media/014.webp" alt="Traditional Japan" class="rounded-lg shadow-xl w-full" />
+    </Fragment>
+  </Content>
+
+  <Content
+    isReversed={false}
+    isAfterContent={true}
+    tagline="Our Focus"
+    title="The Pillars of Our Public Good Support"
+    items={[
+        { title: 'Disability Advocacy', description: 'Websites built to the highest modern accessibility standards.', icon: 'tabler:accessible' },
+        { title: 'Animal Welfare', description: 'Showcasing rescues in the best light and facilitating adoption applications.', icon: 'tabler:paw' },
+        { title: 'Senior Citizens', description: 'Accessible, high-contrast sites to connect seniors with local resources.', icon: 'tabler:old' },
+        { title: 'Youth Services', description: 'Safe online spaces for Kodomo Shokudo and educational support.', icon: 'tabler:school' },
+    ]}
+    image={{ src: '/images/hanei-media/007.webp', alt: 'Animal Care' }}
+    classes={{ container: 'py-8 md:py-12' }}
+  >
+    <Fragment slot="content">
+      <p class="text-lg text-muted mb-6">
+        We focus our efforts on the sectors that form the backbone of a compassionate society across all Japanese prefectures.
+      </p>
+    </Fragment>
+  </Content>
+
+  <Features2
+    title='Every Public Good Site Includes the <br/><span class="text-accent">"Hanei Standard":</span>'
+    subtitle="We provide the same elite web solutions to our NPO partners as our corporate clients."
+    columns={3}
+    items={[
+      { title: 'Custom Professional Design', description: 'A unique look that reflects your organization’s heart.', icon: 'tabler:circle-check' },
+      { title: 'Mobile Optimization', description: 'A seamless experience on smartphones.', icon: 'tabler:circle-check' },
+      { title: 'Search Engine Optimization', description: 'So people in your local community can actually find you.', icon: 'tabler:circle-check' },
+      { title: 'Secure Hosting Setup', description: 'Guidance on the most secure ways to host your site.', icon: 'tabler:circle-check' },
+      { title: 'Content Training', description: 'We teach your team how to update content independently.', icon: 'tabler:circle-check' },
+      { title: 'Bilingual Capability', description: 'Helping you bridge the gap between local and global supporters.', icon: 'tabler:circle-check' },
+    ]}
+  />
+
+  <div id="application" class="scroll-mt-20 py-24 text-center px-4">
+    <div class="max-w-4xl mx-auto bg-slate-50 rounded-[3rem] p-12 md:p-24 border-2 border-slate-100 shadow-2xl">
+      <h3 class="text-4xl md:text-6xl font-black text-slate-950 uppercase tracking-tighter mb-8 leading-tight">Let us Help You <br/>Make Your Impact</h3>
+      <p class="text-xl md:text-2xl text-slate-600 mb-12 font-bold leading-relaxed">
+        We accept limited public good projects each year. If you are a registered NPO or verified community group, please email us today.
+      </p>
+      <a href="mailto:webmaster@fijinetworks.com?subject=Community Mission Support Request" target="_blank" class="inline-block bg-blue-600 text-white px-12 py-6 rounded-2xl text-2xl font-black uppercase tracking-widest hover:bg-slate-950 transition-all transform hover:-translate-y-1 shadow-2xl">
+        Email us Today
+      </a>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth overflow-x-hidden max-w-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAGARI IZAKAYA & GRILL | Shinjuku Tokyo Gastronomy</title>
+    
+    <!-- Google Fonts: Elegant Serif for Headings & Modern Sans for Body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        midnight: '#0C0C0C',
+                        charcoal: '#1A1A1A',
+                        gold: '#E5D5B0',
+                        goldDark: '#B8A06D',
+                        parchment: '#F2EDE4'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #0C0C0C; color: #D1D1D1; }
+        
+        /* Parchment Texture Overlay for specific sections */
+        .texture-overlay {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+
+        /* Navigation Transition */
+        #mobile-menu {
+            transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        #mobile-menu.active {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Review Marquee */
+        .marquee-container { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
+        .marquee-content { display: inline-flex; animation: scroll 45s linear infinite; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-content:hover { animation-play-state: paused; }
+
+        /* Review Card Styling - Overflow Prevention */
+        .review-card {
+            white-space: normal;
+            word-wrap: break-word;
+            width: 380px;
+            background: #1A1A1A;
+            padding: 2rem;
+            margin-right: 1.5rem;
+            border-top: 2px solid #E5D5B0;
+        }
+
+        /* Custom Input Styling */
+        .kagari-input {
+            background: transparent;
+            border: 1px solid rgba(229, 213, 176, 0.3);
+            width: 100%;
+            padding: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            color: white;
+        }
+        .kagari-input:focus { border-color: #E5D5B0; background: rgba(255,255,255,0.05); }
+        select option { background: #1A1A1A; color: white; }
+
+        /* Custom Hover Effect */
+        .bento-hover { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .bento-hover:hover { transform: translateY(-10px); }
+    </style>
+</head>
+<body class="overflow-x-hidden max-w-full font-sans antialiased overflow-x-hidden">
+
+    <!-- NAVIGATION -->
+    <header class="fixed w-full top-0 z-[100] bg-midnight/90 backdrop-blur-md border-b border-gold/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-bold tracking-tight text-gold uppercase">Kagari</a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-10 text-[10px] uppercase tracking-[0.3em] font-bold text-gold/80">
+                <a href="#menu" class="hover:text-gold transition-colors">The Menu</a>
+                <a href="#rules" class="hover:text-gold transition-colors">Etiquette</a>
+                <a href="#gallery" class="hover:text-gold transition-colors">Visuals</a>
+            </nav>
+
+            <a href="#reservation" class="hidden md:block bg-gold text-midnight px-8 py-3 text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-white transition-all">
+                Reserve a Table
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button id="hamburger" class="md:hidden flex flex-col space-y-1.5 focus:outline-none z-[110]">
+                <span class="w-8 h-[2px] bg-gold"></span>
+                <span class="w-8 h-[2px] bg-gold"></span>
+                <span class="w-5 h-[2px] bg-gold self-end"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="fixed inset-0 bg-midnight z-[105] flex flex-col items-center justify-center space-y-10">
+        <nav class="flex flex-col items-center space-y-8 text-gold text-3xl font-serif italic">
+            <a href="#menu" class="mobile-link">The Menu</a>
+            <a href="#rules" class="mobile-link">Etiquette</a>
+            <a href="#gallery" class="mobile-link">Visuals</a>
+            <a href="#reservation" class="mobile-link bg-gold text-midnight px-10 py-4 text-sm uppercase tracking-widest font-sans font-bold">Reservations</a>
+        </nav>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1617870314635-fc819547ec11?w=1600&auto=format&fit=crop" 
+                 class="w-full h-full object-cover opacity-40 grayscale" alt="Grill">
+        </div>
+        
+        <div class="relative z-10 text-center max-w-5xl">
+            <p data-aos="fade-down" class="uppercase tracking-[0.5em] text-gold text-xs mb-8 font-bold">Traditional Craft • Shinjuku • One Page</p>
+            <h1 data-aos="fade-up" data-aos-delay="200" class="font-serif text-6xl md:text-9xl font-bold text-white leading-[0.85] mb-12">
+                Smoke, Salt <br>& <span class="italic font-light text-gold">Soul.</span>
+            </h1>
+            <p data-aos="fade-up" data-aos-delay="400" class="text-gold/70 max-w-xl mx-auto text-lg font-light mb-12 leading-relaxed">
+                Your entire business on one professional page. Order by noon, and your luxury presence is live by the afternoon. An intimate escape in the heart of the neon city.
+            </p>
+            <div data-aos="fade-up" data-aos-delay="600">
+                <a href="#reservation" class="bg-gold text-midnight px-12 py-5 text-xs uppercase tracking-widest font-bold hover:bg-white transition-all shadow-2xl">
+                    Experience Kagari
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE MENU (BENTO GRID) -->
+    <section id="menu" class="py-32 px-6 bg-charcoal relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-24" data-aos="fade-up">
+                <div class="max-w-xl">
+                    <h2 class="font-serif text-5xl md:text-7xl text-white mb-6">Culinary <br>Mastery</h2>
+                    <p class="text-gold/60 font-light text-lg italic uppercase tracking-widest">Seasonal. Precise. Artisanal.</p>
+                </div>
+                <div class="w-24 h-[1px] bg-gold mb-4 hidden md:block"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Omakase -->
+                <div class="md:col-span-2 bento-hover bg-midnight p-8 md:p-12 relative overflow-hidden h-[500px] flex flex-col justify-end" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1649591840628-767380a19104?w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-30 grayscale hover:opacity-50 transition-all duration-700" alt="Omakase">
+                    <div class="relative z-10">
+                        <h3 class="font-serif text-4xl text-gold mb-4 italic">Chef’s Omakase</h3>
+                        <p class="text-white/70 max-w-md font-light leading-relaxed">An 11-course journey of seasonal delicacies, featuring hand-selected fish from Toyosu and aged Wagyu beef.</p>
+                    </div>
+                </div>
+
+                <!-- Yakitori -->
+                <div class="bento-hover bg-gold p-10 flex flex-col justify-between h-[500px]" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="font-serif text-3xl text-midnight font-bold">Signature <br>Yakitori</h3>
+                    <img src="https://images.unsplash.com/photo-1601351841251-766245326eee?w=400&auto=format&fit=crop" class="w-full h-48 object-cover shadow-xl" alt="Yakitori">
+                    <p class="text-midnight/80 text-sm font-semibold tracking-wide uppercase">Grilled over Binchotan Charcoal</p>
+                </div>
+
+                <!-- Sake -->
+                <div class="bento-hover bg-midnight p-10 border border-gold/20 h-[500px] flex flex-col justify-between" data-aos="fade-up">
+                    <div>
+                        <h3 class="font-serif text-3xl text-white mb-6">Rare Sake Selection</h3>
+                        <p class="text-white/60 text-sm font-light leading-loose">Explore curated vintages from Niigata and Ishikawa, including private labels exclusive to Kagari.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1611518040385-1cc65ab82c91?w=400&auto=format&fit=crop" class="w-full h-40 object-cover grayscale" alt="Sake">
+                </div>
+
+                <!-- Drinks -->
+                <div class="md:col-span-2 bento-hover bg-parchment p-12 flex flex-col md:flex-row items-center gap-12 h-auto md:h-[500px]" data-aos="fade-up" data-aos-delay="200">
+                    <div class="md:w-1/2">
+                        <h3 class="font-serif text-4xl text-midnight mb-6">Mixology</h3>
+                        <p class="text-midnight/70 text-sm font-light leading-relaxed mb-8">Japanese-inspired cocktails utilizing seasonal fruits, Shiso, and premium Japanese Gin.</p>
+                        <a href="#reservation" class="text-[10px] font-bold uppercase tracking-widest border-b border-midnight pb-1 text-midnight">View Drink List</a>
+                    </div>
+                    <div class="md:w-1/2 h-full">
+                        <img src="https://images.unsplash.com/photo-1531143991054-06c90e011ab5?w=600&auto=format&fit=crop" class="w-full h-full object-cover shadow-2xl" alt="Cocktails">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOUSE RULES & PAYMENTS -->
+    <section id="rules" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-24">
+            <div data-aos="fade-right">
+                <p class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-6">Izakaya Etiquette</p>
+                <h2 class="font-serif text-5xl text-white mb-12">House Rules</h2>
+                <div class="space-y-10">
+                    <div class="flex gap-6">
+                        <span class="font-serif italic text-gold text-3xl">01</span>
+                        <div>
+                            <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-2">Otoshi Service</h4>
+                            <p class="text-white/50 text-sm leading-relaxed">A seasonal appetizer (Otoshi) is served to every guest upon seating. A table charge of ¥800 applies.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <span class="font-serif italic text-gold text-3xl">02</span>
+                        <div>
+                            <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-2">Seating Limits</h4>
+                            <p class="text-white/50 text-sm leading-relaxed">To ensure all guests enjoy the Kagari experience, seating is limited to 2 hours during peak service.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <span class="font-serif italic text-gold text-3xl">03</span>
+                        <div>
+                            <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-2">Smoke-Free</h4>
+                            <p class="text-white/50 text-sm leading-relaxed">We maintain a strictly non-smoking environment to preserve the delicate aromas of our charcoal grill.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-left" class="bg-charcoal p-12 border border-gold/10">
+                <h2 class="font-serif text-4xl text-white mb-8">Settling the Bill</h2>
+                <p class="text-white/50 mb-12 font-light">We accept various international and local payment methods for your convenience.</p>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-6 border border-white/5 flex items-center justify-center text-[10px] font-bold tracking-[0.2em] uppercase text-gold">Visa / Amex</div>
+                    <div class="p-6 border border-white/5 flex items-center justify-center text-[10px] font-bold tracking-[0.2em] uppercase">Mastercard</div>
+                    <div class="p-6 border border-white/5 flex items-center justify-center text-[10px] font-bold tracking-[0.2em] uppercase">PayPay / Line</div>
+                    <div class="p-6 border border-white/5 flex items-center justify-center text-[10px] font-bold tracking-[0.2em] uppercase text-goldDark">Suica / Pasmo</div>
+                    <div class="col-span-2 p-6 border border-white/5 flex items-center justify-center text-[10px] font-bold tracking-[0.2em] uppercase">Cash (Japanese Yen)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM FEED -->
+    <section id="gallery" class="py-32 bg-midnight">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16" data-aos="fade-up">
+                <div>
+                    <h2 class="font-serif text-5xl text-white mb-2">The Vibe</h2>
+                    <p class="text-gold tracking-[0.3em] uppercase text-[10px] font-bold">Follow @KagariShinjuku</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                <img src="https://images.unsplash.com/photo-1708597525178-6c302364f37c?w=500&auto=format&fit=crop" class="aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-700" data-aos="zoom-in" alt="Interior">
+                <img src="https://images.unsplash.com/photo-1675002198986-4c4b219e7bec?w=500&auto=format&fit=crop" class="aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-700" data-aos="zoom-in" data-aos-delay="100" alt="Plating">
+                <img src="https://images.unsplash.com/photo-1561535893-bb7a98c7ee45?w=500https://images.unsplash.com/photo-1555127419-abf139af6f25?w=500&auto=format&fit=cropauto=formathttps://images.unsplash.com/photo-1555127419-abf139af6f25?w=500&auto=format&fit=cropfit=crophttps://images.unsplash.com/photo-1555127419-abf139af6f25?w=500&auto=format&fit=cropq=60https://images.unsplash.com/photo-1555127419-abf139af6f25?w=500&auto=format&fit=cropixlib=rb-4.1.0https://images.unsplash.com/photo-1555127419-abf139af6f25?w=500&auto=format&fit=cropixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHNha2V8ZW58MHx8MHx8fDA%3D" class="aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-700" data-aos="zoom-in" data-aos-delay="200" alt="Grill">
+                <img src="https://images.unsplash.com/photo-1733554080206-9cb6e02fa822?w=500&auto=format&fit=crop" class="aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-700" data-aos="zoom-in" data-aos-delay="300" alt="Sake">
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="py-24 border-y border-gold/10 bg-charcoal overflow-hidden">
+        <div class="marquee-container">
+            <div class="marquee-content gap-8">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="flex text-gold mb-4 text-[10px] font-black tracking-widest uppercase">★★★★★ Google Local Guide</div>
+                    <p class="text-white/80 text-sm font-light italic leading-loose mb-6">"Hidden in plain sight in Shinjuku. The yakitori was perfectly charred and the sake selection is the best I've seen in Tokyo. Flawless English support too."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-goldDark">— Jonathan R., London</p>
+                </div>
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="flex text-gold mb-4 text-[10px] font-black tracking-widest uppercase">★★★★★ Google Local Guide</div>
+                    <p class="text-white/80 text-sm font-light italic leading-loose mb-6">"A truly high-end izakaya experience. It's moody, intimate, and the Omakase was worth every yen. Highly recommended for couples."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-goldDark">— Sarah M., Singapore</p>
+                </div>
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div class="flex text-gold mb-4 text-[10px] font-black tracking-widest uppercase">★★★★★ Google Local Guide</div>
+                    <p class="text-white/80 text-sm font-light italic leading-loose mb-6">"The atmosphere is 10/10. It feels like a secret club. We booked easily through their one-page site and the service was impeccable."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-goldDark">— David Thorne, NYC</p>
+                </div>
+                <!-- Duplicates -->
+                <div class="review-card">
+                    <div class="flex text-gold mb-4 text-[10px] font-black tracking-widest uppercase">★★★★★ Google Local Guide</div>
+                    <p class="text-white/80 text-sm font-light italic leading-loose mb-6">"Hidden in plain sight in Shinjuku. The yakitori was perfectly charred."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-goldDark">— Jonathan R.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVATION FORM -->
+    <section id="reservation" class="py-32 px-6 relative">
+        <div class="absolute right-0 top-0 w-1/3 h-full opacity-10 pointer-events-none hidden md:block">
+            <img src="https://images.unsplash.com/photo-1596815390511-58869bc64193?w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Background">
+        </div>
+
+        <div class="max-w-4xl mx-auto bg-midnight p-10 md:p-20 shadow-2xl border border-gold/10" data-aos="fade-up">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-5xl md:text-7xl mb-4 text-white">Book a Table</h2>
+                <p class="text-gold/60 font-light italic">Your evening at Kagari begins here.</p>
+            </div>
+
+            <form class="grid md:grid-cols-2 gap-x-12 gap-y-8">
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-gold">Guest Name</label>
+                    <input type="text" placeholder="Full Name" class="kagari-input" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-gold">Party Size</label>
+                    <select class="kagari-input">
+                        <option>1 Guest</option>
+                        <option>2 Guests</option>
+                        <option>3 - 4 Guests</option>
+                        <option>Private Room (5 - 8 Guests)</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-gold">Date</label>
+                    <input type="date" class="kagari-input" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-gold">Time Window</label>
+                    <select class="kagari-input">
+                        <option>18:00 - 18:30</option>
+                        <option>19:00 - 19:30</option>
+                        <option>20:00 - 20:30</option>
+                        <option>21:00 - 21:30</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-gold">Occasion</label>
+                    <select class="kagari-input">
+                        <option>Casual Dining</option>
+                        <option>Business Meeting</option>
+                        <option>Anniversary / Birthday</option>
+                        <option>Tourist Exploration</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-gold">Dietary Restrictions</label>
+                    <input type="text" placeholder="e.g. Allergies, No Seafood" class="kagari-input">
+                </div>
+                <div class="md:col-span-2 pt-10">
+                    <button type="submit" class="w-full bg-gold text-midnight py-6 text-xs uppercase tracking-widest font-bold hover:bg-white transition-all shadow-xl">
+                        Dispatch Reservation Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-midnight text-white pt-32 pb-12 px-6 border-t border-gold/10">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-16 mb-20">
+            <div class="md:col-span-5">
+                <h2 class="font-serif text-3xl mb-8 uppercase tracking-widest text-gold">Kagari <span class="italic font-light lowercase text-white">Izakaya</span></h2>
+                <p class="text-white/40 font-light leading-relaxed max-w-sm italic text-lg">
+                    "An intimate escape in the heart of the neon city. Preserving the flame of the Binchotan grill."
+                </p>
+                <div class="mt-10 space-y-2 text-xs tracking-widest uppercase text-white/30 font-bold">
+                    <p>Open Daily: 17:30 — 23:30 JST</p>
+                    <p>Phone: +81 (0) 3 5300 0000</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-3">
+                <h4 class="text-goldDark uppercase tracking-widest text-[10px] font-black mb-8 italic">The Shinjuku Sanctum</h4>
+                <div class="font-serif text-xl space-y-2">
+                    <p>3-Chome, Shinjuku, <br>Shinjuku-ku, Tokyo <br>Japan 160-0022</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-4">
+                <div class="w-full h-64 grayscale brightness-50 border border-gold/10 relative group overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Map">
+                    <div class="absolute inset-0 flex items-center justify-center bg-midnight/20">
+                        <span class="px-6 py-2 border border-gold/20 text-[10px] tracking-widest uppercase backdrop-blur-sm">View Location Grid</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto border-t border-gold/10 pt-12 flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-[0.4em] text-white/20 font-bold">
+            <p>© 2026 Kagari Izakaya & Grill</p>
+            <p class="mt-4 md:mt-0">Designed by <span class="text-gold">HANEI.JP</span></p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true, easing: 'ease-out-expo' });
+
+        const hamburger = document.getElementById('hamburger');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            document.body.classList.toggle('overflow-hidden');
+        });
+
+        links.forEach(l => l.addEventListener('click', () => {
+            menu.classList.remove('active');
+            document.body.classList.remove('overflow-hidden');
+        }));
+
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Your reservation request has been dispatched. Our host will contact you shortly to confirm your table.');
+        });
+    </script>
+    <!-- HANEI OVERLAY (MANDATORY) -->
+    <a href="/demos" class="fixed bottom-8 left-8 z-[200] bg-midnight text-gold px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-2xl border border-gold/30 hover:bg-gold hover:text-midnight transition-all flex items-center gap-2 group"><span class="group-hover:-translate-x-1 transition-transform">←</span> Return to Hanei</a>
+
+    <script>
+      // Hanei JP Context Detection
+      (function() {
+        const returnLink = document.querySelector('a[href*="hanei.jp"]') || document.querySelector('a[href*="/demos"]');
+        if (returnLink) {
+          // Normalize to base demos link
+          returnLink.href = "/demos"; 
+          
+          // Detect Japanese context from referrer
+          if (document.referrer.includes("-jp")) {
+            returnLink.href = "/demos-jp";
+            returnLink.innerHTML = "← Haneiに戻る";
+          }
+        }
+      })();
+    </script>
+</body>
+</html>

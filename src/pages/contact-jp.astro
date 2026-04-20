@@ -1,0 +1,77 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+import BespokeForm from '~/components/widgets/BespokeForm.astro';
+
+const metadata = { 
+  title: 'お問い合わせ | 戦略的インバウンド・マーケティング | English Support',
+  description: 'ブティック・インバウンド・マーケティングと高視認性デジタル拠点構築。English Supportへのお問い合わせ。'
+};
+
+const jpLabels = {
+    title: "制作・パートナーシップのご相談",
+    description: "ブランドの視認性と戦略的なクリエイティブ・ガイダンスについて、お気軽にお問い合わせください。プロフェッショナルなお問い合わせに対し、当日中の返信を保証しております。",
+    client_name: "お名前",
+    company_name: "貴社名・店名",
+    email: "メールアドレス",
+    request_type: "戦略カテゴリ",
+    project_summary: "ブランドの目標・プロジェクトの詳細",
+    budget_range: "マーケティング投資レベル",
+    deadline: "希望公開時期",
+    submit: "相談内容を送信する",
+    sending: "送信中...",
+    success_title: "送信が完了しました",
+    success_message: "お問い合わせ内容を正常に受け付けました。<br/>24時間以内に担当者より返信をお約束いたします。"
+};
+
+const jpOptions = {
+    requests: [
+      { label: "インバウンド英語ウェルカム", value: "Inbound English Welcome" },
+      { label: "レピュテーション・レビュー・マーケティング", value: "Reputation Review Marketing" },
+      { label: "英語専用デジタル別館（Hanare）", value: "Global Reach Hub (Hanare)" },
+      { label: "ブランド・リフォーム（刷新）", value: "Brand Modernization" },
+      { label: "フラッグシップ・デジタル公開（新規）", value: "Flagship Digital Launch" },
+      { label: "一般的なマーケティング相談", value: "General Marketing Inquiry" },
+      { label: "カスタム・マーケティング・ロジック / API", value: "Custom Marketing Logic / API" },
+      { label: "その他", value: "Other" }
+    ],
+    budgets: [
+      { label: "該当なし・未定", value: "Not Applicable" },
+      { label: "10万円 - 30万円", value: "¥100k - ¥300k" },
+      { label: "30万円 - 50万円", value: "¥300k - ¥500k" },
+      { label: "50万円 - 100万円", value: "¥500k - ¥1M" },
+      { label: "100万円以上", value: "¥1M+" }
+    ],
+    timelines: [
+      { label: "至急 (最短当日)", value: "Today / ASAP" },
+      { label: "今週中", value: "Within this week" },
+      { label: "1ヶ月以内", value: "Within 1 month" },
+      { label: "時期未定・相談", value: "Flexible" },
+      { label: "その他", value: "Other" }
+    ]
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero2
+    tagline="インバウンド・マーケティング・コンサルテーション"
+    title='貴社のデジタル・プレゼンスを、<br/><span class="text-accent">共に構築しましょう。</span>'
+    subtitle="迅速なマーケティング資産から、オーダーメイドの高視認性ハブまで。すべてのお問い合わせに対し、当日中の返信を保証しております。"
+    image={{ src: '/images/demos/capsule-hotel.webp', alt: 'プロフェッショナルな打ち合わせ' }}
+    classes={{ inner: 'pb-4 md:pb-6' }}
+  />
+  
+  <BespokeForm 
+    labels={jpLabels} 
+    options={jpOptions} 
+    formAction="https://docs.google.com/forms/d/e/1FAIpQLSetNa1Mq_nYvkKp5h2fUIPZFRCvfFs5hvcYoawFk1eX0p6t3w/formResponse"
+    ids={{
+      name: "entry.1770250121",
+      company: "entry.1744957567",
+      category: "entry.491532461",
+      budget: "entry.1285777990",
+      timeline: "entry.1375463449",
+      summary: "entry.1193708562"
+    }}
+  />
+</Layout>

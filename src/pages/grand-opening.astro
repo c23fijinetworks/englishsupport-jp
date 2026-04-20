@@ -1,0 +1,46 @@
+---
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import FeatureTable from '~/components/widgets/FeatureTable.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+
+const metadata = { title: 'Grand Opening | Elite Brand Presence Launch | English Support' };
+
+const fullFeatureList = [{ title: 'High-Speed Global Delivery' }, { title: 'Bilingual Navigation' }, { title: 'Google Maps' }, { title: 'Mobile-First Design' }, { title: 'SSL Security Encryption' }, { title: 'Inquiry / Reservation flows' }, { title: 'Native English Copywriting' }, { title: 'Social Feed Integrations' }, { title: 'Image Optimization' }, { title: 'Modern Browser Compatibility' }, { title: 'Zero Downtime' }, { title: 'Unlimited Revisions' }, { title: '1 Business Day Launch' }, { title: 'Professional Schema' }, { title: 'Booking Forms' }, { title: 'GDPR/Privacy Ready' }, { title: 'Global Standard English Branding' }, { title: '60 days Visibility Support' }];
+
+const reformPrices = [
+  { title: 'Starter Reform', total: '¥70,000', price: '¥35,000', items: [{ description: 'Fresh, modern design for your brand' }, { description: 'We transition your current text & photos' }, { description: 'Works perfectly on all smartphones' }, { description: 'Ultra-fast loading speed' }, { description: 'Ready to launch in 3 days' }] },
+  { title: 'Growth Reform', total: '¥130,000', price: '¥65,000', items: [{ description: 'Up to 8 pages updated & refreshed' }, { description: 'Professional native English rewrite' }, { description: 'Help people find you on Google' }, { description: 'Google Maps & Reviews integration' }, { description: 'Priority 2-day delivery' }] },
+  { title: 'Premium Reform', total: '¥250,000', price: '¥125,000', items: [{ description: 'Full update for large brand presences' }, { description: 'Custom booking & inquiry logic' }, { description: 'Unlimited text and photo updates' }, { description: 'Direct 1-on-1 strategic support' }, { description: 'Next-day priority launch' }] }
+];
+
+const newBuildPrices = [
+  { title: 'Starter Build', total: '¥90,000', price: '¥45,000', items: [{ description: 'Brand new 3-page professional presence' }, { description: 'Custom boutique look and feel' }, { description: 'Optimized for mobile customers' }, { description: 'High-security business hosting' }, { description: 'Ready to launch in 3 days' }] },
+  { title: 'Growth Build', total: '¥180,000', price: '¥90,000', items: [{ description: 'Elite 8-page brand flagship' }, { description: 'Integrated booking & contact flow' }, { description: 'Advanced Google Search setup' }, { description: 'Live Instagram photo sync' }, { description: 'Priority 2-day delivery' }] },
+  { title: 'Premium Build', total: '¥380,000', price: '¥190,000', items: [{ description: 'Fully custom launch with no page limits' }, { description: 'Bespoke features for your industry' }, { description: 'Maximum authority signals on Google' }, { description: 'Lifetime priority technical care' }, { description: 'Next-day priority launch' }] }
+];
+---
+<Layout metadata={metadata}>
+  <Hero2 tagline="Total Brand Transformation" title='Is Your Presence Helping You <br/><span class="text-accent">or Holding You Back?</span>' subtitle="An outdated presence scares away customers. We deliver a professional digital front door in just 1 business day." actions={[{ variant: 'primary', text: 'Explore Brand Reform', href: '#reform' }, { variant: 'secondary', text: 'Explore Grand New', href: '#new', class: '!bg-green-600 !text-white hover:!bg-green-700' }]} image={{ src: '/images/demos/private-kyoto-temple-expeditions.webp', alt: 'Premium Tokyo' }} />
+  
+  <div id="reform" class="scroll-mt-20">
+    <Content tagline="Option 1: Brand Reform" title="01. The Modern Aesthetic Facelift" subtitle="We refresh the soul of your design to match international luxury standards while preserving your existing content." items={[{ title: 'Fresh Look', description: 'Built for high-end perception.', icon: 'tabler:palette' }]} image={{ src: '/images/demos/mizu-no-kokoro-luxury-sento-wellness-osaka.webp', alt: 'Design' }} classes={{ container: 'pb-0 md:pb-0' }} />
+    <Content isReversed={true} isAfterContent={true} title="Preserving Heritage, Elevating Impact" subtitle="We respect the work you've already done. Our reform process takes your existing text and history and wraps it in a world-class interface." image={{ src: '/images/hanei-media/032.webp' }} classes={{ container: 'py-8 md:py-12' }} />
+    <Content isReversed={false} isAfterContent={true} title="Brand Visibility Boost" subtitle="We migrate your reformed presence to our high-speed network, ensuring sub-second speeds on any connection." image={{ src: '/images/demos/kura-tokyo-premium-luggage-concierge-secure-storage.webp' }} classes={{ container: 'py-8 md:py-12' }} />
+    
+    <Pricing title="Brand Reform Investment" subtitle="Secure your professional modernization with a 50% initiation deposit." prices={reformPrices} hasUrlField={true} />
+  </div>
+
+  <hr class="border-t dark:border-slate-800 my-12" />
+
+  <div id="new" class="scroll-mt-20">
+    <Content isReversed={true} tagline="Option 2: Grand NEW" title="02. Total Brand Blueprint" subtitle="A complete from-scratch creation of your brand ecosystem designed for maximum conversion from day one." items={[{ title: 'Brand New Launch', description: 'Custom engineered for your specific niche.', icon: 'tabler:rocket' }]} image={{ src: '/images/hanei-media/003.webp', alt: 'New Structure' }} classes={{ container: 'pb-0 md:pb-0' }} />
+    <Content isReversed={false} isAfterContent={true} title="Designed for High Conversion" subtitle="We design your navigation and booking integrations using proprietary conversion logic to turn visitors into customers." image={{ src: '/images/hanei-media/029.webp' }} classes={{ container: 'py-8 md:py-12' }} />
+    <Content isReversed={true} isAfterContent={true} title="Creative Launch Logic" subtitle="Your new flagship is built on a high-performance stack providing unshakeable stability and automated SEO creative strategy." image={{ src: '/images/demos/kissa-co-osaka.webp' }} classes={{ container: 'py-8 md:py-12' }} />
+    
+    <Pricing title="Grand NEW Investment" subtitle="Secure your high-performance flagship with a 50% initiation deposit." prices={newBuildPrices} />
+  </div>
+
+  <FeatureTable title="Welcome the World: Global English Marketing Features" subtitle="Elite standard features included in every professional project." items={fullFeatureList} />
+</Layout>

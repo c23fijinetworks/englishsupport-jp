@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSAKA UNSEEN | Luxury Culinary Expeditions</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        osakaBlack: '#0A0A0A',
+                        osakaGrey: '#1A1A1A',
+                        osakaVermilion: '#FF4D00',
+                        osakaGold: '#D4AF37',
+                        osakaWhite: '#F5F5F5'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #0A0A0A; color: #F5F5F5; }
+        
+        /* Navigation Transition */
+        #mobile-menu {
+            transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+        }
+
+        /* Marquee for Reviews */
+        .marquee-container { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
+        .marquee-content { display: inline-flex; animation: scroll 50s linear infinite; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-content:hover { animation-play-state: paused; }
+
+        /* Review Card Styling */
+        .review-card {
+            white-space: normal;
+            word-wrap: break-word;
+            width: 420px;
+            background: #1A1A1A;
+            padding: 2.5rem;
+            margin-right: 2rem;
+            border: 1px solid rgba(255, 77, 0, 0.2);
+            position: relative;
+        }
+
+        /* Custom Input Styling */
+        .osaka-input {
+            background: transparent;
+            border-bottom: 1px solid rgba(245, 245, 245, 0.3);
+            width: 100%;
+            padding: 1rem 0;
+            outline: none;
+            transition: all 0.3s ease;
+            color: #F5F5F5;
+        }
+        .osaka-input:focus { border-bottom-color: #FF4D00; }
+        select option { background: #1A1A1A; color: #F5F5F5; }
+
+        /* Creative Vertical Text */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .bento-hover:hover img { transform: scale(1.05); }
+        .bento-hover img { transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+
+    <!-- NAVIGATION -->
+    <header class="fixed w-full top-0 z-[100] bg-osakaBlack/80 backdrop-blur-lg border-b border-osakaWhite/10">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-black tracking-tighter uppercase text-osakaWhite">
+                Osaka <span class="text-osakaVermilion italic font-light lowercase tracking-normal">unseen</span>
+            </a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-12 text-[10px] uppercase tracking-[0.4em] font-bold text-osakaWhite">
+                <a href="#expeditions" class="hover:text-osakaVermilion transition-colors">Expeditions</a>
+                <a href="#gallery" class="hover:text-osakaVermilion transition-colors">Digital Feed</a>
+                <a href="#reviews" class="hover:text-osakaVermilion transition-colors">Guest Log</a>
+            </nav>
+
+            <a href="#booking" class="hidden md:block bg-osakaWhite text-osakaBlack px-8 py-3 text-[10px] uppercase tracking-[0.2em] font-black hover:bg-osakaVermilion hover:text-osakaWhite transition-all">
+                Book a Tour
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button id="hamburger" class="md:hidden flex flex-col space-y-1.5 focus:outline-none z-[110]">
+                <span id="bar1" class="w-8 h-[2px] bg-osakaWhite transition-all"></span>
+                <span id="bar2" class="w-8 h-[2px] bg-osakaWhite transition-all"></span>
+                <span id="bar3" class="w-5 h-[2px] bg-osakaWhite self-end transition-all"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="fixed inset-0 bg-osakaBlack z-[105] translate-x-full flex flex-col items-center justify-center space-y-12">
+        <nav class="flex flex-col items-center space-y-8 text-osakaWhite text-4xl font-serif">
+            <a href="#expeditions" class="mobile-link">Expeditions</a>
+            <a href="#gallery" class="mobile-link">Digital Feed</a>
+            <a href="#reviews" class="mobile-link">Guest Log</a>
+        </nav>
+        <a href="#booking" class="mobile-link bg-osakaVermilion text-osakaWhite px-12 py-4 text-sm uppercase tracking-widest font-sans font-black">Book Your Tour</a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1605582763781-dff23d0f5d32?w=1920&auto=format&fit=crop" 
+                 class="w-full h-full object-cover brightness-50 grayscale hover:grayscale-0 transition-all duration-1000" alt="Osaka Night">
+        </div>
+        
+        <div class="relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-24">
+            <div class="hidden md:block" data-aos="fade-down">
+                <p class="vertical-text text-osakaWhite/20 uppercase tracking-[1em] text-sm font-black">EST. 2026 OSAKA JAPAN</p>
+            </div>
+            
+            <div class="max-w-4xl text-center md:text-left">
+                <p data-aos="fade-up" class="uppercase tracking-[0.5em] text-osakaVermilion text-xs mb-8 font-black">Luxury Street Food Tours</p>
+                <h1 data-aos="fade-up" data-aos-delay="200" class="font-serif text-6xl md:text-9xl font-black text-osakaWhite leading-[0.8] uppercase mb-8">
+                    Eat <br> The <span class="italic text-osakaGold capitalize font-light">Void.</span>
+                </h1>
+                <p data-aos="fade-up" data-aos-delay="400" class="text-osakaWhite/70 max-w-lg text-lg font-light mb-12 leading-relaxed">
+                    Step off the tourist trail into the neon-lit back alleys of Osaka. We provide exclusive, English-led culinary journeys through Michelin-rated street stalls and hidden Izakayas.
+                </p>
+                <div data-aos="fade-up" data-aos-delay="600">
+                    <a href="#booking" class="inline-block border border-osakaWhite text-osakaWhite px-12 py-5 text-xs uppercase tracking-widest font-black hover:bg-osakaWhite hover:text-osakaBlack transition-all">
+                        Discover the Night
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPEDITIONS (BENTO GRID) -->
+    <section id="expeditions" class="py-32 px-6 bg-osakaGrey">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20" data-aos="fade-right">
+                <div class="max-w-xl">
+                    <h2 class="font-serif text-5xl md:text-7xl text-osakaWhite leading-none mb-6">Curated <br>Journeys</h2>
+                    <p class="text-osakaWhite/50 font-light text-lg">Beyond Takoyaki. A deep dive into Osaka's soul.</p>
+                </div>
+                <a href="#booking" class="text-osakaVermilion text-[10px] uppercase font-black tracking-widest border-b border-osakaVermilion pb-2 mt-6 md:mt-0">Private Tours Available</a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Tour 1 -->
+                <div class="relative h-[500px] overflow-hidden group bento-hover" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1730800328147-5c669d516bc7?w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100" alt="Tour 1">
+                    <div class="absolute inset-0 bg-gradient-to-t from-osakaBlack via-transparent to-transparent"></div>
+                    <div class="absolute bottom-8 left-8">
+                        <h3 class="font-serif text-3xl mb-2 italic">Neon Noir Crawl</h3>
+                        <p class="text-xs uppercase tracking-widest text-osakaWhite/70">5 Stops • 3 Hours • Craft Sake</p>
+                    </div>
+                </div>
+
+                <!-- Tour 2 -->
+                <div class="relative h-[500px] overflow-hidden group bento-hover" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1741855900000-7c1cacddfeac?w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100" alt="Tour 2">
+                    <div class="absolute inset-0 bg-gradient-to-t from-osakaBlack via-transparent to-transparent"></div>
+                    <div class="absolute bottom-8 left-8">
+                        <h3 class="font-serif text-3xl mb-2 italic">The Michelin Path</h3>
+                        <p class="text-xs uppercase tracking-widest text-osakaWhite/70">High-End Street Fusion • VIP Access</p>
+                    </div>
+                </div>
+
+                <!-- Tour 3 -->
+                <div class="relative h-[500px] overflow-hidden group bento-hover" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1752400717502-f7fe08ee4ad5?w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100" alt="Tour 3">
+                    <div class="absolute inset-0 bg-gradient-to-t from-osakaBlack via-transparent to-transparent"></div>
+                    <div class="absolute bottom-8 left-8">
+                        <h3 class="font-serif text-3xl mb-2 italic">Hidden Horie</h3>
+                        <p class="text-xs uppercase tracking-widest text-osakaWhite/70">Artisan Coffee • Retro Sweets</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY / INSTAGRAM -->
+    <section id="gallery" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="font-serif text-5xl md:text-6xl mb-4">Caught in the Glow</h2>
+                <p class="text-osakaVermilion tracking-[0.3em] uppercase text-xs font-black">Live from @OsakaUnseen</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <img src="https://images.unsplash.com/photo-1741855793285-ec021cbc1212?w=500&auto=format&fit=crop" class="aspect-square object-cover" data-aos="zoom-in" alt="IG 1">
+                <img src="https://images.unsplash.com/photo-1684322423923-e370301aacf1?w=500&auto=format&fit=crop" class="aspect-square object-cover" data-aos="zoom-in" data-aos-delay="100" alt="IG 2">
+                <img src="https://images.unsplash.com/photo-1718921940747-3e5e518d2ef4?w=500&auto=format&fit=crop" class="aspect-square object-cover" data-aos="zoom-in" data-aos-delay="200" alt="IG 3">
+                <img src="https://images.unsplash.com/photo-1762683634446-aa7f0d6caf3f?w=500&auto=format&fit=crop" class="aspect-square object-cover" data-aos="zoom-in" data-aos-delay="300" alt="IG 4">
+            </div>
+        </div>
+    </section>
+
+    <!-- GUEST LOG (REVIEWS) -->
+    <section id="reviews" class="py-24 bg-osakaGrey border-y border-osakaWhite/5">
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="flex text-osakaVermilion mb-4 text-xs font-black tracking-widest">★★★★★ GUEST LOG</div>
+                    <p class="text-osakaWhite/80 text-sm font-light leading-loose italic">"Our guide, Haru, took us to places we would have NEVER found on our own. The Michelin takoyaki was a revelation. Worth every single cent."</p>
+                    <p class="mt-8 font-serif text-osakaGold italic text-lg">— Jonathan K., NYC</p>
+                </div>
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="flex text-osakaVermilion mb-4 text-xs font-black tracking-widest">★★★★★ GUEST LOG</div>
+                    <p class="text-osakaWhite/80 text-sm font-light leading-loose italic">"A high-end experience that still felt gritty and authentic. The perfect balance for anyone wanting to see the real Osaka with expert insight."</p>
+                    <p class="mt-8 font-serif text-osakaGold italic text-lg">— Sarah-Jane, London</p>
+                </div>
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div class="flex text-osakaVermilion mb-4 text-xs font-black tracking-widest">★★★★★ GUEST LOG</div>
+                    <p class="text-osakaWhite/80 text-sm font-light leading-loose italic">"The sake pairing at the end was the highlight. 10/10 English support and flawless organization. Best food tour I've done in Asia."</p>
+                    <p class="mt-8 font-serif text-osakaGold italic text-lg">— Marcus Chen, Singapore</p>
+                </div>
+                <!-- Duplicate -->
+                <div class="review-card">
+                    <div class="flex text-osakaVermilion mb-4 text-xs font-black tracking-widest">★★★★★ GUEST LOG</div>
+                    <p class="text-osakaWhite/80 text-sm font-light leading-loose italic">"Haru took us to places we would have NEVER found on our own. revelation."</p>
+                    <p class="mt-8 font-serif text-osakaGold italic text-lg">— Jonathan K.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING FORM -->
+    <section id="booking" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto border border-osakaWhite/10 p-8 md:p-20 bg-osakaBlack" data-aos="fade-up">
+            <div class="mb-16 text-center">
+                <h2 class="font-serif text-5xl md:text-7xl mb-4">Request <span class="italic text-osakaVermilion">Access</span></h2>
+                <p class="text-osakaWhite/50 font-light">Limited to 6 guests per journey. Book ahead for peak seasons.</p>
+            </div>
+
+            <form class="grid md:grid-cols-2 gap-x-12 gap-y-8">
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-osakaWhite/50">Explorer Name</label>
+                    <input type="text" placeholder="Your Name" class="osaka-input" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-osakaWhite/50">Contact Phone</label>
+                    <input type="tel" placeholder="+1-000-000-0000" class="osaka-input" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-osakaWhite/50">Expedition Date</label>
+                    <input type="date" class="osaka-input" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-osakaWhite/50">Journey Choice</label>
+                    <select class="osaka-input">
+                        <option>Neon Noir Crawl</option>
+                        <option>The Michelin Path</option>
+                        <option>Hidden Horie</option>
+                        <option>Private Bespoke Expedition</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-osakaWhite/50">Guest Count</label>
+                    <select class="osaka-input">
+                        <option>1 Explorer</option>
+                        <option>2 Explorers</option>
+                        <option>3 - 4 Explorers</option>
+                        <option>Full Group (6 Max)</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-osakaWhite/50">Dietary Restrictions</label>
+                    <input type="text" placeholder="e.g. Vegetarian, No shellfish" class="osaka-input">
+                </div>
+                <div class="md:col-span-2 pt-10">
+                    <button type="submit" class="w-full bg-osakaVermilion text-osakaWhite py-5 text-xs uppercase tracking-widest font-black hover:bg-osakaWhite hover:text-osakaBlack transition-all">
+                        Dispatch Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-osakaBlack text-osakaWhite pt-32 pb-12 px-6 border-t border-osakaWhite/10">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-16 mb-20">
+            <div class="md:col-span-5">
+                <h2 class="font-serif text-3xl mb-8">Osaka Unseen</h2>
+                <p class="text-osakaWhite/40 font-light leading-relaxed max-w-sm italic">
+                    "We don't just show you where to eat. We show you how to see."
+                </p>
+                <div class="mt-8 space-y-2 text-xs tracking-widest uppercase text-osakaWhite/50">
+                    <p>Nightly Journeys from 18:00 JST</p>
+                    <p>Phone: +81 (0) 6 6300 0000</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-3">
+                <h4 class="text-osakaVermilion uppercase tracking-widest text-[10px] font-black mb-8">Headquarters</h4>
+                <div class="font-serif text-xl space-y-2">
+                    <p>1-1-1 Dotonbori, <br>Chuo-ku, Osaka <br>Japan 542-0071</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-4">
+                <div class="w-full h-64 grayscale brightness-50 border border-osakaWhite/10 relative group overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Map">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="px-6 py-2 border border-osakaWhite/20 text-[10px] tracking-widest uppercase backdrop-blur-sm">View Grid Coordinates</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto border-t border-osakaWhite/10 pt-12 flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-[0.4em] text-osakaWhite/30">
+            <p>© 2026 Osaka Unseen Expeditions</p>
+            <p class="mt-4 md:mt-0">Designed by <span class="text-osakaWhite/80 font-black">HANEI.JP</span></p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true, easing: 'ease-out-expo' });
+
+        const hamburger = document.getElementById('hamburger');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+        const bars = [document.getElementById('bar1'), document.getElementById('bar2'), document.getElementById('bar3')];
+
+        function toggleMenu() {
+            menu.classList.toggle('translate-x-full');
+            document.body.classList.toggle('overflow-hidden');
+            bars[0].classList.toggle('rotate-45');
+            bars[0].classList.toggle('translate-y-[8px]');
+            bars[1].classList.toggle('opacity-0');
+            bars[2].classList.toggle('-rotate-45');
+            bars[2].classList.toggle('-translate-y-[8px]');
+            bars[2].classList.toggle('w-8');
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        links.forEach(l => l.addEventListener('click', () => {
+            if (!menu.classList.contains('translate-x-full')) toggleMenu();
+        }));
+
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Journey request received. Our lead guide will contact you within 12 hours.');
+        });
+    </script>
+    <!-- HANEI OVERLAY -->
+    <a href="/demos" class="fixed bottom-8 left-8 z-[200] bg-osakaWhite text-osakaBlack px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-2xl border border-osakaVermilion/30 hover:bg-osakaVermilion hover:text-osakaWhite transition-all flex items-center gap-2 group"><span class="group-hover:-translate-x-1 transition-transform">←</span> Return to Hanei</a>
+
+    <script>
+      // Hanei JP Context Detection
+      (function() {
+        const returnLink = document.querySelector('a[href*="hanei.jp"]') || document.querySelector('a[href*="/demos"]');
+        if (returnLink) {
+          // Normalize to base demos link
+          returnLink.href = "/demos"; 
+          
+          // Detect Japanese context from referrer
+          if (document.referrer.includes("-jp")) {
+            returnLink.href = "/demos-jp";
+            returnLink.innerHTML = "← Haneiに戻る";
+          }
+        }
+      })();
+    </script>
+</body>
+</html>

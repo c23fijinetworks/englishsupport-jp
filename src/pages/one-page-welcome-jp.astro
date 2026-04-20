@@ -1,0 +1,92 @@
+---
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+
+const metadata = { 
+  title: 'インバウンド英語ウェルカム | プロ品質 × 最速納品 | English Support',
+  description: '貴社のブランドを凝縮した成約率の高いインバウンド・ウェルカムページ。サービス、メニュー、店舗ルールを魅力的に提示し、集客を最大化します。'
+};
+
+const pricingData = { 
+  title: 'インバウンド・ウェルカム・パッケージ', 
+  price: '¥19,800', 
+  subTitle: '今すぐ申し込む',
+  badge: '一括マーケティング投資 <br/> 本日公開可能！',
+  items: [
+    { description: 'ブティック品質のブランドデザイン' }, 
+    { description: 'サービス・メニューの戦略的レイアウト' }, 
+    { description: '高速モバイル視認性' }, 
+    { description: '店頭用カスタムQRコード' },
+    { description: '24時間以内のスピード公開' }
+  ]
+};
+---
+<Layout metadata={metadata}>
+  <Hero2 
+    tagline="英語ブランディングが集客を加速" 
+    title='貴社のブランドを、<br/><span class="text-accent">プロ品質のマーケティング拠点に凝縮。</span>' 
+    subtitle='オンラインでプロフェッショナルな姿を提示する最速の方法。メニュー、サービス、ハウスルールを美しく見せる高品質な英語ウェルカムページを構築します。正午までの注文で、夕方には公開可能です。' 
+    actions={[{ variant: 'primary', text: 'パッケージ料金を見る', href: '#pricing' }]} 
+    image={{ src: '/images/hanei-media/008.webp', alt: 'プロフェッショナルなブランド入口' }} 
+  />
+  
+  <Content 
+    isReversed={false} 
+    title="01. デジタル・ブランドガイド" 
+    subtitle="「不透明さ」を「明快さ」へ。サービス内容、価格リスト、店舗独自のルールを顧客がスマートフォンで即座に確認できる環境を整えます。初めてのお客様一人ひとりへ繰り返す説明のストレスを解消します。" 
+    items={[{ title: 'すべてを一つの場所に', description: '利用ルール、メニュー、決済方法を網羅。', icon: 'tabler:clipboard-list' }]} 
+    image={{ src: '/images/demos/ginza-kaizen.webp', alt: 'スマートフォン上のデジタルメニュー' }} 
+  />
+
+  <Content 
+    id="flagship"
+    isReversed={true} 
+    tagline="卓越性の体験" 
+    title="制作デモ: Tokyo Locker & Storage" 
+    subtitle="プレミアムなホスピタリティ・ブランドデザインの事例。セキュリティのストーリーテリング、ハウスルール、非接触決済フローを、成約率の高い形式でどのように提示するかをご確認ください。" 
+    callToAction={{ variant: 'primary', text: 'デモサイトを起動', href: '/demos/tokyo-locker-storage-premium-luggage-solutions', target: '_blank' }} 
+    image={{ src: '/images/hanei-media/026.webp', alt: 'ロッカー・ソリューション' }} 
+  />
+
+  <Content 
+    isReversed={false} 
+    tagline="卓越性の体験" 
+    title="制作デモ: Kagari Izakaya & Grill" 
+    subtitle="新宿の高級ガストロノミーの事例。予約ストーリーテリング、季節のおまかせメニュー、そして夜の街に映えるハイコントラストな美学を体験してください。" 
+    callToAction={{ variant: 'primary', text: 'デモサイトを起動', href: '/demos/kagari-izakaya-grill-shinjuku-tokyo-gastronomy', target: '_blank' }} 
+    image={{ src: '/images/hanei-media/016.webp', alt: '高級居酒屋デモ' }} 
+  />
+  
+  <Content 
+    isReversed={true} 
+    title="02. 国内・海外双方からの「発見」" 
+    subtitle="正しいターゲットに貴社を見つけてもらいましょう。Google検索を通じて、地域住民も海外旅行者も貴社のブランドを発見できるよう最適化。プロ仕様のウェルカムハブが初見の信頼を勝ち取ります。" 
+    items={[{ title: 'プロフェッショナルな信頼', description: '公開初日から、確立されたモダンな印象を与えます。', icon: 'tabler:search' }]} 
+    image={{ src: '/images/hanei-media/010.webp', alt: 'ブランドを探す顧客' }} 
+  />
+  
+  <Content 
+    isReversed={false} 
+    title="03. 視覚重視のブランドショーケース" 
+    subtitle="言葉以上に雄弁な視覚的アプローチ。高解像度の画像を用い、貴社のサービスや商品の「こだわり」を直感的に伝えます。視覚的な訴求は言語の壁を越え、顧客の来店意欲を刺激します。" 
+    items={[{ title: 'インパクトのある視覚効果', description: 'プロフェッショナルなレイアウトで技術を披露。', icon: 'tabler:camera' }]} 
+    image={{ src: '/images/demos/tokyo-locker-storage-premium-luggage-solutions.webp', alt: 'ブランドショーケース' }} 
+  />
+  
+  <Content 
+    isReversed={true} 
+    title="04. 圧倒的なスピード公開" 
+    subtitle="私たちは貴社の時間を尊重します。正午までに情報をいただければ、当日のディナー営業開始までに公開。打ち合わせなしで、英語デジタルマーケティング資産を迅速にセットアップします。" 
+    items={[{ title: '正午までの注文で即日', description: '夕方、または遅くとも翌営業日には公開。', icon: 'tabler:bolt' }]} 
+    image={{ src: '/images/hanei-media/008.webp', alt: '迅速なセットアップ' }} 
+  />
+
+  <Pricing 
+    id="pricing" 
+    title="明朗な一括料金。<br/> 本日、公開。" 
+    subtitle="月額費用ゼロ。貴社のプロフェッショナルなマーケティング資産として永久に所有いただけます。"
+    prices={[pricingData]} 
+  />
+</Layout>

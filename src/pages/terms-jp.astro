@@ -1,0 +1,49 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+
+const metadata = { 
+  title: '利用規約 | 戦略的マーケティング合意 | English Support',
+  description: 'English Supportのインバウンド・デジタルマーケティング・プロジェクトにおける詳細な法的枠組みとサービス合意書。'
+};
+---
+<Layout metadata={metadata}>
+  <HeroText title="利用規約" subtitle="バージョン 2.0 | 最終更新：2026年4月" />
+  
+  <section class="px-4 py-12 sm:px-6 mx-auto lg:py-20 max-w-4xl">
+    <div class="prose prose-lg dark:prose-invert max-w-none text-muted dark:text-slate-400">
+      
+      <h2 class="text-slate-900 dark:text-white">1. はじめに、および規約への同意</h2>
+      <p>本利用規約（以下「本規約」）は、English Support（以下「当スタジオ」または「弊社」）が提供するインバウンド・デジタルマーケティング・サービスへのアクセスおよび利用について規定するものです。マーケティングパッケージの購入、オンボーディングフォームの提出、または弊社のデジタル資産を利用することにより、お客様（以下「クライアント」）は本規約に法的拘束されることに同意したものとみなされます。</p>
+
+      <h2 class="text-slate-900 dark:text-white">2. サービスの詳細</h2>
+      <p>English Supportは、高視認性デジタルマーケティング資産の迅速な導入を専門としています。主要サービスには、インバウンド英語ウェルカム、自動化されたレピュテーション・レビュー・マーケティング、英語専用デジタル別館（Hanare）、およびフルブランドの刷新・現代化が含まれます。</p>
+
+      <h2 class="text-slate-900 dark:text-white">3. 財務条件と CapEx モデル</h2>
+      <p>English Supportは資本支出（CapEx）モデルで運営されています。弊社の目標は、一括のマーケティング投資により生涯利用可能なブランド資産を提供することです。StripeまたはPayPalによる支払いが確認されるまで、制作は開始されません。注文後直ちに戦略的制作リソースと安全な配信資産が割り当てられるため、オンボーディングプロセスが開始された後の返金には一切応じかねます。</p>
+
+      <h2 class="text-slate-900 dark:text-white">4. 安全な資産の公開と戦略的セキュリティ</h2>
+      <p>セキュリティは、Haneiスタンダードの核心です。弊社は「ゼロアクセス」戦略モデルを採用しています。ドメイン登録業者、メールアカウント、またはホスティング環境のログイン情報を要求することはありません。マーケティングハブの公開にあたり、クライアントはドメイン設定において特定のウェブアドレスレコードを更新する責任を負います。English Supportはこのプロセスの全面的な戦略的サポートを提供します。</p>
+
+      <h2 class="text-slate-900 dark:text-white">5. 公開保証とクライアント資産</h2>
+      <p>弊社は業界をリードするスピード（24〜72時間）を約束していますが、これらのタイムラインはクライアントの協力が前提となります。「1営業日での公開」の約束は、要求されたすべてのテキスト、写真、およびブランド資産が日本標準時（JST）の正午までに受領された場合にのみ適用されます。提供されるすべてのメディアの適法性については、クライアントが責任を負うものとします。</p>
+
+      <h2 class="text-slate-900 dark:text-white">6. 知的財産権</h2>
+      <p>クライアントは、自身の商標、ロゴ、およびオリジナルのテキストコンテンツの所有権を保持します。English Supportは、デジタル資産の提供に使用される基盤となるクリエイティブ・ロジック、配信構成、および独自のマーケティング構造に関するすべての権利を保持します。最終公開時、弊社はクライアントに対し、納品されたブランド資産を使用するための永久的かつ譲渡不能なライセンスを付与します。</p>
+
+      <h2 class="text-slate-900 dark:text-white">7. 責任の制限および不可抗力</h2>
+      <p>日本の法律が許容する最大範囲において、English Supportはいかなる間接的損害または利益の損失についても責任を負いません。Google、Instagram、Stripeなどの第三者マーケティングプラットフォームの障害に起因するサービス停止についても責任を負いかねます。弊社の支配を超えた事象（不可抗力）が発生した場合、タイムラインは中断されることがあります。</p>
+
+      <h2 class="text-slate-900 dark:text-white">8. 保証とサポート</h2>
+      <p>すべてのパッケージには、60日間の優先的視認性サポートが含まれています。軽微なコンテンツの更新は、弊社の生涯ホワイトグローブ・サポートポリシーに基づいて提供されます。外部の市場要因は変動するため、特定の検索順位や財務的成果を保証するものではありません。</p>
+
+      <h2 class="text-slate-900 dark:text-white">9. 準拠法</h2>
+      <p>本契約は日本法に準拠します。法的紛争が生じた場合は、English Supportが主たる業務を維持している管轄区域の裁判所を専属的合意管轄裁判所とします。</p>
+    </div>
+
+    <div class="mt-20 pt-10 border-t border-gray-200 dark:border-slate-800 text-center">
+      <p class="text-xl font-bold text-slate-900 dark:text-white mb-2">規約に関するご質問はありますか？</p>
+      <a href="/contact-jp" class="text-primary hover:text-accent font-black text-2xl underline decoration-2 underline-offset-8 transition-colors">お問い合わせはこちら</a>
+    </div>
+  </section>
+</Layout>

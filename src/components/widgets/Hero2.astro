@@ -1,0 +1,82 @@
+---
+import Button from '~/components/ui/Button.astro';
+import { Icon } from 'astro-icon/components';
+import { twMerge } from 'tailwind-merge';
+
+const {
+  tagline,
+  title,
+  subtitle,
+  actions = [],
+  image: imageProp,
+  video = null,
+  poster: posterProp = null,
+  testimonial = null,
+  classes = {},
+} = Astro.props;
+
+const imageSlot = await Astro.slots.render('image');
+const image = imageProp || imageSlot;
+const isUrl = typeof image === 'string' && (image.startsWith('http') || image.startsWith('/') || image.startsWith('.'));
+const poster = posterProp || (isUrl ? image : image.src ? image.src : null);
+---
+
+<section class:list={["relative not-prose bg-white dark:bg-slate-900", classes?.container]}>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+    <div class:list={["pt-8 md:pt-16 pb-8 md:pb-12", classes?.inner]}>
+      <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+        
+        <div class="w-full text-center md:text-left flex flex-col justify-center">
+          {tagline && <p class="font-bold dark:text-gray-400 text-base text-secondary tracking-widest uppercase mb-4">{tagline}</p>}
+          {title && <h1 class="font-bold font-heading leading-tight tracking-tighter mb-6 md:text-6xl text-4xl" set:html={title} {title && title.includes('<span') ? '' : ''}></h1>}
+          <div class="max-w-3xl mx-auto md:mx-0">
+            <div class="max-w-2xl">
+              {subtitle && <p class="text-xl text-muted mb-10 leading-relaxed" set:html={subtitle} />}
+            </div>
+            {actions && actions.length > 0 && (
+              <div class="flex flex-col gap-4 max-w-xs md:justify-start md:mx-0 mx-auto sm:flex-row sm:justify-center sm:max-w-md">
+                {actions.map((action) => (
+                  <Button {...action} class={twMerge("shadow-xl hover:scale-105 transition-transform", action.class)} />
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div class="relative w-full">
+          
+          <div class="relative rounded-lg overflow-hidden shadow-2xl w-full aspect-[3/2] border-4 border-white dark:border-slate-800 group">
+            <!-- HANEI WATERMARK OVERLAY -->
+            <div class="absolute bottom-[8%] right-[5%] z-20 w-[15%] max-w-[80px] opacity-90 pointer-events-none drop-shadow-md">
+              <img src="/images/logo_main.png" alt="English Support" class="w-full h-auto rounded-md" />
+            </div>
+
+            {video ? (
+              <div class="w-full h-full cursor-pointer" id="video-container">
+                <video id="hero-video" src={video} class="w-full h-full object-cover block" controls playsinline preload="metadata" poster={poster}></video>
+                <div id="play-overlay" class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-all duration-300">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-primary rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-transform">
+                        <Icon name="tabler:player-play-filled" class="w-10 h-10 md:w-12 md:h-12 text-white ml-1" />
+                    </div>
+                </div>
+              </div>
+            ) : (
+              image && (
+                <div class="w-full h-full [&_img]:w-full [&_img]:h-full [&_img]:object-cover [&_img]:aspect-[3/2]">
+                  {isUrl ? (
+                    <img src={image} class="w-full h-full object-cover" loading="eager" />
+                  ) : image.src ? (
+                    <img src={image.src} alt={image.alt || ''} class="w-full h-full object-cover" loading="eager" />
+                  ) : (
+                    <Fragment set:html={image} />
+                  )}
+                </div>
+              )
+            )}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

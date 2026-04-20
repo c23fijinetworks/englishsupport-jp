@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth overflow-x-hidden max-w-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kissa & Co. Osaka | Premium Roastery & Slow Coffee</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        espresso: '#1A1614',
+                        crema: '#D9C5B2',
+                        stone: '#F2F0EB',
+                        kazeGrey: '#4A4A4A'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #F2F0EB; color: #1A1614; }
+        
+        /* High Contrast Review Marquee */
+        .marquee-wrapper { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
+        .marquee-content { display: inline-flex; animation: scroll 45s linear infinite; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-content:hover { animation-play-state: paused; }
+
+        /* Bento Grid & Creative Overlays */
+        .bento-card { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .bento-card:hover { transform: translateY(-8px); }
+
+        /* Custom Form Styling */
+        .kissa-input {
+            background: transparent;
+            border-bottom: 2px solid #1A1614;
+            width: 100%;
+            padding: 1rem 0;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .kissa-input:focus { border-bottom-color: #D9C5B2; }
+        
+        /* Mobile Nav Toggle Animation */
+        #nav-overlay {
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        #nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden max-w-full font-sans antialiased overflow-x-hidden">
+
+    <!-- NAVIGATION -->
+    <header class="fixed w-full top-0 z-50 bg-stone/95 backdrop-blur-sm border-b border-espresso/5">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-bold tracking-tight uppercase">Kissa & Co.</a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-12 text-xs uppercase tracking-[0.2em] font-semibold">
+                <a href="#menu" class="hover:text-crema transition-colors">The Menu</a>
+                <a href="#gallery" class="hover:text-crema transition-colors">Visuals</a>
+                <a href="#reviews" class="hover:text-crema transition-colors">Guest Voices</a>
+            </nav>
+
+            <a href="#booking" class="hidden md:block bg-espresso text-stone px-8 py-3 text-xs uppercase tracking-widest hover:bg-crema hover:text-espresso transition-all">
+                Book a Table
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button id="hamburger" class="md:hidden flex flex-col space-y-1.5 focus:outline-none z-[60]">
+                <span id="bar1" class="w-8 h-[2px] bg-espresso transition-all"></span>
+                <span id="bar2" class="w-8 h-[2px] bg-espresso transition-all"></span>
+                <span id="bar3" class="w-5 h-[2px] bg-espresso self-end transition-all"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div id="nav-overlay" class="fixed inset-0 bg-espresso z-[55] flex flex-col items-center justify-center">
+        <nav class="flex flex-col items-center space-y-10 text-stone text-3xl font-serif">
+            <a href="#menu" class="nav-link">The Menu</a>
+            <a href="#gallery" class="nav-link">Visuals</a>
+            <a href="#reviews" class="nav-link">Guest Voices</a>
+            <a href="#booking" class="nav-link bg-crema text-espresso px-12 py-4 text-sm uppercase tracking-[0.2em] font-sans">Reservations</a>
+        </nav>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center pt-24 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-6 z-10" data-aos="fade-right">
+                <span class="inline-block px-4 py-1 border border-espresso/20 text-[10px] uppercase tracking-[0.3em] mb-6">Osaka Roastery</span>
+                <h1 class="font-serif text-6xl md:text-8xl leading-tight mb-8">
+                    Slow Drip. <br><span class="italic text-crema">Pure Stillness.</span>
+                </h1>
+                <p class="text-kazeGrey max-w-sm text-lg font-light mb-10 leading-relaxed">
+                    A high-end sanctuary in the heart of Osaka. We celebrate the legacy of the Kissaten through meticulous hand-pour rituals and seasonal small-batch roasting.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#booking" class="bg-espresso text-stone px-10 py-5 text-xs uppercase tracking-widest hover:bg-crema hover:text-espresso transition-all">Reserve Now</a>
+                </div>
+            </div>
+            
+            <div class="md:col-span-6 relative" data-aos="fade-left">
+                <div class="aspect-[4/5] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=800&auto=format&fit=crop" 
+                         class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" alt="Cafe Interior">
+                </div>
+                <div class="absolute -bottom-10 -right-10 w-48 h-48 md:w-64 md:h-64 border-[12px] border-stone z-20 shadow-xl" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=400&auto=format&fit=crop" class="w-full h-full object-cover" alt="Detail">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES (BENTO MENU) -->
+    <section id="menu" class="py-32 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20" data-aos="fade-up">
+                <div>
+                    <p class="uppercase tracking-[0.3em] text-crema text-xs mb-4">Curated Selections</p>
+                    <h2 class="font-serif text-5xl md:text-6xl">The Kissa Ritual</h2>
+                </div>
+                <a href="#booking" class="text-xs uppercase tracking-widest border-b border-espresso pb-2 hover:text-crema hover:border-crema transition-all mt-6 md:mt-0">Book a Private Tasting</a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 h-auto">
+                <!-- Card 1 -->
+                <div class="bento-card group relative bg-stone p-10 flex flex-col justify-between h-[450px]" data-aos="fade-up">
+                    <div class="z-10">
+                        <h3 class="font-serif text-3xl mb-4">Origin Roast</h3>
+                        <p class="text-kazeGrey font-light">Single-origin beans sourced directly from independent farmers, roasted daily in-house.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1542372147193-a7aca54189cd?w=500&auto=format&fit=crop" class="absolute bottom-0 right-0 w-3/4 h-1/2 object-cover opacity-20 group-hover:opacity-100 grayscale transition-all duration-700" alt="Coffee">
+                </div>
+                <!-- Card 2 -->
+                <div class="bento-card group relative bg-espresso text-stone p-10 h-[450px] flex flex-col justify-center text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="z-10">
+                        <h3 class="font-serif text-3xl mb-4 text-crema">The Nel Drip</h3>
+                        <p class="text-stone/60 font-light mb-8">Our signature slow-extraction method using traditional cloth filters for a velvety body.</p>
+                        <span class="text-[10px] tracking-widest uppercase py-2 px-4 border border-crema/30">Master Barista Service</span>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="bento-card group relative bg-stone p-10 h-[450px]" data-aos="fade-up" data-aos-delay="200">
+                    <div class="z-10 relative">
+                        <h3 class="font-serif text-3xl mb-4">Seasonal Pairings</h3>
+                        <p class="text-kazeGrey font-light">Hand-crafted Wagashi and Western-style pastries designed to elevate each coffee profile.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=500&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-all" alt="Pastries">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="space-y-4">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&auto=format&fit=crop" class="w-full h-[300px] object-cover" data-aos="fade-up" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1507915135761-41a0a222c709?w=500&auto=format&fit=crop" class="w-full h-[500px] object-cover" data-aos="fade-up" data-aos-delay="100" alt="Gallery">
+                </div>
+                <div class="space-y-4 md:pt-20">
+                    <img src="https://images.unsplash.com/photo-1482350325005-eda5e677279b?w=500&auto=format&fit=crop" class="w-full h-[500px] object-cover" data-aos="fade-up" data-aos-delay="150" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1602094689189-a7cb72dc1ff9?w=500&auto=format&fit=crop" class="w-full h-[300px] object-cover" data-aos="fade-up" data-aos-delay="200" alt="Gallery">
+                </div>
+                <div class="hidden md:block space-y-4">
+                    <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=500&auto=format&fit=crop" class="w-full h-[300px] object-cover" data-aos="fade-up" data-aos-delay="250" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=500&auto=format&fit=crop" class="w-full h-[500px] object-cover" data-aos="fade-up" data-aos-delay="300" alt="Gallery">
+                </div>
+                <div class="hidden md:block space-y-4 pt-12">
+                    <img src="https://images.unsplash.com/photo-1542372147193-a7aca54189cd?w=500&auto=format&fit=crop" class="w-full h-[500px] object-cover" data-aos="fade-up" data-aos-delay="350" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1507915135761-41a0a222c709?w=500&auto=format&fit=crop" class="w-full h-[300px] object-cover" data-aos="fade-up" data-aos-delay="400" alt="Gallery">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="py-24 border-y border-espresso/10">
+        <div class="marquee-wrapper">
+            <div class="marquee-content gap-8">
+                <!-- Review Card -->
+                <div class="w-[450px] bg-white p-10 border border-espresso/5 shadow-sm shrink-0">
+                    <div class="flex text-crema mb-4 font-bold tracking-widest uppercase text-xs">★★★★★ Guest Review</div>
+                    <p class="text-espresso text-sm font-light italic leading-loose whitespace-normal">"The stillness here is remarkable. You can tell they take their beans seriously. The hand-drip coffee reminded me why I love Osaka's cafe culture."</p>
+                    <p class="mt-8 font-serif text-crema">— Julian West, Food Critic</p>
+                </div>
+                <div class="w-[450px] bg-white p-10 border border-espresso/5 shadow-sm shrink-0">
+                    <div class="flex text-crema mb-4 font-bold tracking-widest uppercase text-xs">★★★★★ Guest Review</div>
+                    <p class="text-espresso text-sm font-light italic leading-loose whitespace-normal">"Easily the best roastery in the city. The staff are so knowledgeable and helped me choose the perfect roast for my palate."</p>
+                    <p class="mt-8 font-serif text-crema">— Sarah L.</p>
+                </div>
+                <div class="w-[450px] bg-white p-10 border border-espresso/5 shadow-sm shrink-0">
+                    <div class="flex text-crema mb-4 font-bold tracking-widest uppercase text-xs">★★★★★ Guest Review</div>
+                    <p class="text-espresso text-sm font-light italic leading-loose whitespace-normal">"Elegant, quiet, and profound. The seasonal pairing menu is a work of art. 10/10 for any coffee lover."</p>
+                    <p class="mt-8 font-serif text-crema">— Kenjiro Sato</p>
+                </div>
+                <!-- Duplicate for Marquee -->
+                <div class="w-[450px] bg-white p-10 border border-espresso/5 shadow-sm shrink-0">
+                    <div class="flex text-crema mb-4 font-bold tracking-widest uppercase text-xs">★★★★★ Guest Review</div>
+                    <p class="text-espresso text-sm font-light italic leading-loose whitespace-normal">"The stillness here is remarkable. You can tell they take their beans seriously."</p>
+                    <p class="mt-8 font-serif text-crema">— Julian West</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING FORM -->
+    <section id="booking" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto" data-aos="fade-up">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-5xl mb-4">Visit the Roastery</h2>
+                <p class="text-kazeGrey font-light">Walk-ins welcome, but we recommend reservations for Private Tasting sessions.</p>
+            </div>
+
+            <form class="grid md:grid-cols-2 gap-x-16 gap-y-10">
+                <div class="space-y-2">
+                    <label class="text-[10px] uppercase tracking-widest font-bold">Guest Name</label>
+                    <input type="text" placeholder="Your Name" class="kissa-input" required>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] uppercase tracking-widest font-bold">Phone Number</label>
+                    <input type="tel" placeholder="090-0000-0000" class="kissa-input" required>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] uppercase tracking-widest font-bold">Experience Type</label>
+                    <select class="kissa-input text-kazeGrey">
+                        <option>Table Reservation (90 min)</option>
+                        <option>Private Roastery Tour</option>
+                        <option>Curated Coffee Tasting Session</option>
+                        <option>Group Booking (4+ Guests)</option>
+                    </select>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] uppercase tracking-widest font-bold">Guest Count</label>
+                    <select class="kissa-input text-kazeGrey">
+                        <option>1 Guest</option>
+                        <option>2 Guests</option>
+                        <option>3 Guests</option>
+                        <option>4+ Guests</option>
+                    </select>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] uppercase tracking-widest font-bold">Preferred Date</label>
+                    <input type="date" class="kissa-input" required>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] uppercase tracking-widest font-bold">Preferred Time</label>
+                    <select class="kissa-input text-kazeGrey">
+                        <option>10:00 AM</option>
+                        <option>12:00 PM</option>
+                        <option>02:00 PM</option>
+                        <option>04:00 PM</option>
+                        <option>06:00 PM</option>
+                    </select>
+                </div>
+                <div class="md:col-span-2 text-center pt-10">
+                    <button type="submit" class="bg-espresso text-stone px-24 py-5 text-sm uppercase tracking-widest hover:bg-crema hover:text-espresso transition-all w-full md:w-auto">Confirm Request</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-espresso text-stone pt-32 pb-12 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-16 mb-20">
+            <div class="md:col-span-5">
+                <h2 class="font-serif text-4xl mb-6">Kissa & Co.</h2>
+                <p class="text-stone/40 font-light leading-relaxed max-w-sm mb-10">
+                    Osaka's quintessential coffee sanctuary. Preserving the heritage of hand-pour coffee through modern technical precision.
+                </p>
+                <div class="space-y-4">
+                    <p class="text-stone font-medium">+81 (0) 6 6555 4321</p>
+                    <p class="text-stone/60">Mon — Sat: 10:00 AM - 8:00 PM</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-3">
+                <h4 class="text-crema uppercase tracking-widest text-[10px] font-bold mb-6">Location</h4>
+                <div class="font-serif text-xl space-y-2">
+                    <p>1-2-3 Kita-Horie, <br>Nishi-ku, Osaka <br>Japan 550-0014</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-4">
+                <div class="w-full h-72 grayscale brightness-90 relative">
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80" class="w-full h-full object-cover" alt="Osaka Map">
+                    <div class="absolute inset-0 border border-stone/10 pointer-events-none"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto border-t border-stone/10 pt-12 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.2em] text-stone/30">
+            <p>© 2026 Kissa & Co. Roastery</p>
+            <p class="mt-4 md:mt-0">Designed by <span class="text-stone/80">HANEI.JP</span></p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({ duration: 1000, once: true, easing: 'ease-out-expo' });
+
+        // Mobile Menu Logic
+        const hamburger = document.getElementById('hamburger');
+        const overlay = document.getElementById('nav-overlay');
+        const links = document.querySelectorAll('.nav-link');
+        const bar1 = document.getElementById('bar1');
+        const bar2 = document.getElementById('bar2');
+        const bar3 = document.getElementById('bar3');
+
+        function toggleMenu() {
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('overflow-hidden');
+            
+            // Hamburger Animation
+            bar1.classList.toggle('rotate-45');
+            bar1.classList.toggle('translate-y-[8px]');
+            bar1.classList.toggle('bg-stone');
+            bar1.classList.toggle('bg-espresso');
+            
+            bar2.classList.toggle('opacity-0');
+            
+            bar3.classList.toggle('-rotate-45');
+            bar3.classList.toggle('-translate-y-[8px]');
+            bar3.classList.toggle('bg-stone');
+            bar3.classList.toggle('bg-espresso');
+            bar3.classList.toggle('w-8');
+            bar3.classList.toggle('w-5');
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+
+        // Auto-close on link click
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                if (overlay.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Form Submission (Demo Alert)
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Your request has been sent. Our Osaka team will contact you shortly.');
+        });
+    </script>
+    <!-- HANEI OVERLAY -->
+    <a href="/demos" class="fixed bottom-8 left-8 z-[100] bg-espresso text-stone px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-2xl border border-crema/30 hover:bg-crema hover:text-espresso transition-all flex items-center gap-2 group"><span class="group-hover:-translate-x-1 transition-transform">←</span> Return to Hanei</a>
+
+    <script>
+      // Hanei JP Context Detection
+      (function() {
+        const returnLink = document.querySelector('a[href*="hanei.jp"]') || document.querySelector('a[href*="/demos"]');
+        if (returnLink) {
+          // Normalize to base demos link
+          returnLink.href = "/demos"; 
+          
+          // Detect Japanese context from referrer
+          if (document.referrer.includes("-jp")) {
+            returnLink.href = "/demos-jp";
+            returnLink.innerHTML = "← Haneiに戻る";
+          }
+        }
+      })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+---
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+
+const metadata = { 
+  title: 'Inbound English Welcome | Professional & Fast | English Support',
+  description: 'A high-conversion inbound welcome page for your brand. Showcase services, menus, and house rules with absolute precision.'
+};
+
+const pricingData = { 
+  title: 'Inbound Welcome Package', 
+  price: '¥19,800', 
+  subTitle: 'Get It Now',
+  badge: 'One-time Marketing Investment <br/> Ready Today!',
+  items: [
+    { description: 'Complete Boutique Brand Design' }, 
+    { description: 'Services & Menus Strategic Layout' }, 
+    { description: 'High-Speed Mobile Visibility' }, 
+    { description: 'Custom QR Code for Shop' },
+    { description: 'Ready to launch in 24 hours' }
+  ]
+};
+---
+<Layout metadata={metadata}>
+  <Hero2 
+    tagline="English Branding Drives Visitors" 
+    title='Your Entire Brand Presence <br/><span class="text-accent">on One Professional Marketing Hub.</span>' 
+    subtitle='The fastest way to look professional online. Our high-quality inbound English welcome that showcases your services, menus, and house rules. Order by noon, and your inbound welcome page is live by the afternoon.' 
+    actions={[{ variant: 'primary', text: 'View Package Price', href: '#pricing' }]} 
+    image={{ src: '/images/hanei-media/008.webp', alt: 'Professional Brand Entry' }} 
+  />
+  
+  <Content 
+    isReversed={false} 
+    title="01. The Digital Brand Guide" 
+    subtitle="Replace confusion with clarity. We design a clean digital brand guide that allows customers to see your service offerings, price lists, and house rules directly on their phones. This removes the stress of explaining details repeatedly to every new guest." 
+    items={[{ title: 'Everything in one place', description: 'Rules, menus, and payment methods.', icon: 'tabler:clipboard-list' }]} 
+    image={{ src: '/images/demos/ginza-kaizen.webp', alt: 'Digital Menu on Phone' }} 
+  />
+
+  <Content 
+    id="flagship"
+    isReversed={true} 
+    tagline="Experience Excellence" 
+    title="Portfolio Demo: Tokyo Locker & Storage" 
+    subtitle="A premium hospitality brand design. See how we present tiered security storytelling, house rules, and contactless payment flows in a high-converting format." 
+    callToAction={{ variant: 'primary', text: 'Launch Live Demo', href: '/demos/tokyo-locker-storage-premium-luggage-solutions', target: '_blank' }} 
+    image={{ src: '/images/hanei-media/026.webp', alt: 'Locker Solution' }} 
+  />
+
+  <Content 
+    isReversed={false} 
+    tagline="Experience Excellence" 
+    title="Portfolio Demo: Kagari Izakaya & Grill" 
+    subtitle="A luxury Shinjuku gastronomy destination. Featuring integrated reservation storytelling, seasonal omakase menus, and high-contrast night-mode aesthetics." 
+    callToAction={{ variant: 'primary', text: 'Launch Live Demo', href: '/demos/kagari-izakaya-grill-shinjuku-tokyo-gastronomy', target: '_blank' }} 
+    image={{ src: '/images/hanei-media/016.webp', alt: 'Izakaya Grill' }} 
+  />
+  
+  <Content 
+    isReversed={true} 
+    title="02. Local and Global Discovery" 
+    subtitle="Be found by the right people. We optimize your page so that both local neighbors and international travelers can discover your brand through Google. A professional welcome hub builds immediate confidence and makes choosing your shop an easy decision." 
+    items={[{ title: 'Professional Trust', description: 'Look established and modern from day one.', icon: 'tabler:search' }]} 
+    image={{ src: '/images/hanei-media/010.webp', alt: 'Customer Finding Shop' }} 
+  />
+  
+  <Content 
+    isReversed={false} 
+    title="03. Visual-First Brand Showcase" 
+    subtitle="Let your work do the talking. We use high-resolution imagery to showcase your best products or services, helping customers understand exactly what makes your business special. A visual-first approach works across all languages and builds desire for your offerings." 
+    items={[{ title: 'High-Impact Visuals', description: 'Showcase your craft with professional layouts.', icon: 'tabler:camera' }]} 
+    image={{ src: '/images/demos/tokyo-locker-storage-premium-luggage-solutions.webp', alt: 'Brand Showcase' }} 
+  />
+  
+  <Content 
+    isReversed={true} 
+    title="04. The Lightning-Fast Launch" 
+    subtitle="We value your time. If you submit your information by 12:00 PM, we guarantee your professional marketing hub will be live and ready for customers by the time you open for dinner service. No meetings.—just high-speed setup of your English Digital marketing assets." 
+    items={[{ title: 'Order by Noon', description: 'Live by the afternoon, or by next day latest.', icon: 'tabler:bolt' }]} 
+    image={{ src: '/images/hanei-media/008.webp', alt: 'Rapid Deployment' }} 
+  />
+
+  <Pricing 
+    id="pricing" 
+    title="One Simple Price. <br/> Live Today." 
+    subtitle="Zero monthly fees. Lifetime ownership of your professional marketing asset."
+    prices={[pricingData]} 
+  />
+</Layout>

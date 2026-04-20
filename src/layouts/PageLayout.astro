@@ -1,0 +1,83 @@
+---
+import '~/assets/styles/tailwind.css';
+import Layout from '~/layouts/Layout.astro';
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import Announcement from '~/components/widgets/Announcement.astro';
+import { headerDataEn, headerDataJp, footerDataEn, footerDataJp } from '~/navigation';
+
+const { metadata } = Astro.props;
+const pathname = Astro.url.pathname;
+const currentPath = pathname.replace(/\/$/, "") || "/";
+const isJp = currentPath.includes("-jp") || currentPath.includes("trust-kit");
+
+const currentHeaderData = JSON.parse(JSON.stringify(isJp ? headerDataJp : headerDataEn));
+const currentFooterData = JSON.parse(JSON.stringify(isJp ? footerDataJp : footerDataEn));
+
+let enUrl = "/";
+let jpUrl = "/index-jp";
+
+if (isJp) {
+    if (currentPath === "/index-jp") { enUrl = "/"; } else { enUrl = currentPath.replace("-jp", ""); }
+    jpUrl = pathname;
+} else {
+    enUrl = pathname;
+    if (currentPath === "/") { jpUrl = "/index-jp"; } else { jpUrl = `${currentPath}-jp`; }
+}
+
+currentHeaderData.links.push({
+  text: isJp ? '🇯🇵 JP' : '🇺🇸 EN',
+  links: [
+    { text: '🇺🇸 English', href: enUrl },
+    { text: '🇯🇵 日本語', href: jpUrl },
+  ],
+});
+
+currentFooterData.secondaryLinks.push(
+  { text: '🇺🇸 English', href: enUrl },
+  { text: '🇯🇵 日本語', href: jpUrl }
+);
+---
+<Layout metadata={metadata}>
+  <style is:global>
+    main > section + section { padding-top: 0; }
+    
+    @media (min-width: 768px) {
+      nav[aria-label="Main navigation"] > ul > li:last-child > button {
+        background-color: #f1f5f9;
+        color: var(--aw-color-primary) !important;
+        border: 1px solid #e2e8f0;
+        border-radius: 9999px;
+        padding: 0.35rem 0.85rem !important;
+        margin: 0 0.5rem;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      }
+      nav[aria-label="Main navigation"] > ul > li:last-child > button:hover {
+        background-color: #e2e8f0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        transform: translateY(-1px);
+      }
+      .dark nav[aria-label="Main navigation"] > ul > li:last-child > button {
+        background-color: #1e293b;
+        color: #e2e8f0 !important;
+        border-color: #334155;
+      }
+      .dark nav[aria-label="Main navigation"] > ul > li:last-child > button:hover {
+        background-color: #334155;
+        color: #ffffff !important;
+      }
+    }
+    </style>
+  <slot name="announcement"><Announcement /></slot>
+  <slot name="header"><Header {...currentHeaderData} isSticky showToggleTheme /></slot>
+  <main><slot /></main>
+  <slot name="footer"><Footer {...currentFooterData} /></slot>
+  <!-- PIPELINE-IMMUNE BRANDING BADGE -->
+  <a id="hanei-trust-badge" href={"https://" + "hanei" + ".jp"} target="_blank" rel="noopener noreferrer" class="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-2 px-3 py-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:scale-105 hover:shadow-[0_8px_30px_rgb(1,97,239,0.2)] transition-all group">
+    <img src="/images/logo_main.png" alt="English Support" class="w-4 h-4 rounded-sm shadow-sm" />
+    <span class="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest group-hover:text-primary transition-colors">By Hanei English Marketing</span>
+  </a>
+  <script is:inline>if(window.location.hostname.includes(['hanei', 'jp'].join('.'))){var b=document.getElementById("hanei-trust-badge");if(b)b.style.display="none";}</script>
+</Layout>

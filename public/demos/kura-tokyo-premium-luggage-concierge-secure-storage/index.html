@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KURA TOKYO | Premium Luggage Concierge & Secure Storage</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kuraSlate: '#1A1C1E',    /* Deep Industrial Grey */
+                        kuraPlatinum: '#E2E8F0', /* Light Steel */
+                        kuraBronze: '#947D5C',   /* Accents */
+                        kuraWhite: '#FFFFFF',
+                        kuraText: '#2D3436'      /* High contrast body text */
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #FFFFFF; color: #2D3436; }
+        
+        /* Navigation Transition */
+        #mobile-menu {
+            transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+        }
+
+        /* Review Marquee */
+        .marquee-container { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
+        .marquee-content { display: inline-flex; animation: scroll 50s linear infinite; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-content:hover { animation-play-state: paused; }
+
+        /* Review Card Styling - Prevent Overflow */
+        .review-card {
+            white-space: normal;
+            word-wrap: break-word;
+            width: 400px;
+            background: #F8FAFC;
+            padding: 2.5rem;
+            margin-right: 2rem;
+            border-bottom: 4px solid #947D5C;
+        }
+
+        /* Custom Input Styling */
+        .storage-input {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            width: 100%;
+            padding: 1.25rem;
+            outline: none;
+            transition: all 0.3s ease;
+            color: #1A1C1E;
+        }
+        .storage-input:focus { border-color: #947D5C; background: #FFFFFF; }
+        
+        /* Asymmetrical Bento Grid */
+        .bento-item { overflow: hidden; position: relative; transition: all 0.5s ease; }
+        .bento-item:hover img { transform: scale(1.05); }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+
+    <!-- NAVIGATION -->
+    <header class="fixed w-full top-0 z-[100] bg-white/90 backdrop-blur-md border-b border-kuraSlate/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-bold tracking-tighter text-kuraSlate uppercase">Kura <span class="italic font-light lowercase text-kuraBronze">Tokyo</span></a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-10 text-[10px] uppercase tracking-[0.3em] font-bold text-kuraSlate">
+                <a href="#services" class="hover:text-kuraBronze transition-colors">Facilities</a>
+                <a href="#gallery" class="hover:text-kuraBronze transition-colors">Visuals</a>
+                <a href="#reviews" class="hover:text-kuraBronze transition-colors">Client Log</a>
+            </nav>
+
+            <a href="#reserve" class="hidden md:block bg-kuraSlate text-white px-8 py-3 text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-kuraBronze transition-all">
+                Reserve Space
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button id="hamburger" class="md:hidden flex flex-col space-y-1.5 focus:outline-none z-[110]">
+                <span id="bar1" class="w-8 h-[2px] bg-kuraSlate transition-all"></span>
+                <span id="bar2" class="w-8 h-[2px] bg-kuraSlate transition-all"></span>
+                <span id="bar3" class="w-5 h-[2px] bg-kuraSlate self-end transition-all"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="fixed inset-0 bg-kuraSlate z-[105] translate-x-full flex flex-col items-center justify-center space-y-10">
+        <nav class="flex flex-col items-center space-y-8 text-white text-3xl font-serif">
+            <a href="#services" class="mobile-link">Facilities</a>
+            <a href="#gallery" class="mobile-link">Visuals</a>
+            <a href="#reviews" class="mobile-link">Client Log</a>
+        </nav>
+        <a href="#reserve" class="mobile-link bg-kuraBronze text-white px-12 py-4 text-sm uppercase tracking-widest font-sans font-bold">Reserve Now</a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden bg-kuraPlatinum">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-0 relative">
+            
+            <div class="md:col-span-7 z-10 py-12 md:py-32" data-aos="fade-right">
+                <div class="bg-white p-8 md:p-20 shadow-2xl relative">
+                    <p class="uppercase tracking-[0.4em] text-kuraBronze text-xs mb-8 font-black">Ginza Concierge Storage</p>
+                    <h1 class="font-serif text-5xl md:text-8xl leading-[0.85] text-kuraSlate mb-8">
+                        Weightless <br><span class="italic font-light md:pl-20">Exploration.</span>
+                    </h1>
+                    <p class="text-kuraText max-w-sm text-lg font-light mb-12 leading-relaxed">
+                        Tokyo’s premier secure storage for high-value items and luggage. Experience absolute freedom while we guard your belongings with biometric precision.
+                    </p>
+                    <a href="#reserve" class="inline-block bg-kuraSlate text-white px-12 py-5 text-xs uppercase tracking-widest font-bold hover:bg-kuraBronze transition-all">
+                        Check Availability
+                    </a>
+                </div>
+            </div>
+            
+            <div class="md:col-span-5 h-[400px] md:h-auto w-full relative" data-aos="zoom-out" data-aos-duration="1500">
+                <img src="https://images.unsplash.com/photo-1756649627237-d367a3e3a311?w=1000&auto=format&fit=crop" 
+                     class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" alt="Locker Facility">
+                <!-- Overlapping Decorative Element -->
+                <div class="absolute top-10 -right-10 w-32 h-32 bg-kuraBronze/20 hidden md:block"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES (BENTO GRID) -->
+    <section id="services" class="py-32 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-24" data-aos="fade-up">
+                <div class="max-w-xl">
+                    <h2 class="font-serif text-5xl md:text-7xl text-kuraSlate leading-none mb-6">Security <br>In Detail</h2>
+                    <p class="text-kuraText/60 font-light text-lg">Climate-controlled, biometric-access, 24/7 surveillance.</p>
+                </div>
+                <div class="w-24 h-[1px] bg-kuraBronze mb-4"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bento-item group bg-kuraSlate text-white p-10 h-[500px] flex flex-col justify-between" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1759643161527-4d0bf2dd9adb?w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-30 grayscale transition-all duration-700" alt="Lockers">
+                    <div class="relative z-10">
+                        <span class="text-kuraBronze text-4xl font-serif italic">01</span>
+                        <h3 class="font-serif text-3xl mt-4">Luggage Concierge</h3>
+                    </div>
+                    <div class="relative z-10">
+                        <p class="text-white/60 text-sm font-light leading-loose mb-6">Daily and weekly storage for travelers. Includes hotel pickup and airport delivery services.</p>
+                        <a href="#reserve" class="text-[10px] uppercase font-bold tracking-widest border-b border-kuraBronze pb-1">Enquire</a>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bento-item group bg-kuraPlatinum p-10 h-[500px] flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1711346254167-95dbfeeefe3f?w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-10 grayscale transition-all duration-700" alt="Safe">
+                    <div class="relative z-10 text-kuraSlate">
+                        <span class="text-kuraBronze text-4xl font-serif italic">02</span>
+                        <h3 class="font-serif text-3xl mt-4">Secure Vaults</h3>
+                    </div>
+                    <div class="relative z-10">
+                        <p class="text-kuraSlate/70 text-sm font-light leading-loose mb-6">Biometric safes for sensitive documents, jewelry, and high-value tech. Maximum insurance coverage provided.</p>
+                        <a href="#reserve" class="text-[10px] uppercase font-bold tracking-widest border-b border-kuraSlate pb-1 text-kuraSlate">Enquire</a>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bento-item group bg-white border border-kuraSlate/10 p-10 h-[500px] flex flex-col justify-between" data-aos="fade-up" data-aos-delay="400">
+                    <div class="relative z-10 text-kuraSlate">
+                        <span class="text-kuraBronze text-4xl font-serif italic">03</span>
+                        <h3 class="font-serif text-3xl mt-4">Long-term Expat</h3>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1651840403923-c1581f5eec47?w=600&auto=format&fit=crop" class="absolute bottom-0 right-0 w-3/4 h-1/2 object-cover opacity-20" alt="Box">
+                    <div class="relative z-10">
+                        <p class="text-kuraSlate/70 text-sm font-light leading-loose mb-6">Private units for residents. Climate-controlled environments perfect for wine, art, or furniture.</p>
+                        <a href="#reserve" class="text-[10px] uppercase font-bold tracking-widest border-b border-kuraBronze pb-1 text-kuraSlate">Enquire</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISUALS / INSTAGRAM -->
+    <section id="gallery" class="py-32 px-6 bg-kuraSlate">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                <img src="https://images.unsplash.com/photo-1718506921334-31b21157b84a?w=500&auto=format&fit=crop" class="aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-700" data-aos="zoom-in" alt="Facility 1">
+                <img src="https://images.unsplash.com/photo-1755611332634-f233e2141052?w=500&auto=format&fit=crop" class="aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-700" data-aos="zoom-in" data-aos-delay="100" alt="Facility 2">
+                <img src="https://images.unsplash.com/photo-1551313158-73d016a829ae?w=500&auto=format&fit=crop" class="aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-700" data-aos="zoom-in" data-aos-delay="200" alt="Facility 3">
+                <img src="https://images.unsplash.com/photo-1618438502398-195e47778d6c?w=500&auto=format&fit=crop" class="aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-700" data-aos="zoom-in" data-aos-delay="300" alt="Facility 4">
+            </div>
+            <div class="mt-16 text-center">
+                <p class="text-[10px] uppercase tracking-[0.4em] font-bold text-white/40">Inside the Sanctuary @KuraTokyo</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS MARQUEE -->
+    <section id="reviews" class="py-24 border-y border-kuraSlate/10 bg-white">
+        <div class="marquee-container">
+            <div class="marquee-content gap-8">
+                <!-- Review 1 -->
+                <div class="review-card shadow-sm">
+                    <div class="flex text-kuraBronze mb-4 text-[10px] font-black tracking-widest uppercase">★★★★★ Verified Expat</div>
+                    <p class="text-kuraText text-sm font-light leading-loose italic mb-6">"Living in a small Minato apartment, Kura Tokyo is a lifesaver. My winter gear and sports equipment are kept in perfect condition. The English service is impeccable."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-kuraSlate">— James Vanderbilt, Tech Executive</p>
+                </div>
+                <!-- Review 2 -->
+                <div class="review-card shadow-sm">
+                    <div class="flex text-kuraBronze mb-4 text-[10px] font-black tracking-widest uppercase">★★★★★ Verified Traveler</div>
+                    <p class="text-kuraText text-sm font-light leading-loose italic mb-6">"Left my ski gear here between trips to Hokkaido. The concierge arranged airport delivery so I didn't have to carry a thing through Tokyo station. Pure luxury."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-kuraSlate">— Sarah Jenkins, Australia</p>
+                </div>
+                <!-- Review 3 -->
+                <div class="review-card shadow-sm">
+                    <div class="flex text-kuraBronze mb-4 text-[10px] font-black tracking-widest uppercase">★★★★★ Verified Business</div>
+                    <p class="text-kuraText text-sm font-light leading-loose italic mb-6">"Highly secure, temperature-controlled, and private. We trust them with our prototype components during trade shows in Japan. Exceptional reliability."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-kuraSlate">— Mark Thorne, CEO</p>
+                </div>
+                <!-- Duplicate -->
+                <div class="review-card shadow-sm">
+                    <div class="flex text-kuraBronze mb-4 text-[10px] font-black tracking-widest uppercase">★★★★★ Verified Expat</div>
+                    <p class="text-kuraText text-sm font-light leading-loose italic">"Living in a small Minato apartment, Kura Tokyo is a lifesaver."</p>
+                    <p class="font-bold text-[10px] uppercase tracking-[0.2em] text-kuraSlate">— James Vanderbilt</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVE FORM -->
+    <section id="reserve" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto" data-aos="fade-up">
+            <div class="text-center mb-20">
+                <h2 class="font-serif text-5xl md:text-7xl mb-4 text-kuraSlate">Secure Your <span class="italic text-kuraBronze font-light">Kura</span></h2>
+                <p class="text-kuraText font-light">Complete the request below. Our concierge will verify space availability within 2 hours.</p>
+            </div>
+
+            <form class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-kuraSlate/50">Full Name</label>
+                    <input type="text" placeholder="Your Name" class="storage-input" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-kuraSlate/50">Phone Number</label>
+                    <input type="tel" placeholder="+1-000-000-0000" class="storage-input" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-kuraSlate/50">Storage Type</label>
+                    <select class="storage-input">
+                        <option>Luggage Concierge (Short Term)</option>
+                        <option>Private Vault (Biometric Safe)</option>
+                        <option>Climate Unit (Long Term)</option>
+                        <option>Expat Moving Storage</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-kuraSlate/50">Expected Size</label>
+                    <select class="storage-input">
+                        <option>Small (Documents/S-Box)</option>
+                        <option>Medium (1-2 Suitcases)</option>
+                        <option>Large (Unit Rental)</option>
+                        <option>Bespoke / Multi-unit</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-kuraSlate/50">Drop-off Date</label>
+                    <input type="date" class="storage-input" required>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[9px] uppercase tracking-widest font-black text-kuraSlate/50">Estimated Duration</label>
+                    <select class="storage-input">
+                        <option>Daily (1-6 days)</option>
+                        <option>Monthly</option>
+                        <option>6 Months +</option>
+                        <option>Indefinite</option>
+                    </select>
+                </div>
+                <div class="md:col-span-2 pt-10 text-center">
+                    <button type="submit" class="bg-kuraSlate text-white px-24 py-5 text-sm uppercase tracking-widest font-bold hover:bg-kuraBronze transition-all w-full md:w-auto shadow-2xl">
+                        Dispatch Concierge Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-kuraSlate text-white pt-32 pb-12 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-16 mb-20">
+            <div class="md:col-span-5">
+                <h2 class="font-serif text-3xl mb-8 uppercase tracking-tighter">Kura <span class="italic font-light lowercase text-kuraBronze">Tokyo</span></h2>
+                <p class="text-white/40 font-light leading-relaxed max-w-sm italic font-serif text-lg">
+                    "Guarding the weight of your journey, enabling the lightness of your soul."
+                </p>
+                <div class="mt-10 space-y-2 text-xs tracking-widest uppercase text-white/30">
+                    <p>Open 24/7 for Registered Clients</p>
+                    <p>Phone: +81 (0) 3 6777 9999</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-3">
+                <h4 class="text-kuraBronze uppercase tracking-widest text-[10px] font-black mb-8">Central Facility</h4>
+                <div class="font-serif text-xl space-y-2">
+                    <p>5-Chome, Marunouchi, <br>Chiyoda-ku, Tokyo <br>Japan 100-0005</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-4">
+                <div class="w-full h-64 grayscale brightness-75 border border-white/10 relative group overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Map">
+                    <div class="absolute inset-0 flex items-center justify-center bg-kuraSlate/20">
+                        <span class="px-6 py-2 border border-white/20 text-[10px] tracking-widest uppercase backdrop-blur-sm">View Security Perimeter</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto border-t border-white/10 pt-12 flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-[0.4em] text-white/20 font-bold">
+            <p>© 2026 Kura Tokyo Storage Systems</p>
+            <p class="mt-4 md:mt-0">Designed by <span class="text-white/70">HANEI.JP</span></p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // AOS Initialize
+        AOS.init({ duration: 1000, once: true, easing: 'ease-out-quart' });
+
+        const hamburger = document.getElementById('hamburger');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+        const b1 = document.getElementById('bar1');
+        const b2 = document.getElementById('bar2');
+        const b3 = document.getElementById('bar3');
+
+        function toggleMenu() {
+            menu.classList.toggle('translate-x-full');
+            document.body.classList.toggle('overflow-hidden');
+            b1.classList.toggle('rotate-45');
+            b1.classList.toggle('translate-y-[8px]');
+            b2.classList.toggle('opacity-0');
+            b3.classList.toggle('-rotate-45');
+            b3.classList.toggle('-translate-y-[8px]');
+            b3.classList.toggle('w-8');
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        links.forEach(l => l.addEventListener('click', () => {
+            if (!menu.classList.contains('translate-x-full')) toggleMenu();
+        }));
+
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Your request has been dispatched. A concierge will contact you shortly to confirm space availability.');
+        });
+    </script>
+    <!-- HANEI OVERLAY -->
+    <a href="/demos" class="fixed bottom-8 left-8 z-[200] bg-kuraSlate text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-2xl border border-kuraBronze/30 hover:bg-kuraBronze transition-all flex items-center gap-2 group"><span class="group-hover:-translate-x-1 transition-transform">←</span> Return to Hanei</a>
+
+    <script>
+      // Hanei JP Context Detection
+      (function() {
+        const returnLink = document.querySelector('a[href*="hanei.jp"]') || document.querySelector('a[href*="/demos"]');
+        if (returnLink) {
+          // Normalize to base demos link
+          returnLink.href = "/demos"; 
+          
+          // Detect Japanese context from referrer
+          if (document.referrer.includes("-jp")) {
+            returnLink.href = "/demos-jp";
+            returnLink.innerHTML = "← Haneiに戻る";
+          }
+        }
+      })();
+    </script>
+</body>
+</html>

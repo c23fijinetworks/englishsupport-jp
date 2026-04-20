@@ -1,0 +1,151 @@
+---
+import { Icon } from 'astro-icon/components';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+
+const { 
+  title, 
+  subtitle, 
+  tagline, 
+  prices = [], 
+  hasUrlField = false, 
+  classes = {}, 
+  texts = {}, 
+  ...rest 
+} = Astro.props;
+
+const SITE_URL = "https://englishsupport.jp";
+const currentPath = Astro.url.pathname;
+const successUrl = `${SITE_URL}/thank-you`;
+const cancelUrl = `${SITE_URL}${currentPath}`;
+
+const labels = {
+  labelBiz: texts.labelBiz || "1. Business Name",
+  phBiz: texts.phBiz || "Enter Name",
+  labelWeb: texts.labelWeb || "2. Website (If any)",
+  phWeb: texts.phWeb || "https://...",
+  labelEmail: texts.labelEmail || (hasUrlField ? "3. Your Email" : "2. Your Email"),
+  phEmail: texts.phEmail || "Enter Email",
+  submit: texts.submit || "Pay & Start Now",
+  totalInv: texts.totalInv || "Total Investment",
+};
+
+const gridConfig = prices.length === 1 
+  ? "max-w-2xl mx-auto" 
+  : "grid grid-cols-1 lg:grid-cols-3 gap-10 max-w-7xl mx-auto";
+---
+
+<WidgetWrapper {...rest} id="pricing" classes={{ container: 'max-w-7xl mx-auto px-4', ...classes.container }} hasBackground>
+  <Headline {title} {subtitle} {tagline} classes={{ title: 'text-5xl md:text-7xl font-black tracking-tighter text-slate-950 mb-20' }} />
+  
+  <div class={gridConfig}>
+    {prices.map((price) => (
+      <div class="relative flex flex-col rounded-[2.5rem] border border-slate-200 p-8 md:p-12 text-center shadow-2xl bg-white transition-all hover:scale-[1.01] hover:shadow-blue-900/5 overflow-hidden">
+        
+        <div class="inline-block mx-auto bg-slate-950 text-white px-6 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.25em] mb-8">
+            Hanei Standard
+        </div>
+
+        <!-- FIX: Added min-h and adjusted font size for better Japanese line-balance -->
+        <div class="min-h-[120px] flex items-center justify-center">
+          <h3 class="text-3xl md:text-4xl font-black text-slate-950 font-heading tracking-tighter uppercase leading-tight">
+            {price.title}
+          </h3>
+        </div>
+        
+        <div class="mt-8 flex-1 flex flex-col border-y border-slate-100 py-12 my-2">
+          <div class="flex flex-col items-center">
+            <span class="text-sm font-black text-slate-900 uppercase tracking-[0.2em] mb-4">
+              {price.subTitle || "Start Deposit 50%"}
+            </span>
+            <div class="w-full py-2">
+                <span class="text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-black tracking-tighter text-blue-600 leading-none block">
+                    {typeof price.price === 'number' ? '¥' + price.price.toLocaleString() : price.price}
+                </span>
+            </div>
+            { (price.badge || price.total) && (
+              <div class="mt-8 bg-slate-950 text-white px-8 py-5 rounded-2xl inline-block shadow-lg">
+                  <span class="text-sm md:text-base font-bold uppercase tracking-widest leading-tight block" set:html={price.badge || `${labels.totalInv}: ${price.total}`}></span>
+              </div>
+            )}
+          </div>
+          
+          <ul role="list" class="mt-14 space-y-5 text-left flex-grow border-t border-slate-50 pt-12">
+            {price.items.map((item) => (
+              <li class="flex items-start">
+                <div class="bg-blue-600 rounded-full p-1 mr-4 mt-1 shadow-md shrink-0">
+                    <Icon name="tabler:check" class="w-4 h-4 text-white stroke-[4px]" />
+                </div>
+                <p class="text-lg md:text-xl text-slate-900 font-bold leading-tight tracking-tight">{item.description}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <div class="mt-12">
+          <form class="checkout-form" action="https://www.paypal.com/cgi-bin/webscr" method="get" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick" />
+            <input type="hidden" name="business" value="ZFG89TK2KESFG" />
+            <input type="hidden" name="solution_type" value="Sole" />
+            <input type="hidden" name="landing_page" value="billing" />
+            <input type="hidden" name="brand_name" value="English Support" />
+            <input type="hidden" name="no_shipping" value="1" />
+            <input type="hidden" name="no_note" value="1" />
+            <input type="hidden" name="tax" value="0" />
+            <input type="hidden" name="shipping" value="0" />
+            <input type="hidden" name="currency_code" value="JPY" />
+            <input type="hidden" class="paypal-item-name" name="item_name" value={`English Support: ${price.title}`} />
+            <input type="hidden" name="amount" value={price.price?.toString().replace(/[^0-9.]/g, '')} />
+            <input type="hidden" name="return" value={successUrl} />
+            <input type="hidden" name="cancel_return" value={cancelUrl} />
+            
+            <div class="text-left space-y-8">
+              <div>
+                <label class="block text-xs font-black mb-2 text-slate-950 uppercase tracking-widest">{labels.labelBiz}</label>
+                <input type="text" name="os0" required class="business-name-input w-full px-6 py-5 text-xl border border-slate-300 rounded-2xl bg-slate-50 focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-50 outline-none transition-all text-slate-950 font-bold placeholder:text-slate-300 shadow-sm" placeholder={labels.phBiz} data-base-title={price.title} />
+                <input type="hidden" name="on0" value="Business Name" />
+              </div>
+
+              {hasUrlField ? (
+                <div>
+                  <label class="block text-xs font-black mb-2 text-slate-950 uppercase tracking-widest">{labels.labelWeb}</label>
+                  <input type="text" name="os1" class="w-full px-6 py-5 text-xl border border-slate-300 rounded-2xl bg-slate-50 focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-50 outline-none transition-all text-slate-950 font-bold placeholder:text-slate-300 shadow-sm" placeholder={labels.phWeb} />
+                  <input type="hidden" name="on1" value="Current URL" />
+                </div>
+              ) : null}
+
+              <div>
+                <label class="block text-xs font-black mb-2 text-slate-950 uppercase tracking-widest">{labels.labelEmail}</label>
+                <input type="email" required class="email-input w-full px-6 py-5 text-xl border border-slate-300 rounded-2xl bg-slate-50 focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-50 outline-none transition-all text-slate-950 font-bold placeholder:text-slate-300 shadow-sm" placeholder={labels.phEmail} />
+                <input type="hidden" class="paypal-custom-metadata" name="custom" value="" />
+              </div>
+            </div>
+
+            <button type="submit" class="w-full mt-12 py-7 bg-blue-600 hover:bg-slate-950 text-white font-black rounded-2xl shadow-xl transition-all text-2xl uppercase tracking-widest transform hover:-translate-y-1">
+              {labels.submit}
+            </button>
+          </form>
+        </div>
+      </div>
+    ))}
+  </div>
+</WidgetWrapper>
+
+<script is:inline>
+  function initCheckoutSync() {
+    document.querySelectorAll('.checkout-form').forEach(form => {
+      const biz = form.querySelector('.business-name-input');
+      const mail = form.querySelector('.email-input');
+      if (!biz || !mail) return;
+      const sync = () => {
+        const base = biz.getAttribute('data-base-title');
+        form.querySelector('.paypal-item-name').value = `English Support: ${base} (${biz.value})`;
+        form.querySelector('.paypal-custom-metadata').value = JSON.stringify({ email: mail.value, business: biz.value });
+      };
+      biz.addEventListener('input', sync);
+      mail.addEventListener('input', sync);
+    });
+  }
+  document.addEventListener('astro:page-load', initCheckoutSync);
+  initCheckoutSync();
+</script>

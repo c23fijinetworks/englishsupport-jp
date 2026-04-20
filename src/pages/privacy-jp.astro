@@ -1,0 +1,49 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+
+const metadata = { 
+  title: 'プライバシーポリシー | English Support',
+  description: 'English Supportが提供するインバウンド・デジタルサービスにおける、包括的なデータ保護とプライバシー基準。'
+};
+---
+<Layout metadata={metadata}>
+  <HeroText title="プライバシーポリシー" subtitle="最終更新：2026年4月" />
+  
+  <section class="px-4 py-12 sm:px-6 mx-auto lg:py-20 max-w-4xl">
+    <div class="prose prose-lg dark:prose-invert max-w-none text-muted dark:text-slate-400">
+      
+      <h2 class="text-slate-900 dark:text-white">1. データの主権</h2>
+      <p>English Supportでは、お客様のビジネスデータはお客様自身に帰属すべきであると考えています。私たちは、高性能なインバウンド・デジタル・プレゼンスを構築・維持するために厳密に必要とされるデータのみを取り扱います。</p>
+
+      <h2 class="text-slate-900 dark:text-white">2. 収集する情報</h2>
+      <p>オンボーディングフォームや直接のコミュニケーションを通じて、店名、連絡先、メニュー、サービス一覧、および高解像度の写真などの情報を収集します。クレジットカード情報は当スタジオでは保持しません。すべての決済は Stripe または PayPal を通じて安全に処理されます。</p>
+
+      <h2 class="text-slate-900 dark:text-white">3. ゼロアクセス・戦略モデル</h2>
+      <p>セキュリティを最大化するため、私たちは<strong>「ゼロアクセス」</strong>戦略モデルを採用しています。お客様の第三者アカウントのパスワードを当スタジオで保存することはありません。DNS設定による連携を行うことで、お客様のHaneiブランド資産を接続し、内部データのプライバシーを隔離・保護した状態での運用を可能にしています。</p>
+
+      <h2 class="text-slate-900 dark:text-white">4. 情報の利用目的</h2>
+      <p>ご提供いただいたデータは、プロフェッショナルなデジタル・プレゼンスの設計、公開、ホスティング、およびレピュテーション・レビュー・マーケティングの設定、継続的な視認性サポートやホワイトグローブ・アップデートの提供にのみ、厳格に利用されます。</p>
+
+      <h2 class="text-slate-900 dark:text-white">5. データの共有とホスティング</h2>
+      <p>当スタジオがお客様のデータを販売することはありません。資産の提供に不可欠な信頼できるデリバリー・パートナー（グローバル・エッジネットワーク、GoogleビジネスプロフィールAPI等）との間でのみ、必要な情報を共有します。</p>
+
+      <h2 class="text-slate-900 dark:text-white">6. 国際的なデータ転送</h2>
+      <p>グローバルスタジオとして、お客様のデータは日本国外の安全なサーバーで処理される場合があります。私たちは、すべてのパートナーが厳格なデータ保護基準（GDPR/APPI等）を遵守し、全地域で安全が保たれるよう努めています。</p>
+
+      <h2 class="text-slate-900 dark:text-white">7. データの保持期間</h2>
+      <p>デジタル・ブランド資産が稼働している限り、ビジネスコンテンツを保持します。サービスの終了を選択された場合、主要ストレージから90日以内に、お客様固有のデータ資産を安全に削除いたします。</p>
+
+      <h2 class="text-slate-900 dark:text-white">8. お客様の権利</h2>
+      <p>お客様は、当スタジオが保持するご自身のビジネスデータに関するコピーを要求する権利があります。ただし、弊社のサイトは公開を目的として構築されているため、公開マーケティングハブに表示されるコンテンツは「非公開データ」の要求対象外となります。</p>
+
+      <h2 class="text-slate-900 dark:text-white">9. クッキーとトラッキング</h2>
+      <p>ウェブサイトのパフォーマンス維持に必要な必須クッキーのみを使用します。侵襲的な第三者トラッキングは回避し、提供するアナリティクスも個人の特定を行わないプライバシー優先の統計データに焦点を当てています。</p>
+    </div>
+
+    <div class="mt-20 pt-10 border-t border-gray-200 dark:border-slate-800 text-center">
+      <p class="text-xl font-bold text-slate-900 dark:text-white mb-2">ご質問はありますか？</p>
+      <a href="/contact-jp" class="text-primary hover:text-accent font-black text-2xl underline decoration-2 underline-offset-8 transition-colors">お問い合わせはこちら</a>
+    </div>
+  </section>
+</Layout>

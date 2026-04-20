@@ -1,0 +1,124 @@
+---
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+
+const metadata = { 
+  title: 'インバウンドへの道程 | シンプルな3ステップ | English Support',
+  description: '注文から公開まで、最短・最速。月額費用ゼロでプロフェッショナルなインバウンド対応を開始する手順をご案内します。'
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero2
+    tagline="戦略的インバウンド・メソッド"
+    title='驚くほど、<br/><span class="text-accent">迅速かつスムーズ。</span>'
+    subtitle="オーナー様の貴重な時間を無駄にはしません。長い打ち合わせ、複雑な契約、そして継続的な月額費用を一切排除しました。数分で開始可能です。"
+    image={{ src: '/images/demos/zen-relocations-japan-relocations.webp', alt: '効率的なワークフロー' }}
+    classes={{ inner: 'pb-4 md:pb-6' }}
+  />
+
+  <Content
+    isReversed={false}
+    tagline="Step 01"
+    title="マーケティング・プランを選択"
+    subtitle="ブランドのニーズに合ったプランをお選びください。すべてのパッケージは一括払い（買い切り）形式です。隠れた月額サブスクリプションや維持管理費は永久に発生しません。StripeまたはPayPalでの決済完了後、直ちに制作を開始します。"
+    items={[{ title: '一括払い（月額費用なし）', description: '一度の投資で、マーケティング資産を永久に貴社の資産として所有いただけます。', icon: 'tabler:coin' }]}
+    image={{ src: '/images/hanei-media/020.webp' }}
+    classes={{ container: 'py-8 md:py-12' }}
+  />
+
+  <Content
+    isReversed={true}
+    isAfterContent={true}
+    tagline="Step 02"
+    title="ブランド情報の送付"
+    subtitle="簡略化された専用のオンボーディングフォームに入力するだけ。店舗の基本情報、サービス内容、高解像度の写真をご提供ください。面倒な設定はすべて私たちが代行するため、お客様は本業に集中いただけます。"
+    items={[{ title: '迷わない情報の整理', description: '制作に必要な素材の準備を、弊社のチームが丁寧にサポートいたします。', icon: 'tabler:file-description' }]}
+    image={{ src: '/images/hanei-media/009.webp' }}
+    classes={{ container: 'py-8 md:py-12' }}
+  />
+
+  <Content
+    isReversed={false}
+    isAfterContent={true}
+    tagline="Step 03"
+    title="戦略アドバイザーによる構築と確認"
+    subtitle="弊社の戦略アドバイザーとライターが、最短24時間〜72時間以内に高視認性なハブを構築。確認用のプレビューリンクをお送りします。デザインやコピーに100%ご満足いただけるまで、修正回数に制限はありません。"
+    items={[{ title: '徹底した精度', description: '細部まで磨き上げ、貴社の「こだわり」とクラフトマンシップを完璧に反映させます。', icon: 'tabler:tool' }]}
+    image={{ src: '/images/hanei-media/022.webp' }}
+    classes={{ container: 'py-8 md:py-12' }}
+  />
+
+  <Content
+    isReversed={true}
+    isAfterContent={true}
+    tagline="Step 04"
+    title="公開とグローバル集客の開始"
+    subtitle="最終承認をいただいた後、すぐに本番公開となります。貴社のブランドは、世界最高水準のグローバル・ネットワークに接続されます。店頭用のカスタムQRキットやマーケティング資産もお届けし、即座に新しい顧客を迎える準備が整います。"
+    items={[{ title: '記録的な公開スピード', description: '情報提供から最短1営業日で、世界中に貴社のプレゼンスを展開します。', icon: 'tabler:rocket' }]}
+    image={{ src: '/images/hanei-media/004.webp' }}
+    classes={{ container: 'py-8 md:py-12' }}
+  />
+
+  <Features3
+    title="忙しいオーナー様のために"
+    subtitle="面倒な作業はすべて私たちが代行します。"
+    columns={3}
+    items={[
+      { title: '月額費用は永久無料', description: '買い切り型のため、サーバー代や管理費などの継続的なコストはかかりません。', icon: 'tabler:circle-check' },
+      { title: '容易な導入', description: '専門用語を排し、わかりやすい言葉でプロジェクトを進行するため安心です。', icon: 'tabler:message-circle' },
+      { title: '圧倒的なスピード', description: 'ほとんどのサービスを、情報受領から24〜72時間以内に納品します。', icon: 'tabler:bolt' },
+    ]}
+    classes={{ container: 'py-8 md:py-12' }}
+  />
+
+  <hr class="max-w-7xl mx-auto border-t dark:border-slate-800" />
+
+  <Features2
+    title="今すぐエリート・ブランド資産を確保する"
+    subtitle="ビジネスの成長に最適なソリューションをお選びください。"
+    columns={3}
+    items={[
+      {
+        title: 'インバウンド英語ウェルカム',
+        description: 'デジタル・ブランドガイド。正午までの注文で、夕方には公開。',
+        icon: 'tabler:square-number-1',
+        callToAction: { text: 'パッケージを見る', href: '/one-page-welcome-jp' },
+      },
+      {
+        title: 'レピュテーション・レビュー・マーケティング',
+        description: '信頼の自動化。満足したお客様の声を星5つのGoogle評価へ。',
+        icon: 'tabler:stars',
+        callToAction: { text: 'パッケージを見る', href: '/review-engine-jp' },
+      },
+      {
+        title: '英語専用デジタル別館（Hanare）',
+        description: '既存サイトをいじらずに世界展開。リスクゼロの「離れ」戦略。',
+        icon: 'tabler:language',
+        callToAction: { text: 'パッケージを見る', href: '/english-hanare-jp' },
+      },
+      {
+        title: 'ブランド・リフォーム',
+        description: 'デザインの劇的刷新。今のプレゼンスを世界基準のラグジュアリーな姿へ。',
+        icon: 'tabler:palette',
+        callToAction: { text: 'リフォームを見る', href: '/grand-opening-jp/#reform' },
+      },
+      {
+        title: 'フラッグシップ・デジタル公開',
+        description: 'ブランド・ブループリント。ゼロから最高の旗艦店を構築。',
+        icon: 'tabler:rocket',
+        callToAction: { text: '新規制作を見る', href: '/grand-opening-jp/#new' },
+      },
+      {
+        title: '地域貢献活動',
+        description: 'エリート戦略支援。登録NPO法人等へブランド支援を無償提供。',
+        icon: 'tabler:heart',
+        callToAction: { text: '詳細を見る', href: '/community-mission-jp' },
+      },
+    ]}
+    classes={{ container: 'py-12 md:py-20' }}
+  />
+</Layout>

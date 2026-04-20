@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAKUMI PRECISION TOKYO | Engineering the Future</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#121212',
+                        industrialGrey: '#2D3436',
+                        steel: '#636E72',
+                        architectural: '#F5F6FA'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #F5F6FA; color: #121212; }
+        
+        /* High Contrast Review Marquee */
+        .marquee-wrapper { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
+        .marquee-content { display: inline-flex; animation: scroll 50s linear infinite; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-content:hover { animation-play-state: paused; }
+
+        /* Review Card Styling */
+        .review-card {
+            white-space: normal;
+            word-wrap: break-word;
+            width: 450px;
+            background: white;
+            padding: 2.5rem;
+            margin-right: 2rem;
+            border-left: 4px solid #121212;
+        }
+
+        /* Custom Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(2, 350px);
+            gap: 1.5rem;
+        }
+
+        /* Professional Form */
+        .rfq-input {
+            background: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            width: 100%;
+            padding: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            color: #121212;
+        }
+        .rfq-input:focus { border-color: #121212; ring: 1px solid #121212; }
+        
+        /* Navigation Transitions */
+        #nav-overlay {
+            transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .hero-text-shadow {
+            text-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+
+    <!-- NAVIGATION -->
+    <header class="fixed w-full top-0 z-[100] bg-architectural/95 backdrop-blur-md border-b border-obsidian/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-sans text-xl font-black tracking-tighter uppercase text-obsidian">
+                Takumi <span class="font-light italic font-serif lowercase tracking-normal">Precision</span>
+            </a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-12 text-[10px] uppercase tracking-[0.3em] font-bold text-obsidian">
+                <a href="#solutions" class="hover:opacity-50 transition-opacity">Solutions</a>
+                <a href="#gallery" class="hover:opacity-50 transition-opacity">Production</a>
+                <a href="#reviews" class="hover:opacity-50 transition-opacity">Clients</a>
+            </nav>
+
+            <a href="#rfq" class="hidden md:block bg-obsidian text-architectural px-8 py-3 text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-steel transition-all">
+                Request a Quote
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button id="hamburger" class="md:hidden flex flex-col space-y-1.5 focus:outline-none z-[110]">
+                <span class="w-8 h-[2px] bg-obsidian transition-all" id="bar1"></span>
+                <span class="w-8 h-[2px] bg-obsidian transition-all" id="bar2"></span>
+                <span class="w-8 h-[2px] bg-obsidian transition-all" id="bar3"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div id="nav-overlay" class="fixed inset-0 bg-obsidian z-[105] translate-x-full flex flex-col items-center justify-center space-y-10">
+        <nav class="flex flex-col items-center space-y-8 text-architectural text-2xl font-serif italic">
+            <a href="#solutions" class="mobile-link">Solutions</a>
+            <a href="#gallery" class="mobile-link">Production</a>
+            <a href="#reviews" class="mobile-link">Clients</a>
+            <a href="#rfq" class="mobile-link bg-architectural text-obsidian px-10 py-4 text-sm uppercase tracking-widest font-sans font-bold">Inquire Now</a>
+        </nav>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1757912666361-8c226b7279b9?w=1920&auto=format&fit=crop" 
+                 class="w-full h-full object-cover grayscale brightness-50" alt="Factory Floor">
+        </div>
+        
+        <div class="relative z-10 text-center max-w-5xl mx-auto">
+            <p data-aos="fade-down" class="uppercase tracking-[0.5em] text-architectural text-xs mb-8 font-bold">Established in Tokyo 1968</p>
+            <h1 data-aos="fade-up" data-aos-delay="200" class="font-sans text-6xl md:text-9xl font-black text-architectural leading-none uppercase mb-8 hero-text-shadow">
+                Precision <br> <span class="font-serif italic capitalize font-light tracking-normal">Redefined.</span>
+            </h1>
+            <p data-aos="fade-up" data-aos-delay="400" class="text-architectural/80 max-w-xl mx-auto text-lg font-light mb-12 leading-relaxed">
+                Japanese manufacturing excellence for global industries. Specializing in high-tolerance components and automated assembly solutions.
+            </p>
+            <div data-aos="fade-up" data-aos-delay="600">
+                <a href="#rfq" class="bg-architectural text-obsidian px-12 py-5 text-xs uppercase tracking-widest font-bold hover:bg-steel hover:text-white transition-all">
+                    Start Your Project
+                </a>
+            </div>
+        </div>
+        
+        <!-- Bottom Decor -->
+        <div class="absolute bottom-10 left-10 hidden md:block border-l border-architectural/30 pl-4 py-2">
+            <p class="text-architectural/50 text-[10px] tracking-widest uppercase">Global Distribution Available</p>
+        </div>
+    </section>
+
+    <!-- SOLUTIONS (BENTO GRID) -->
+    <section id="solutions" class="py-32 px-6 bg-architectural">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20" data-aos="fade-right">
+                <div class="max-w-xl">
+                    <h2 class="font-sans text-5xl md:text-7xl font-black text-obsidian uppercase leading-none mb-6">Industrial <br>Solutions</h2>
+                    <p class="text-steel font-light text-lg">Harnessing the power of advanced robotics and human intuition.</p>
+                </div>
+                <div class="h-[1px] w-24 bg-obsidian mb-4 hidden md:block"></div>
+            </div>
+
+            <div class="flex flex-col md:grid md:grid-cols-12 md:grid-rows-2 gap-6">
+                <!-- CNC & Machining -->
+                <div class="md:col-span-8 md:row-span-1 relative overflow-hidden group min-h-[350px]" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1726111254187-9c584c215689?w=1000&auto=format&fit=crop" 
+                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="CNC">
+                    <div class="absolute inset-0 bg-obsidian/40"></div>
+                    <div class="absolute bottom-8 left-8 text-architectural">
+                        <h3 class="text-3xl font-black uppercase mb-2">5-Axis CNC Machining</h3>
+                        <p class="text-sm font-light text-architectural/70 uppercase tracking-widest">Micron-level accuracy</p>
+                    </div>
+                </div>
+
+                <!-- Prototyping -->
+                <div class="md:col-span-4 bg-white p-12 border-t-4 border-obsidian flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="font-serif italic text-3xl">Rapid Prototyping</h3>
+                    <p class="text-steel text-sm leading-relaxed">Fast-tracking concepts to reality with integrated 3D modeling and stress testing.</p>
+                    <a href="#rfq" class="text-[10px] uppercase font-bold tracking-widest border-b border-obsidian w-fit pb-1">Learn More</a>
+                </div>
+
+                <!-- Quality Control -->
+                <div class="md:col-span-4 bg-obsidian text-architectural p-12 flex flex-col justify-between" data-aos="fade-up">
+                    <h3 class="text-3xl font-bold uppercase">ISO Certified <br>QC Control</h3>
+                    <p class="text-architectural/50 text-sm">Every component undergoes a 12-point inspection before dispatch.</p>
+                </div>
+
+                <!-- Assembly -->
+                <div class="md:col-span-8 relative overflow-hidden group min-h-[350px]" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1726111262949-e22631a8c376?w=1000&auto=format&fit=crop" 
+                         class="absolute inset-0 w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-110" alt="Assembly">
+                    <div class="absolute inset-0 bg-obsidian/30"></div>
+                    <div class="absolute bottom-8 right-8 text-architectural text-right">
+                        <h3 class="text-3xl font-black uppercase mb-2">Full-Scale Assembly</h3>
+                        <p class="text-sm font-light text-architectural/70 uppercase tracking-widest">End-to-end production lines</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY (INSTAGRAM STYLE) -->
+    <section id="gallery" class="py-32 px-6 bg-white">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <p class="uppercase tracking-[0.3em] text-steel text-[10px] mb-4 font-bold">Inside the Takumi Facility</p>
+                <h2 class="font-sans text-4xl md:text-5xl font-black text-obsidian uppercase">Production Excellence</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="aspect-square overflow-hidden group" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1648615046285-ad8e3b11c7a3?w=500&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Production 1">
+                </div>
+                <div class="aspect-square overflow-hidden group" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1653069150536-d1256e2028f1?w=500&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Production 2">
+                </div>
+                <div class="aspect-square overflow-hidden group" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1757912666361-8c226b7279b9?w=500&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Production 3">
+                </div>
+                <div class="aspect-square overflow-hidden group" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1726111254187-9c584c215689?w=500&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Production 4">
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <span class="text-[10px] tracking-[0.3em] uppercase text-steel font-bold">Follow @TakumiPrecisionTokyo</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS MARQUEE -->
+    <section id="reviews" class="py-24 border-y border-obsidian/10 bg-architectural">
+        <div class="marquee-wrapper">
+            <div class="marquee-content gap-8">
+                <!-- Review 1 -->
+                <div class="review-card shadow-sm shrink-0">
+                    <div class="flex text-obsidian mb-4 text-xs font-bold tracking-widest uppercase">★★★★★ Global Partner</div>
+                    <p class="text-industrialGrey text-base font-light leading-relaxed italic">"Their attention to precision is second to none. We've sourced high-tolerance medical components from Takumi for 10 years without a single defect."</p>
+                    <p class="mt-8 font-serif text-steel">— CEO, MedTech Systems Germany</p>
+                </div>
+                <!-- Review 2 -->
+                <div class="review-card shadow-sm shrink-0">
+                    <div class="flex text-obsidian mb-4 text-xs font-bold tracking-widest uppercase">★★★★★ Verified Client</div>
+                    <p class="text-industrialGrey text-base font-light leading-relaxed italic">"English support is excellent. It's rare to find a Tokyo factory with such seamless communication for international projects."</p>
+                    <p class="mt-8 font-serif text-steel">— Operations Lead, Aerodyne USA</p>
+                </div>
+                <!-- Review 3 -->
+                <div class="review-card shadow-sm shrink-0">
+                    <div class="flex text-obsidian mb-4 text-xs font-bold tracking-widest uppercase">★★★★★ Partner</div>
+                    <p class="text-industrialGrey text-base font-light leading-relaxed italic">"The speed of their rapid prototyping turned our 6-month cycle into 6 weeks. High-end manufacturing at its best."</p>
+                    <p class="mt-8 font-serif text-steel">— Engineering Director, Robotics UK</p>
+                </div>
+                <!-- Duplicate for Marquee -->
+                <div class="review-card shadow-sm shrink-0">
+                    <div class="flex text-obsidian mb-4 text-xs font-bold tracking-widest uppercase">★★★★★ Global Partner</div>
+                    <p class="text-industrialGrey text-base font-light leading-relaxed italic">"Their attention to precision is second to none. We've sourced high-tolerance components for years."</p>
+                    <p class="mt-8 font-serif text-steel">— CEO, MedTech Systems</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RFQ FORM -->
+    <section id="rfq" class="py-32 px-6 bg-white">
+        <div class="max-w-5xl mx-auto" data-aos="fade-up">
+            <div class="flex flex-col md:flex-row gap-16">
+                <div class="md:w-1/3">
+                    <h2 class="font-sans text-5xl font-black uppercase mb-6 leading-none">Request <br>For Quote</h2>
+                    <p class="text-steel font-light text-sm leading-relaxed mb-8">
+                        Ready to start your production cycle? Our English-speaking engineers are standing by to review your blueprints.
+                    </p>
+                    <p class="text-obsidian font-bold text-lg">+81 (0) 3 5555 9090</p>
+                </div>
+                
+                <div class="md:w-2/3">
+                    <form class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-1">
+                            <label class="text-[9px] uppercase tracking-widest font-black">Full Name</label>
+                            <input type="text" placeholder="John Smith" class="rfq-input" required>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[9px] uppercase tracking-widest font-black">Company Name</label>
+                            <input type="text" placeholder="Global Dynamics Inc." class="rfq-input" required>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[9px] uppercase tracking-widest font-black">Industry Sector</label>
+                            <select class="rfq-input">
+                                <option>Aerospace / Defense</option>
+                                <option>Automotive / EV</option>
+                                <option>Medical Devices</option>
+                                <option>Consumer Electronics</option>
+                                <option>Robotics</option>
+                            </select>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[9px] uppercase tracking-widest font-black">Contact Phone</label>
+                            <input type="tel" placeholder="+1-555-0100" class="rfq-input" required>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[9px] uppercase tracking-widest font-black">Service Required</label>
+                            <select class="rfq-input">
+                                <option>Full Scale Production</option>
+                                <option>Rapid Prototyping</option>
+                                <option>Custom Component Machining</option>
+                                <option>Assembly Line Outsourcing</option>
+                            </select>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[9px] uppercase tracking-widest font-black">Project Budget Range</label>
+                            <select class="rfq-input">
+                                <option>$10k - $50k</option>
+                                <option>$50k - $250k</option>
+                                <option>$250k+</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2 space-y-1">
+                            <label class="text-[9px] uppercase tracking-widest font-black">Project Specifications</label>
+                            <textarea placeholder="Describe your technical requirements..." class="rfq-input h-32 resize-none"></textarea>
+                        </div>
+                        <div class="md:col-span-2 pt-6">
+                            <button type="submit" class="bg-obsidian text-architectural px-16 py-5 text-xs uppercase tracking-widest font-black hover:bg-steel transition-all w-full md:w-auto">
+                                Dispatch Inquiry
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-obsidian text-architectural pt-32 pb-12 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-16 mb-20">
+            <div class="md:col-span-5">
+                <h2 class="font-sans text-3xl font-black uppercase mb-8">Takumi <span class="font-serif italic font-light lowercase tracking-normal">Precision</span></h2>
+                <p class="text-architectural/40 font-light leading-relaxed max-w-sm mb-10">
+                    Advancing global infrastructure through Japanese engineering excellence. Our Tokyo facility is equipped for the challenges of tomorrow.
+                </p>
+                <div class="text-[10px] tracking-[0.3em] uppercase text-architectural/30">
+                    <p>Production: Mon — Sat: 08:00 - 18:00 JST</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-3">
+                <h4 class="text-steel uppercase tracking-widest text-[10px] font-black mb-8 italic font-serif">Headquarters</h4>
+                <div class="font-sans text-sm space-y-4 font-light tracking-wide leading-relaxed">
+                    <p>8-Chome, Ota-City, <br>Industrial District, Tokyo <br>Japan 144-0041</p>
+                    <p class="pt-4">+81 (0) 3 5555 9090</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-4">
+                <div class="w-full h-72 grayscale border border-architectural/10 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80" 
+                         class="w-full h-full object-cover" alt="Map">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="bg-obsidian/80 backdrop-blur-md px-6 py-3 text-[9px] tracking-widest uppercase border border-architectural/20 font-bold">Encrypted Map Data</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto border-t border-architectural/10 pt-12 flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-[0.3em] text-architectural/30 font-bold">
+            <p>© 2026 Takumi Precision Engineering Tokyo</p>
+            <p class="mt-4 md:mt-0">Designed by <span class="text-architectural/80">HANEI.JP</span></p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({ duration: 1000, once: true, easing: 'ease-out-quart' });
+
+        // Mobile Menu Logic
+        const hamburger = document.getElementById('hamburger');
+        const overlay = document.getElementById('nav-overlay');
+        const links = document.querySelectorAll('.mobile-link');
+        const bars = [document.getElementById('bar1'), document.getElementById('bar2'), document.getElementById('bar3')];
+
+        function toggleMenu() {
+            overlay.classList.toggle('translate-x-full');
+            document.body.classList.toggle('overflow-hidden');
+            
+            // Hamburger Animation
+            bars[0].classList.toggle('rotate-45');
+            bars[0].classList.toggle('translate-y-[8px]');
+            bars[0].classList.toggle('bg-architectural');
+            bars[1].classList.toggle('opacity-0');
+            bars[2].classList.toggle('-rotate-45');
+            bars[2].classList.toggle('-translate-y-[8px]');
+            bars[2].classList.toggle('bg-architectural');
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+
+        // Auto-close on link click
+        links.forEach(l => {
+            l.addEventListener('click', () => {
+                if (!overlay.classList.contains('translate-x-full')) toggleMenu();
+            });
+        });
+
+        // Demo Form Intercept
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Your RFQ for Takumi Precision Tokyo has been received. Our Engineering team will contact you shortly.');
+        });
+    </script>
+    <!-- HANEI OVERLAY -->
+    <a href="/demos" class="fixed bottom-8 left-8 z-[200] bg-obsidian text-architectural px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-2xl border border-architectural/30 hover:bg-steel transition-all flex items-center gap-2 group"><span class="group-hover:-translate-x-1 transition-transform">←</span> Return to Hanei</a>
+
+    <script>
+      // Hanei JP Context Detection
+      (function() {
+        const returnLink = document.querySelector('a[href*="hanei.jp"]') || document.querySelector('a[href*="/demos"]');
+        if (returnLink) {
+          // Normalize to base demos link
+          returnLink.href = "/demos"; 
+          
+          // Detect Japanese context from referrer
+          if (document.referrer.includes("-jp")) {
+            returnLink.href = "/demos-jp";
+            returnLink.innerHTML = "← Haneiに戻る";
+          }
+        }
+      })();
+    </script>
+</body>
+</html>

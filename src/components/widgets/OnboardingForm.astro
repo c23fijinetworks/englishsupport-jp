@@ -1,0 +1,89 @@
+---
+const { isJp = false } = Astro.props;
+const FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSdOFvirP0L_M66yEYve08KUkZAj3c-Oz-wUX2xyNiDSH3lueA/formResponse";
+
+const labels = isJp ? {
+    title: "ビジネス・オンボーディング形式",
+    subtitle: "詳細をご記入ください。最短24時間以内の公開に向けて制作を開始します。",
+    submit: "オンボーディングを完了する",
+    success_h: "オンボーディング完了",
+    success_p: "情報を正常に受信しました。制作チームが直ちに稼働を開始します。"
+} : {
+    title: "BUSINESS ONBOARDING FORM",
+    subtitle: "Provide your details below. We start production immediately upon submission.",
+    submit: "COMPLETE ONBOARDING",
+    success_h: "Registration Received",
+    success_p: "Your project details have been secured. Our developers are now initializing your infrastructure."
+};
+---
+<section class="py-12 md:py-20 bg-white dark:bg-slate-900">
+  <div class="max-w-4xl mx-auto px-4">
+    <div id="onboard-shell" class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-8 md:p-12 shadow-xl border border-slate-200 dark:border-slate-700">
+      
+      <!-- SUCCESS UI -->
+      <div id="onboard-success" class="hidden text-center py-20">
+        <div class="bg-blue-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl">
+          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+        </div>
+        <h2 class="text-4xl font-black text-slate-950 uppercase tracking-tighter mb-4">{labels.success_h}</h2>
+        <p class="text-xl text-slate-600 font-medium leading-relaxed">{labels.success_p}</p>
+      </div>
+
+      <!-- FORM UI -->
+      <div id="onboard-ui">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold uppercase tracking-widest text-slate-900 dark:text-white mb-4">{labels.title}</h2>
+          <p class="text-lg text-slate-600 dark:text-slate-400">{labels.subtitle}</p>
+        </div>
+
+        <iframe name="onboard_trap" id="onboard_trap" style="display:none;"></iframe>
+
+        <form action={FORM_ACTION} method="POST" target="onboard_trap" id="onboard-locked-form" class="space-y-12">
+           <div class="space-y-6">
+            <h3 class="text-primary font-black uppercase tracking-tighter text-sm border-b border-primary/20 pb-2">1. BUSINESS IDENTITY</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="flex flex-col"><label class="block text-xs font-bold mb-2 uppercase text-slate-500">BUSINESS / SHOP NAME *</label>
+              <input type="text" name="entry.10" required class="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-primary outline-none" /></div>
+              <div class="flex flex-col"><label class="block text-xs font-bold mb-2 uppercase text-slate-500">REPRESENTATIVE NAME *</label>
+              <input type="text" name="entry.11" required class="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-primary outline-none" /></div>
+              <div class="md:col-span-2 flex flex-col"><label class="block text-xs font-bold mb-2 uppercase text-slate-500">PRIMARY CONTACT (LINE/WHATSAPP/PHONE) *</label>
+              <input type="text" name="entry.12" required class="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-primary outline-none" /></div>
+            </div>
+          </div>
+          <div class="flex flex-col"><label class="block text-xs font-bold mb-2 uppercase text-slate-500">Master Email Address *</label>
+          <input type="email" name="emailAddress" required class="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-primary outline-none" /></div>
+          
+          <button type="submit" id="onboard-lock-btn" class="w-full py-6 bg-primary hover:bg-slate-900 text-white font-bold rounded-xl shadow-xl transform hover:-translate-y-1 transition-all text-xl uppercase tracking-widest">
+            {labels.submit}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  function initOnboardLock() {
+    const form = document.getElementById('onboard-locked-form');
+    if (form) {
+      form.addEventListener('submit', function() {
+        const btn = document.getElementById('onboard-lock-btn');
+        const ui = document.getElementById('onboard-ui');
+        const success = document.getElementById('onboard-success');
+        const shell = document.getElementById('onboard-shell');
+
+        btn.innerHTML = "DISPATCHING...";
+        btn.disabled = true;
+        btn.style.opacity = "0.5";
+
+        setTimeout(() => {
+          ui.classList.add('hidden');
+          success.classList.remove('hidden');
+          window.scrollTo({ top: shell.offsetTop - 100, behavior: 'smooth' });
+        }, 800);
+      });
+    }
+  }
+  document.addEventListener('DOMContentLoaded', initOnboardLock);
+  document.addEventListener('astro:page-load', initOnboardLock);
+</script>

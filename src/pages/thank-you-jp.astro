@@ -1,0 +1,31 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+
+const metadata = { 
+    title: 'ご注文ありがとうございます | 戦略的インバウンド・ローンチ | English Support',
+    robots: { index: false }
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero2
+    tagline="お支払いが完了しました"
+    title='Haneiスタンダードへ、<br/><span class="text-accent">ようこそ。</span>'
+    subtitle="Haneiをお選びいただき、誠にありがとうございます。決済が正常に完了いたしました。24〜72時間以内でのローンチ基準を維持するため、直ちにブランド情報の提供をお願いいたします。"
+    image={{ src: '/images/demos/azabu-medical.webp', alt: 'ブランド・ローンチの初期設定' }}
+  />
+
+  <div class="py-24 text-center px-4">
+    <div class="max-w-4xl mx-auto bg-white border-4 border-slate-950 rounded-[3rem] p-12 md:p-24 shadow-[20px_20px_0px_0px_rgba(0,0,0,1)]">
+      <h2 class="text-4xl md:text-6xl font-black text-slate-950 uppercase tracking-tighter mb-8 leading-tight">最終ステップ：<br/> ブランド・ローンチの初期設定</h2>
+      <p class="text-xl md:text-2xl text-slate-600 mb-16 font-bold leading-relaxed">
+        専用の「オンボーディングフォーム」の完了をお願いいたします。受領後、直ちに弊社のクリエイティブ制作チームがローンチプロセスを開始します。
+      </p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScm1dnWCyPE6UfJ2tk9Hvkbwq1ffRhUnruqMtHOtRFeC16DbQ/viewform" target="_blank" class="inline-block bg-blue-600 text-white px-12 py-6 rounded-2xl text-2xl font-black uppercase tracking-widest hover:bg-slate-950 transition-all transform hover:-translate-y-1 shadow-2xl">
+        オンボーディングフォームを開く
+      </a>
+      <p class="mt-12 text-sm font-black text-slate-400 uppercase tracking-widest italic">リンクは新しいセキュアなタブで開きます</p>
+    </div>
+  </div>
+</Layout>
